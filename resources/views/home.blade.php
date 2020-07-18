@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<div id="mask">
+  <div class="loader">
+      <img src="assets/img/loading.gif" width="140" alt='loading'>
+  </div>
+</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
