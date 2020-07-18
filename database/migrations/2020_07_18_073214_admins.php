@@ -20,7 +20,7 @@ class Admins extends Migration
           $table->string('email')->unique();
           $table->string('name');
           $table->string('family');
-          $table->string('permissions')->default(0);
+          $table->string('role')->default('["member"]');
           $table->rememberToken();
           $table->timestamps();
       });
