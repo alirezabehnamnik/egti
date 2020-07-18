@@ -36707,6 +36707,12 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$(window).ready(function () {
+  $(".loader").delay(500).fadeOut();
+  $("#mask").delay(1000).fadeOut("slow");
+  console.log("here");
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
