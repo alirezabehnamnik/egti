@@ -1,8 +1,46 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+// @font-face{
+//     font-family:'Vazir';
+//     src:url("../assets/fonts/vazir/Vazir.eot?#")
+//     format("eot"),url("../assets/fonts/vazir/Vazir.woff")
+//     format("woff"),url("../assets/fonts/vazir/Vazir.ttf")
+//     format("truetype");
+// }
+@font-face{
+    font-family:'ISans';
+    src:url("../assets/fonts/isans/IRANSansWeb.eot?#")
+    format("eot"),url("../assets/fonts/isans/IRANSansWeb.woff")
+    format("woff"),url("../assets/fonts/isans/IRANSansWeb.ttf")
+    format("truetype");
+}
+
 
 // Variables
 @import "variables";
 
 // Bootstrap
 @import "~rtl-bootstrap/scss/bootstrap";
+
+#mask {
+position: fixed;
+height: 100%;
+width: 100%;
+background-color: #FFF;
+z-index: 9;
+top: 0;
+left: 0;
+right: 0;
+bottom:0;
+}
+
+.loader {
+position: absolute;
+width: 140px;
+height: 140px;
+margin: auto;
+top: 0;
+bottom: 0;
+right: 0;
+left: 0;
+}

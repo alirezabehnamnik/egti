@@ -1,5 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
 
+@font-face {
+  font-family: "ISans";
+  src: url(/fonts/IRANSansWeb.eot?9dd18d8308d2fb077a1ca11e6cdcd778) format("eot"), url(/fonts/IRANSansWeb.woff?c5ccd752c6fd1e7c344e07299318be5b) format("woff"), url(/fonts/IRANSansWeb.ttf?87536333b99ad831f9cfa0ebc0e675c2) format("truetype");
+}
+
 /*!
  * Bootstrap v4.0.0-beta.2 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
@@ -39,7 +44,7 @@ body {
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: "ISans", sans-serif;
   --font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -149,7 +154,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "ISans", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.6;
@@ -5351,7 +5356,7 @@ button.close {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "ISans", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -5476,7 +5481,7 @@ button.close {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: "ISans", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -8863,5 +8868,28 @@ a.text-dark:hover {
 
 .invisible {
   visibility: hidden !important;
+}
+
+#mask {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: #FFF;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.loader {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
