@@ -21,11 +21,8 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow p-3 mb-5">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -33,7 +30,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                      <li class="nav-item active">
+                        <a class="nav-link" href="{{ url('/') }}"><i class="fa fa-home"></i> خانه <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/') }}">بازی ها</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/') }}">مسابقات</a>
+                      </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -41,11 +46,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('ورود') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}"> <i class="fa fa-unlock-alt red-icon"></i> {{ __('ورود') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('ثبت نام') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}"> <i class="fa fa-user-plus red-icon"></i> {{ __('ثبت نام') }}</a>
                                 </li>
                             @endif
                         @else
@@ -55,6 +60,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('home') }}">
+                                        {{ __('پروفایل') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
