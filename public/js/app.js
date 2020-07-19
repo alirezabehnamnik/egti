@@ -36710,7 +36710,24 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 $(window).ready(function () {
   $(".loader").delay(500).fadeOut();
   $("#mask").delay(1000).fadeOut("slow");
-  console.log("here");
+});
+$('#state').change(function () {
+  var sid = $(this).val();
+
+  if (sid) {
+    $.ajax({
+      type: "get",
+      url: "city/" + sid,
+      success: function success(res) {
+        if (res) {
+          $("#city").empty();
+          $.each(res, function (key, value) {
+            $("#city").append('<option value="' + key + '">' + value.name + '</option>');
+          });
+        }
+      }
+    });
+  }
 });
 
 /***/ }),
