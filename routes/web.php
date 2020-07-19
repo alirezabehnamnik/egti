@@ -35,3 +35,7 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::post('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'help'] , function() {
+    Route::get('/{drm}' , 'HelpController@drm');
+});
