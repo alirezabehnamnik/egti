@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(SatetSeeder::class);
         // $this->call(CitySeeder::class);
         // $this->call(UserSeeder::class);
-        $this->call(AdminSeeder::class);
+        // $this->call(AdminSeeder::class);
+        // $this->call(MyGamesSeeder::class);
     }
 }
