@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('epicgames')->nullable();
             $table->string('riot')->nullable();
             $table->string('mygames')->nullable();
-            $table->string('other')->nullable();
+            $table->integer('platforms_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
