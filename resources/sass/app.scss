@@ -1,12 +1,13 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-// @font-face{
-//     font-family:'Vazir';
-//     src:url("../assets/fonts/vazir/Vazir.eot?#")
-//     format("eot"),url("../assets/fonts/vazir/Vazir.woff")
-//     format("woff"),url("../assets/fonts/vazir/Vazir.ttf")
-//     format("truetype");
-// }
+
+
+// FortAwesome
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
 @font-face{
     font-family:'ISans';
     src:url("../assets/fonts/isans/IRANSansWeb.eot?#")
@@ -14,8 +15,6 @@
     format("woff"),url("../assets/fonts/isans/IRANSansWeb.ttf")
     format("truetype");
 }
-
-@import "node_modules/font-awesome/scss/font-awesome.scss";
 
 .dropdown-item.active, .dropdown-item:active {
     background-color: #ff6565 !important;
@@ -75,6 +74,10 @@
     font-weight: 400;
     color: #fe6565;
     background-color: transparent;
+}
+
+.required {
+  color: red;
 }
 
 #mask {
