@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use App\State;
 use App\City;
+use App\MyGames;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -77,7 +78,8 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
       $state = State::where('enabled', 1)->get();
-      return view('auth.register', compact('state'));
+      $games_list = MyGames::where('enabled', 1)->get();
+      return view('auth.register',  ['state' => $state, 'games_list' => $games_list]);
     }
 
     public function getcities($id) {
