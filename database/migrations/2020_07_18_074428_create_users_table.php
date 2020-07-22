@@ -24,14 +24,14 @@ class CreateUsersTable extends Migration
             $table->foreign('state_id')->references('id')->on('states');
             $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities');
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->string('phone_number')->unique();
             $table->string('steam')->nullable();
             $table->string('uplay')->nullable();
             $table->string('epicgames')->nullable();
             $table->string('riot')->nullable();
             $table->string('mygames')->nullable();
-            $table->integer('platforms_id')->nullable();
+            $table->string('platforms_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
