@@ -63,7 +63,7 @@ class RegisterController extends Controller
             'family' => ['required', 'string', 'max:255'],
             'state_id' => ['required', 'numeric'],
             'city_id' => ['required', 'numeric'],
-            'phone_number' => ['required', 'numeric','min:11', 'max:11'],
+            'phone_number' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/','min:10', 'unique:users'],
             'rules' => ['accepted'],
         ]);
     }
