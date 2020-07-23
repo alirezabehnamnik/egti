@@ -1,10 +1,13 @@
 require('./bootstrap');
+require('./jquery.touchSwipe.min');
 
+// Loading
 $(window).ready(function() {
     $(".loader").delay(500).fadeOut();
     $("#mask").delay(1000).fadeOut("slow");
 });
 
+// Load Cities based on selected State in register form
 $('#state_id').change(function(){
    var sid = $(this).val();
    if(sid){
@@ -25,3 +28,12 @@ $('#state_id').change(function(){
    });
    }
 });
+
+// Carousel swipe with mouse move
+$(".carousel").swipe({
+        swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+            if (direction == 'left') $(this).carousel('next');
+            if (direction == 'right') $(this).carousel('prev');
+        },
+        allowPageScroll: "vertical"
+    });
