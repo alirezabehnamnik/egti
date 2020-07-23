@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header red-bar">{{ __('ثبت نام') }}</div>
+                <div class="card-header red-bar"> <i class="fas fa-user-plus" aria-hidden="true"></i> {{ __('ثبت نام') }}</div>
 
                 <div class="card-body shadow">
                     <form method="POST" action="{{ route('register') }}">
@@ -18,9 +18,9 @@
                             <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('نام کاربری:') }} <span class="required">*</span> </label>
 
                             <div class="col-md-6">
-                                <input autofocus id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                                <input autofocus id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" autocomplete="username" autofocus>
 
-                                @error('name')
+                                @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -32,7 +32,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('رمزعبور:') }} <span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('تکرار رمزعبور') }} <span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
                             </div>
                         </div>
 
@@ -54,7 +54,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('ایمیل:') }} <span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
                                 <small> مثال: example@gmail.com </small>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -68,7 +68,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('نام:') }} <span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" placeholder="نام" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name">
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -82,7 +82,7 @@
                             <label for="family" class="col-md-4 col-form-label text-md-right">{{ __('نام خانوادگی:') }} <span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="family" type="text" class="form-control @error('family') is-invalid @enderror" name="family" value="{{ old('family') }}" required autocomplete="family" autofocus>
+                                <input id="family" type="text" class="form-control @error('family') is-invalid @enderror" name="family" value="{{ old('family') }}" autocomplete="family">
 
                                 @error('family')
                                     <span class="invalid-feedback" role="alert">
@@ -93,18 +93,18 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="state" class="col-md-4 col-form-label text-md-right">{{ __('استان:') }} <span class="required">*</span></label>
+                            <label for="state_id" class="col-md-4 col-form-label text-md-right">{{ __('استان:') }} <span class="required">*</span></label>
 
                             <div class="col-md-6">
 
-                              <select class="form-control" id="state" name="state">
+                              <select class="form-control @error('state_id') is-invalid @enderror" id="state_id" name="state_id">
                                 <option value="">-- انتخاب کنید --</option>
                                 @foreach ($state as $v)
                                 <option value="{{$v->id}}">{{$v->name}}</option>
                                 @endforeach
                               </select>
 
-                                @error('state')
+                                @error('state_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -113,15 +113,15 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('شهر:') }} <span class="required">*</span></label>
+                            <label for="city_id" class="col-md-4 col-form-label text-md-right">{{ __('شهر:') }} <span class="required">*</span></label>
 
                             <div class="col-md-6">
 
-                              <select class="form-control" id="city" name="city">
+                              <select class="form-control @error('city_id') is-invalid @enderror" id="city_id" name="city_id">
                                 <option value="">-- انتخاب کنید --</option>
                               </select>
 
-                                @error('city')
+                                @error('city_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -133,23 +133,17 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('آدرس:') }}</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" autocomplete="address">
-
-                                @error('address')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" autocomplete="address">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="phonenumber" class="col-md-4 col-form-label text-md-right">{{ __('شماره همراه:') }} <span class="required">*</span></label>
+                            <label for="phone_number" class="col-md-4 col-form-label text-md-right">{{ __('شماره همراه:') }} <span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="phonenumber" type="text" class="form-control @error('phonenumber') is-invalid @enderror" name="phonenumber" value="{{ old('phonenumber') }}" required autocomplete="phonenumber">
+                                <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" autocomplete="phone_number">
                                 <small> مثال: 09171234567 </small>
-                                @error('phonenumber')
+                                @error('phone_number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -165,13 +159,8 @@
                             <label for="steam" class="col-md-4 col-form-label text-md-right">{{ __('استیم:') }}</label>
 
                             <div class="col-md-6">
-                                <input id="steam" type="text" class="form-control @error('steam') is-invalid @enderror" name="steam" value="{{ old('steam') }}" autocomplete="steam">
+                                <input id="steam" type="text" class="form-control" name="steam" value="{{ old('steam') }}" autocomplete="steam">
                                 <small> <a href="/help/steam" target="_blank"> راهنما </a> </small>
-                                @error('steam')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                           </div>
 
@@ -179,13 +168,8 @@
                             <label for="uplay" class="col-md-4 col-form-label text-md-right">{{ __('یوپلی:') }}</label>
 
                             <div class="col-md-6">
-                                <input id="uplay" type="text" class="form-control @error('uplay') is-invalid @enderror" name="uplay" value="{{ old('uplay') }}" autocomplete="uplay">
+                                <input id="uplay" type="text" class="form-control" name="uplay" value="{{ old('uplay') }}" autocomplete="uplay">
                                 <small> <a href="/help/uplay" target="_blank"> راهنما </a> </small>
-                                @error('uplay')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                           </div>
 
@@ -193,13 +177,8 @@
                             <label for="epicgames" class="col-md-4 col-form-label text-md-right">{{ __('اپیک گیمز:') }}</label>
 
                             <div class="col-md-6">
-                                <input id="epicgames" type="text" class="form-control @error('epicgames') is-invalid @enderror" name="epicgames" value="{{ old('epicgames') }}" autocomplete="epicgames">
+                                <input id="epicgames" type="text" class="form-control" name="epicgames" value="{{ old('epicgames') }}" autocomplete="epicgames">
                                 <small> <a href="/help/epicgames" target="_blank"> راهنما </a> </small>
-                                @error('epicgames')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                           </div>
 
@@ -207,13 +186,8 @@
                             <label for="riot" class="col-md-4 col-form-label text-md-right">{{ __('ریوت گیمز:') }}</label>
 
                             <div class="col-md-6">
-                                <input id="riot" type="text" class="form-control @error('riot') is-invalid @enderror" name="riot" value="{{ old('riot') }}" autocomplete="riot">
+                                <input id="riot" type="text" class="form-control" name="riot" value="{{ old('riot') }}" autocomplete="riot">
                                 <small> <a href="/help/riot" target="_blank"> راهنما </a> </small>
-                                @error('riot')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -223,21 +197,13 @@
                         <br>
                         <div class="form-group row">
                           <div class="col-md-12">
-
                             @foreach ($games_list as $v)
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input id="my_games" type="checkbox" class="form-check-input" value="{{$v->id}}">{{$v->name}}
+                                <input id="mygames" name="mygames[]" type="checkbox" class="form-check-input" value="{{$v->id}}">{{$v->name}}
                               </label>
                             </div>
                             @endforeach
-
-
-                              @error('my_games')
-                                  <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                  </span>
-                              @enderror
                             </div>
                           </div>
 
@@ -251,28 +217,21 @@
 
                               <div class="form-check-inline">
                                 <label class="form-check-label">
-                                  <input id="platforms" type="checkbox" class="form-check-input" value="1"> <i class="fas fa-desktop" aria-hidden="true"></i> PC
+                                  <input id="platforms_id" name="platforms_id[]" type="checkbox" class="form-check-input" value="1"> <i class="fas fa-desktop" aria-hidden="true"></i> PC
                                 </label>
                               </div>
 
                               <div class="form-check-inline">
                                 <label class="form-check-label">
-                                  <input id="platforms" type="checkbox" class="form-check-input" value="2"> <i class="fab fa-playstation" aria-hidden="true"></i> PlayStation
+                                  <input id="platforms_id" name="platforms_id[]" type="checkbox" class="form-check-input" value="2"> <i class="fab fa-playstation" aria-hidden="true"></i> PlayStation
                                 </label>
                               </div>
 
                               <div class="form-check-inline">
                                 <label class="form-check-label">
-                                  <input id="platforms" type="checkbox" class="form-check-input" value="3"> <i class="fab fa-xbox" aria-hidden="true"></i> Xbox
+                                  <input id="platforms_id" name="platforms_id[]" type="checkbox" class="form-check-input" value="3"> <i class="fab fa-xbox" aria-hidden="true"></i> Xbox
                                 </label>
                               </div>
-
-
-                                @error('platforms')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                               </div>
                             </div>
 
@@ -280,28 +239,28 @@
 
                             <div class="form-group row">
 
-                              <div class="col-md-12">
-
-                                <div class="form-check-inline">
+                                <div class="form-check-inline col-md-12">
                                   <label class="form-check-label">
-                                    <input id="platforms" type="checkbox" class="form-check-input" value="1"> <i class="fas fa-gavel" aria-hidden="true"></i>
+                                    <input name="rules" type="checkbox" class="form-check-input" value="1"> <i class="fas fa-gavel" aria-hidden="true"></i>
                                     متن
                                     <a href="#" target="_blank"> قوانین </a>
                                     را خوانده ام و آنها را می پذیرم.
                                   </label>
-                                </div>
-
-                                  @error('my_games')
+                                  <input type="hidden" class="form-control @error('rules') is-invalid @enderror">
+                                  @error('rules')
                                       <span class="invalid-feedback" role="alert">
                                           <strong>{{ $message }}</strong>
                                       </span>
                                   @enderror
                                 </div>
+
+
                               </div>
 
+                        <br>
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-red">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-lg btn-red">
                                     {{ __('ثبت نام') }}
                                 </button>
                             </div>

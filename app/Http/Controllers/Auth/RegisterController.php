@@ -35,6 +35,7 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+
     /**
      * Create a new controller instance.
      *
@@ -53,10 +54,17 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // dd($data['rules']);
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'username' => ['required', 'string', 'min:3', 'alpha_dash', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:255'],
+            'family' => ['required', 'string', 'max:255'],
+            'state_id' => ['required', 'numeric'],
+            'city_id' => ['required', 'numeric'],
+            'phone_number' => ['required', 'numeric','min:11', 'max:11'],
+            'rules' => ['accepted'],
         ]);
     }
 
@@ -68,10 +76,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // $vehicleString = json_encode($data['platforms_id']);
+        // dd($data['platforms_id']);
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'username' => $data['username'],
             'password' => Hash::make($data['password']),
+            'email' => $data['email'],
+            'name' => $data['name'],
+            'family' => $data['family'],
+            'state_id' => $data['state_id'],
+            'city_id' => $data['city_id'],
+            'address' => $data['address'],
+            'phone_number' => $data['phone_number'],
+            'steam' => $data['steam'],
+            'uplay' => $data['uplay'],
+            'epicgames' => $data['epicgames'],
+            'riot' => $data['riot'],
+            'mygames' => $data['mygames'],
+            'platforms_id' => $data['platforms_id'],
         ]);
     }
 

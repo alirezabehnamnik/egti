@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'name', 'email', 'password', 'family', 'state_id', 'city_id', 'address', 'phone_number', 'steam', 'uplay', 'epicgames', 'riot', 'mygames', 'platforms_id',
     ];
 
     /**
@@ -35,5 +35,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'mygames' => 'array',
+        'platforms_id' => 'array',
     ];
 }
