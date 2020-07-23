@@ -26,6 +26,7 @@
 
 // Variables
 @import "variables";
+@import "red";
 
 // Bootstrap
 @import "~rtl-bootstrap/scss/bootstrap";
@@ -36,44 +37,6 @@
 
 .shadow-sm {
     box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
-}
-
-.red-icon {
-  color: #ff6565 !important;
-}
-
-.red-bar {
-  background: #ff6565 !important;
-  color: #FFF;
-}
-
-.btn-red {
-    color: #fff;
-    background-color: #ff6565;
-    border-color: transparent;
-}
-
-.btn-red:hover {
-    color: #fff;
-    background-color: #b92121;
-    border-color: transparent;
-}
-
-.btn-red:focus, .btn-red.focus {
-    box-shadow: 0 0 0 0.2rem rgb(255, 185, 185);
-}
-
-.btn-red:not([disabled]):not(.disabled):active, .btn-red:not([disabled]):not(.disabled).active, .show > .btn-red.dropdown-toggle {
-    color: #fff;
-    background-color: #ff6565;
-    border-color: transparent;
-    box-shadow: 0 0 0 0.2rem rgba(255, 185, 185, 0.5);
-}
-
-.btn-link-red {
-    font-weight: 400;
-    color: #fe6565;
-    background-color: transparent;
 }
 
 .required {
