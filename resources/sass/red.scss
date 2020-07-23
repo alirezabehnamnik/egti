@@ -1,3 +1,10 @@
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #ff6565 !important;
+}
+
+.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+    color: #ff6565 !important;
+}
 
 .red-icon {
   color: #ff6565 !important;

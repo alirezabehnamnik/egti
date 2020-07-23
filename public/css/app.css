@@ -15037,6 +15037,10 @@ a.text-dark:hover {
   color: red;
 }
 
+.carousel {
+  cursor: pointer;
+}
+
 #mask {
   position: fixed;
   height: 100%;
