@@ -5,7 +5,7 @@ $(window).ready(function() {
     $("#mask").delay(1000).fadeOut("slow");
 });
 
-$('#state').change(function(){
+$('#state_id').change(function(){
    var sid = $(this).val();
    if(sid){
    $.ajax({
@@ -15,9 +15,9 @@ $('#state').change(function(){
       {
            if(res)
            {
-               $("#city").empty();
+               $("#city_id").empty();
                $.each(res,function(key,value){
-                   $("#city").append('<option value="'+key+'">'+value.name+'</option>');
+                   $("#city_id").append('<option value="'+value.id+'">'+value.name+'</option>');
                });
            }
       }
