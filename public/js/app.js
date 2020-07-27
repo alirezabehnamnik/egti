@@ -36740,6 +36740,10 @@ $(".carousel").swipe({
     if (direction == 'right') $(this).carousel('prev');
   },
   allowPageScroll: "vertical"
+}); // Bootstrap Tooltip
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
 });
 
 /***/ }),

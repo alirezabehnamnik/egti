@@ -6,7 +6,260 @@
 
             <div class="content">
 
+              <div class="container-fluid mmt-1">
 
+                <div class="row">
+                  <div class="col-md-12 nopadding">
+                    <div id="carouselSlider" class="carousel slide" data-ride="carousel">
+                      <ol class="carousel-indicators">
+                        <li data-target="#carouselSlider" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselSlider" data-slide-to="1"></li>
+                        <li data-target="#carouselSlider" data-slide-to="2"></li>
+                      </ol>
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img class="d-block w-100" src="images/slide1.jpg" alt="First slide">
+                          <div class="carousel-caption d-none d-md-block">
+                          <h5>First Slide</h5>
+                          <p>First Slide</p>
+                      </div>
+                        </div>
+                        <div class="carousel-item">
+                          <img class="d-block w-100" src="images/slide2.jpg" alt="Second slide">
+                          <div class="carousel-caption d-none d-md-block">
+                          <h5>Second Slide</h5>
+                          <p>Second Slide</p>
+                      </div>
+                        </div>
+                        <div class="carousel-item">
+                          <img class="d-block w-100" src="images/slide3.jpg" alt="Third slide">
+                          <div class="carousel-caption d-none d-md-block">
+                          <h5>Third Slide</h5>
+                          <p>Third Slide</p>
+                      </div>
+                        </div>
+                      </div>
+                      <a class="carousel-control-prev" href="#carouselSlider" role="button" data-slide="prev">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselSlider" role="button" data-slide="next">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <br>
+                <br>
+
+              </div>
+
+              <div class="container">
+
+                <!-- Games list Section -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="m-title">
+                      <div class="row">
+                        <div class="col-md-3"> بازی ها </div>
+                        <a class="show-more text-center" href="#">
+                          نمایش همه بازی ها
+                        </a>
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  @foreach ($games_list as $item)
+                  <div class="col-md-4 game-item text-center">
+                    <div class="game-image">
+                      <img src="images/games/{{$item->image}}" width="350" alt="">
+                      <div class="game-text">
+                        <span class="game-name"> {{$item->name}} </span>
+                        @php
+                        $decode = json_decode($item->platforms);
+                        @endphp
+                        <span class="game-platforms">
+                          @if(in_array("1", $decode))
+                          <i class="fas fa-desktop ml-1" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="PC"></i>
+                          @endif
+
+                          @if(in_array("2", $decode))
+                          <i class="fab fa-playstation ml-1" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="PlayStation 4"></i>
+                          @endif
+
+                          @if(in_array("3", $decode))
+                          <i class="fab fa-xbox ml-1" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Xbox One"></i>
+                          @endif
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  @endforeach
+                </div>
+
+                <br>
+                <br>
+                <br>
+
+                <!-- Tournaments list Section -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="m-title">
+                      <div class="row">
+                        <div class="col-md-3"> مسابقات جدید </div>
+                        <a class="show-more text-center" href="#">
+                          نمایش همه مسابقات
+                        </a>
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  @foreach ($tournaments as $item)
+                  <div class="col-md-4 tournament-item text-center">
+                    <div class="tournament-image">
+                      <img src="images/tournaments/{{$item->image}}" class="col-md-12 nopadding" alt="">
+                    </div>
+                    <div class="tournament-details">
+
+                      <li>
+                        نام مسابقه:
+                        <span class="tournament-text"> {{$item->name}} </span>
+                      </li>
+
+                      <li>
+                        بازی:
+                        <span class="tournament-text"> {{$item->g_name}} </span>
+                      </li>
+
+                      <li>
+                        تاریخ شروع:
+                        <span class="tournament-text"> {{$item->start_date}} </span>
+                      </li>
+
+                      <li>
+                        تاریخ پایان:
+                        <span class="tournament-text"> {{$item->end_date}} </span>
+                      </li>
+
+                      <li>
+                        تعداد تیم های شرکت کننده:
+                        <span class="tournament-text"> {{$item->teams_count}} </span>
+                      </li>
+
+                      <li>
+                        ظرفیت تیم:
+                        <span class="tournament-text"> {{$item->max_teams}} </span>
+                      </li>
+
+                      <li>
+                        تعداد بازیکن در هر تیم:
+                        <span class="tournament-text"> {{$item->player_per_team}} </span>
+                      </li>
+
+                      <li>
+                        @php
+                        $price = number_format($item->entry_price);
+                        @endphp
+                        هزینه ورود:
+                        @if (!$item->entry_price)
+                        <span class="tournament-text"> رایگان </span>
+                        @else
+                        <span class="tournament-text"> {{$price}} تومان </span>
+                        @endif
+                      </li>
+
+                      <li>
+                        <i class="far fa-star gold" aria-hidden="true"></i> مبلغ کل جایزه:
+                        @php
+                        $prize_pool = number_format($item->prize_pool);
+                        @endphp
+                        <span class="tournament-text"> {{$prize_pool}} تومان </span>
+                      </li>
+
+                      <li>
+                        <i class="fas fa-trophy gold" aria-hidden="true"></i>
+                        جایزه تیم اول:
+                        @php
+                        $fprize = number_format($item->fplace_reward);
+                        @endphp
+                        <span class="tournament-text"> {{$fprize}} تومان </span>
+                      </li>
+
+                      <li>
+                        <i class="fas fa-trophy silver" aria-hidden="true"></i>
+                        جایزه تیم دوم:
+                        @php
+                        $sprize = number_format($item->splace_reward);
+                        @endphp
+                        <span class="tournament-text"> {{$sprize}} تومان </span>
+                      </li>
+
+                      <li>
+                        <i class="fas fa-trophy bronze" aria-hidden="true"></i>
+                        جایزه تیم سوم:
+                        @php
+                        $tprize = number_format($item->tplace_reward);
+                        @endphp
+                        <span class="tournament-text"> {{$tprize}} تومان </span>
+                      </li>
+
+                      @if ($item->foplace_reward)
+                      <li>
+                        <i class="fas fa-trophy bronze" aria-hidden="true"></i>
+                        جایزه تیم چهارم:
+                        @php
+                        $foprize = number_format($item->foplace_reward);
+                        @endphp
+                        <span class="tournament-text"> {{$foprize}} تومان </span>
+                      </li>
+                      @endif
+
+                      @if ($item->fiplace_reward)
+                      <li>
+                        <i class="fas fa-trophy bronze" aria-hidden="true"></i>
+                        جایزه تیم پنجم:
+                        @php
+                        $fiprize = number_format($item->fiplace_reward);
+                        @endphp
+                        <span class="tournament-text"> {{$fiprize}} تومان </span>
+                      </li>
+                      @endif
+
+                      @if ($item->enabled == 1)
+                        <a href="#" target="_blank" class="tr-register">
+                          ثبت نام
+                        </a>
+                      @elseif ($item->enabled == 2)
+                        <a class="tr-register disabled-register">
+                          مهلت ثبت نام به پایان رسیده است
+                        </a>
+                      @endif
+                    </div>
+                  </div>
+                  @endforeach
+                </div>
+
+              </div>
+
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
 
             </div>
         </div>

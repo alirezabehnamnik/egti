@@ -23,6 +23,10 @@
 // Bootstrap
 @import "~rtl-bootstrap/scss/bootstrap";
 
+a:hover {
+    text-decoration: none !important;
+}
+
 .shadow {
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 }
@@ -39,12 +43,41 @@
   cursor: pointer;
 }
 
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+.mt-6 {
+  margin-top: 4.5rem !important;
+}
+
+.mt-7 {
+  margin-top: 6.5rem !important;
+}
+
+.mmt-1 {
+    margin-top: -2rem;
+}
+
+.gold {
+  color: gold;
+}
+
+.silver {
+  color: silver;
+}
+
+.bronze {
+  color: #cd7f32;
+}
+
 #mask {
 position: fixed;
 height: 100%;
 width: 100%;
 background-color: #FFF;
-z-index: 9;
+z-index: 9999;
 top: 0;
 left: 0;
 right: 0;
@@ -60,4 +93,152 @@ top: 0;
 bottom: 0;
 right: 0;
 left: 0;
+}
+
+.m-title {
+  font-size: 25px;
+}
+
+.m-title a {
+  color: #212529;
+}
+
+.show-more {
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 2px;
+    border-image-source: linear-gradient(to left, #FA697C, #FA9F6F);
+    padding: 3px;
+    border-radius: 10px;
+    left: 20px;
+    position: absolute;
+    font-size: 16px;
+}
+
+.game-item {
+  margin-bottom: 10px;
+}
+
+.game-image {
+  position: relative;
+}
+
+.game-image img {
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.game-text {
+    position: absolute;
+    bottom: 0px;
+    color: #FFF;
+    background: rgba(0, 0, 0, 0.8);
+    width: 350px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding-top: 7px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+.game-text:hover {
+  padding-bottom: 5px;
+}
+
+.game-name {
+  float:left;
+  left: 6px;
+  position: relative;
+  font-size: 15px;
+}
+
+.game-platforms {
+    float: right;
+    right: 6px;
+    position: relative;
+}
+
+
+
+
+.tournament-item {
+  margin-bottom: 10px;
+}
+
+.tournament-image img {
+  cursor: pointer;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.tournament-details {
+    background: #212121;
+    color: #FFF;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.tournament-details li {
+    list-style: none;
+    text-align: right;
+    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    padding: 10px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.tournament-details li:hover {
+  border-bottom: 3px solid rgba(0,0,0,0.5);
+  background: #303030;
+}
+
+.tournament-text {
+    float: left;
+    position: relative;
+    background: #303030;
+    padding: 3px 10px;
+    border-radius: 100px;
+}
+
+.tr-register {
+    display: inline-block;
+    background: green;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.tr-register:hover {
+  color:#FFF;
+  background: #2fa92f;
+}
+
+.disabled-register {
+  background: darkgray !important;
+  color:#212121 !important;
+}
+
+.disabled-register:hover {
+  background: gray !important;
+  color:#212121 !important;
 }
