@@ -38,6 +38,9 @@ $(".carousel").swipe({
         },
         allowPageScroll: "vertical"
 });
+$('.carousel').carousel({
+  pause: false,
+})
 
 // Bootstrap Tooltip
 $(function () {

@@ -36742,6 +36742,9 @@ $(".carousel").swipe({
     if (direction == 'right') $(this).carousel('prev');
   },
   allowPageScroll: "vertical"
+});
+$('.carousel').carousel({
+  pause: false
 }); // Bootstrap Tooltip
 
 $(function () {
