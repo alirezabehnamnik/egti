@@ -19,6 +19,9 @@
 // Variables
 @import "variables";
 @import "red";
+@import "owl.carousel";
+@import "owl.theme.default";
+
 
 // Bootstrap
 @import "~rtl-bootstrap/scss/bootstrap";
@@ -164,49 +167,41 @@ left: 0;
     position: relative;
 }
 
-
-
-
 .tournament-item {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.tournament-image {
+    font-size: 22px;
 }
 
 .tournament-image img {
-  cursor: pointer;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
+    cursor: pointer;
+    background: rgba(0,0,0,0.2);
+    padding: 16px;
+    border-radius: 100%;
+    margin: 10px;
 }
 
 .tournament-details {
-    background: #212121;
-    color: #FFF;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    background: #ffffff;
+    color: #545454;
+    border-radius: 35px;
+    border: 1px solid #e6e6e6;
 }
 
 .tournament-details li {
     list-style: none;
     text-align: right;
     position: relative;
-    border-bottom: 1px solid rgba(0,0,0,0.5);
     padding: 10px;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-}
-
-.tournament-details li:hover {
-  border-bottom: 3px solid rgba(0,0,0,0.5);
-  background: #303030;
+    margin: 10px 20px;
 }
 
 .tournament-text {
     float: left;
     position: relative;
-    background: #303030;
+    background: #ececec;
     padding: 3px 10px;
     border-radius: 100px;
 }
@@ -216,16 +211,17 @@ left: 0;
     background: green;
     color: #fff;
     text-align: center;
-    width: 100%;
-    padding: 10px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    padding: 10px 25%;
+    border-radius: 150px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    margin: 45px auto 35px auto;
+    -webkit-box-shadow: 0px 6px 15px -3px rgba(0,0,0,0.7);
+    box-shadow: 0px 6px 15px -3px rgba(0,0,0,0.7);
 }
 
 .tr-register:hover {
@@ -235,7 +231,7 @@ left: 0;
 
 .disabled-register {
   background: darkgray !important;
-  color:#212121 !important;
+  color:#505050 !important;
 }
 
 .disabled-register:hover {

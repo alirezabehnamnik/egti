@@ -1,5 +1,6 @@
 require('./bootstrap');
 require('./jquery.touchSwipe.min');
+require('./owl.carousel.min');
 
 // Loading
 $(window).ready(function() {
@@ -41,4 +42,50 @@ $(".carousel").swipe({
 // Bootstrap Tooltip
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
+})
+
+// Slick Slider JS
+$('.owl-sponsers').owlCarousel({
+    rtl:true,
+    loop:true,
+    margin:25,
+    nav:true,
+    autoplay:true,
+    autoplayTimeout:4000,
+    dots: true,
+    slideBy: 4,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:6
+        }
+    }
+})
+
+// Slick Slider JS
+$('.owl-partners').owlCarousel({
+    rtl:true,
+    loop:true,
+    margin:25,
+    nav:true,
+    autoplay:true,
+    autoplayTimeout:4000,
+    dots: true,
+    slideBy: 4,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:6
+        }
+    }
 })

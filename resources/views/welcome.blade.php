@@ -7,7 +7,7 @@
             <div class="content">
 
               <div class="container-fluid mmt-1">
-
+                <!-- Main Slider Section Start -->
                 <div class="row">
                   <div class="col-md-12 nopadding">
                     <div id="carouselSlider" class="carousel slide" data-ride="carousel">
@@ -18,21 +18,21 @@
                       </ol>
                       <div class="carousel-inner">
                         <div class="carousel-item active">
-                          <img class="d-block w-100" src="images/slide1.jpg" alt="First slide">
+                          <img class="d-block w-100" src="images/slider/slide1.jpg" alt="First slide">
                           <div class="carousel-caption d-none d-md-block">
                           <h5>First Slide</h5>
                           <p>First Slide</p>
                       </div>
                         </div>
                         <div class="carousel-item">
-                          <img class="d-block w-100" src="images/slide2.jpg" alt="Second slide">
+                          <img class="d-block w-100" src="images/slider/slide2.jpg" alt="Second slide">
                           <div class="carousel-caption d-none d-md-block">
                           <h5>Second Slide</h5>
                           <p>Second Slide</p>
                       </div>
                         </div>
                         <div class="carousel-item">
-                          <img class="d-block w-100" src="images/slide3.jpg" alt="Third slide">
+                          <img class="d-block w-100" src="images/slider/slide3.jpg" alt="Third slide">
                           <div class="carousel-caption d-none d-md-block">
                           <h5>Third Slide</h5>
                           <p>Third Slide</p>
@@ -50,6 +50,7 @@
                     </div>
                   </div>
                 </div>
+                <!-- Main Slider Section End -->
 
                 <br>
                 <br>
@@ -58,7 +59,7 @@
 
               <div class="container">
 
-                <!-- Games list Section -->
+                <!-- Games list Section Start -->
                 <div class="row">
                   <div class="col-md-12">
                     <div class="m-title">
@@ -100,12 +101,13 @@
                   </div>
                   @endforeach
                 </div>
+                <!-- Games list Section End -->
 
                 <br>
                 <br>
                 <br>
 
-                <!-- Tournaments list Section -->
+                <!-- Tournaments list Section Start -->
                 <div class="row">
                   <div class="col-md-12">
                     <div class="m-title">
@@ -122,19 +124,16 @@
                 <div class="row">
                   @foreach ($tournaments as $item)
                   <div class="col-md-4 tournament-item text-center">
-                    <div class="tournament-image">
-                      <img src="images/tournaments/{{$item->image}}" class="col-md-12 nopadding" alt="">
-                    </div>
-                    <div class="tournament-details">
 
+                    <div class="tournament-details">
+                      <div class="tournament-image">
+                        <img src="images/tournaments/{{$item->image}}" width="124" alt="{{$item->tag}}">
+                        <br>
+                        {{$item->g_name}}
+                      </div>
                       <li>
                         نام مسابقه:
                         <span class="tournament-text"> {{$item->name}} </span>
-                      </li>
-
-                      <li>
-                        بازی:
-                        <span class="tournament-text"> {{$item->g_name}} </span>
                       </li>
 
                       <li>
@@ -155,11 +154,6 @@
                       <li>
                         ظرفیت تیم:
                         <span class="tournament-text"> {{$item->max_teams}} </span>
-                      </li>
-
-                      <li>
-                        تعداد بازیکن در هر تیم:
-                        <span class="tournament-text"> {{$item->player_per_team}} </span>
                       </li>
 
                       <li>
@@ -236,14 +230,70 @@
                           ثبت نام
                         </a>
                       @elseif ($item->enabled == 2)
-                        <a class="tr-register disabled-register">
-                          مهلت ثبت نام به پایان رسیده است
+                        <a class="tr-register disabled-register" data-toggle="tooltip" data-placement="top" title="مهلت ثبت نام در این مسابقه به پایان رسیده است">
+                          ثبت نام
                         </a>
                       @endif
                     </div>
                   </div>
                   @endforeach
                 </div>
+                <!-- Tournaments list section End -->
+
+                <br>
+                <br>
+                <br>
+
+                <!-- Sponsers Slider Section Start -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="m-title">
+                      <div class="row">
+                        <div class="col-md-3"> اسپانسر ها </div>
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
+                  <div class="owl-carousel owl-sponsers owl-theme">
+                    <div class="item"><img src="images/sponsers/intel.png" /></div>
+                    <div class="item"><img src="images/sponsers/amd.png" /></div>
+                    <div class="item"><img src="images/sponsers/nvidia.png" /></div>
+                    <div class="item"><img src="images/sponsers/gigabyte.png" /></div>
+                    <div class="item"><img src="images/sponsers/samsung.png" /></div>
+                    <div class="item"><img src="images/sponsers/lg.png" /></div>
+                    <div class="item"><img src="images/sponsers/bnet.png" /></div>
+                    <div class="item"><img src="images/sponsers/origin.png" /></div>
+                    <div class="item"><img src="images/sponsers/steam.png" /></div>
+                  </div>
+                </div>
+                <!-- Sponsers Slider Section End -->
+
+                <br>
+                <br>
+
+                <!-- Supporters Slider Section Start -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="m-title">
+                      <div class="row">
+                        <div class="col-md-3"> همکاران </div>
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
+                  <div class="owl-carousel owl-partners owl-theme">
+                    <div class="item"><img src="images/sponsers/intel.png" /></div>
+                    <div class="item"><img src="images/sponsers/amd.png" /></div>
+                    <div class="item"><img src="images/sponsers/nvidia.png" /></div>
+                    <div class="item"><img src="images/sponsers/gigabyte.png" /></div>
+                    <div class="item"><img src="images/sponsers/samsung.png" /></div>
+                    <div class="item"><img src="images/sponsers/lg.png" /></div>
+                    <div class="item"><img src="images/sponsers/bnet.png" /></div>
+                    <div class="item"><img src="images/sponsers/origin.png" /></div>
+                    <div class="item"><img src="images/sponsers/steam.png" /></div>
+                  </div>
+                </div>
+                <!-- Supporters Slider Section End -->
 
               </div>
 
