@@ -36746,7 +36746,7 @@ $(".carousel").swipe({
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
-}); // Slick Slider JS
+}); // Sponsers Slider
 
 $('.owl-sponsers').owlCarousel({
   rtl: true,
@@ -36768,7 +36768,7 @@ $('.owl-sponsers').owlCarousel({
       items: 6
     }
   }
-}); // Slick Slider JS
+}); // Partners Slider
 
 $('.owl-partners').owlCarousel({
   rtl: true,
@@ -36790,6 +36790,17 @@ $('.owl-partners').owlCarousel({
       items: 6
     }
   }
+}); // Certifications Slider
+
+$('.owl-certs').owlCarousel({
+  rtl: true,
+  loop: true,
+  autoplay: true,
+  autoplayTimeout: 4000,
+  dots: false,
+  autoplayHoverPause: true,
+  center: true,
+  items: 1
 });
 
 /***/ }),

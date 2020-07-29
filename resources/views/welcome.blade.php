@@ -255,15 +255,17 @@
                     <hr>
                   </div>
                   <div class="owl-carousel owl-sponsers owl-theme">
-                    <div class="item"><img src="images/sponsers/intel.png" /></div>
-                    <div class="item"><img src="images/sponsers/amd.png" /></div>
-                    <div class="item"><img src="images/sponsers/nvidia.png" /></div>
-                    <div class="item"><img src="images/sponsers/gigabyte.png" /></div>
-                    <div class="item"><img src="images/sponsers/samsung.png" /></div>
-                    <div class="item"><img src="images/sponsers/lg.png" /></div>
-                    <div class="item"><img src="images/sponsers/bnet.png" /></div>
-                    <div class="item"><img src="images/sponsers/origin.png" /></div>
-                    <div class="item"><img src="images/sponsers/steam.png" /></div>
+                    @foreach ($sponsers as $item)
+                    <div class="item">
+                      @if ($item->url)
+                      <a href="{{$item->url}}" target="_blank">
+                        <img src="images/sponsers/{{$item->image}}.png" data-toggle="tooltip" data-placement="top" title="{{$item->name}}"/>
+                      </a>
+                      @else
+                      <img src="images/sponsers/{{$item->image}}.png" data-toggle="tooltip" data-placement="top" title="{{$item->name}}"/>
+                      @endif
+                    </div>
+                    @endforeach
                   </div>
                 </div>
                 <!-- Sponsers Slider Section End -->
@@ -282,34 +284,23 @@
                     <hr>
                   </div>
                   <div class="owl-carousel owl-partners owl-theme">
-                    <div class="item"><img src="images/sponsers/intel.png" /></div>
-                    <div class="item"><img src="images/sponsers/amd.png" /></div>
-                    <div class="item"><img src="images/sponsers/nvidia.png" /></div>
-                    <div class="item"><img src="images/sponsers/gigabyte.png" /></div>
-                    <div class="item"><img src="images/sponsers/samsung.png" /></div>
-                    <div class="item"><img src="images/sponsers/lg.png" /></div>
-                    <div class="item"><img src="images/sponsers/bnet.png" /></div>
-                    <div class="item"><img src="images/sponsers/origin.png" /></div>
-                    <div class="item"><img src="images/sponsers/steam.png" /></div>
+                    @foreach ($partners as $item)
+                    <div class="item">
+                      @if ($item->url)
+                      <a href="{{$item->url}}" target="_blank">
+                        <img src="images/sponsers/{{$item->image}}.png" data-toggle="tooltip" data-placement="top" title="{{$item->name}}"/>
+                      </a>
+                      @else
+                      <img src="images/sponsers/{{$item->image}}.png" data-toggle="tooltip" data-placement="top" title="{{$item->name}}"/>
+                      @endif
+                    </div>
+                    @endforeach
                   </div>
                 </div>
                 <!-- Supporters Slider Section End -->
 
               </div>
 
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
 
             </div>
         </div>

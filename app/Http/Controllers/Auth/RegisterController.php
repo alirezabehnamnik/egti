@@ -54,7 +54,6 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        // dd($data['rules']);
         return Validator::make($data, [
             'username' => ['required', 'string', 'min:3', 'alpha_dash', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -76,8 +75,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // $vehicleString = json_encode($data['platforms_id']);
-        // dd($data['platforms_id']);
         return User::create([
             'username' => $data['username'],
             'password' => Hash::make($data['password']),

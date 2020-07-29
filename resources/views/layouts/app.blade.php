@@ -86,9 +86,170 @@
             </div>
         </nav>
 
-        <main class="py-1 mt-7">
+        <main class="mt-7">
             @yield('content')
         </main>
+
+
+        <br>
+        <br>
+        <br>
+
+
+        <!-- Footer Start -->
+        <div class="container-fluid">
+
+          <div class="row">
+            <div class="footer-top"></div>
+
+            <div class="footer col-md-12">
+
+              <div class="container">
+
+                <div class="footer-social">
+
+                  <div class="row">
+                    <div class="col-md-6 footer-right">
+                      <span> مارا در شبکه ها اجتماعی دنبال کنید: </span>
+                      <div class="footer-social-link">
+                        <a href="#" target="_blank">
+                          <img src="images/instagram-icon.png" with="40" alt="" data-toggle="tooltip" data-placement="top" title="Instagram">
+                        </a>
+                      </div>
+                      <div class="footer-social-link">
+                        <a href="#" target="_blank">
+                          <img src="images/telegram-icon.png" with="40" alt="" data-toggle="tooltip" data-placement="top" title="Telegram">
+                        </a>
+                      </div>
+                      <div class="footer-social-link">
+                        <a href="#" target="_blank">
+                          <img src="images/youtube-icon.png" with="40" alt="" data-toggle="tooltip" data-placement="top" title="YouTube">
+                        </a>
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-6 footer-left">
+                      info@e-gaming.ir <img src="images/mail.png" width="40" alt="">
+                    </div>
+                  </div>
+
+                </div>
+
+                <hr>
+
+                <div class="footer-info">
+                  <div class="row">
+
+                    <div class="footer-links col-md-3">
+                      <h5 style="padding-bottom: 10px;"> دوستان </h5>
+
+                      <a href="#" target="_blank">
+                      <li> لینک 1 </li>
+                      </a>
+
+
+                      <a href="#" target="_blank">
+                      <li> لینک 2 </li>
+                      </a>
+
+
+                      <a href="#" target="_blank">
+                      <li> لینک 3 </li>
+                      </a>
+
+
+                      <a href="#" target="_blank">
+                      <li> لینک 4 </li>
+                      </a>
+
+                    </div>
+
+                    <div class="footer-links col-md-3">
+                      <h5 style="padding-bottom: 10px;"> لینک های مفید </h5>
+                      <a href="#" target="_blank">
+                      <li> لینک 1 </li>
+                      </a>
+
+
+                      <a href="#" target="_blank">
+                      <li> لینک 2 </li>
+                      </a>
+
+
+                      <a href="#" target="_blank">
+                      <li> لینک 3 </li>
+                      </a>
+
+
+                      <a href="#" target="_blank">
+                      <li> لینک 4 </li>
+                      </a>
+                    </div>
+
+                    <div class="footer-links col-md-3">
+                      <h5 style="padding-bottom: 10px;"> مطالب کاربردی </h5>
+                      <a href="#" target="_blank">
+                      <li> لینک 1 </li>
+                      </a>
+
+
+                      <a href="#" target="_blank">
+                      <li> لینک 2 </li>
+                      </a>
+
+
+                      <a href="#" target="_blank">
+                      <li> لینک 3 </li>
+                      </a>
+
+
+                      <a href="#" target="_blank">
+                      <li> لینک 4 </li>
+                      </a>
+                    </div>
+
+                    <div class="col-md-2 offset-md-1">
+                      <h5 style="padding-bottom: 10px;"> نماد ها </h5>
+                      <div class="owl-carousel owl-certs owl-theme text-center">
+                        <div class="item">
+                            <a href="#" target="_blank">
+                              <img src="images/etemad.png" alt="">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="#" target="_blank">
+                              <img src="images/samandehi.png" alt="">
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="#" target="_blank">
+                              <img src="images/bonyad.png" alt="">
+                            </a>
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="copyright">
+                  تمامی حقوق برای
+                  <span> EG Team </span>
+                  محفوظ می باشد.
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
     </div>
 </body>
 </html>

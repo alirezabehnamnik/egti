@@ -15549,3 +15549,56 @@ a:hover {
   color: #212121 !important;
 }
 
+.footer {
+  background: #323232;
+  border-top: 1px solid #4c4c4c;
+  color: #dddddd;
+}
+
+.footer-top {
+  width: 100%;
+  background-color: #292929;
+  border-bottom: 1px solid #141414;
+}
+
+.footer-social {
+  margin-top: 20px;
+}
+
+.footer-social-link {
+  display: inline;
+  font-size: 20px;
+  margin: 5px;
+}
+
+.footer-social-link a {
+  color: #FFF;
+}
+
+.footer-left {
+  font-size: 18px;
+  text-align: left;
+}
+
+.footer-links li {
+  padding: 5px;
+  display: block;
+}
+
+.footer-links a {
+  color: #fff;
+}
+
+.owl-certs img {
+  width: 150px !important;
+}
+
+.copyright {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #282828;
+  text-align: center;
+  color: #9e9e9e;
+  padding: 7px;
+}
+
