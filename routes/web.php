@@ -17,6 +17,13 @@ Route::get('/', 'MainController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Games Routes
+Route::get('/games', 'GamesController@index')->name('games');
+Route::get('/game/{id}', 'GamesController@game')->name('game');
+
+// Tournaments Route
+Route::get('/tournaments', 'TournamentsController@index')->name('tournaments');
+
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');

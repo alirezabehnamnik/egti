@@ -23,7 +23,7 @@
 
         <div id="mask">
           <div class="loader">
-              <img src="images/loading.gif" width="140" alt='loading'>
+              <img src="/images/loading.gif" width="140" alt='loading'>
           </div>
         </div>
 
@@ -40,7 +40,7 @@
                         <a class="nav-link" href="{{ url('/') }}"><i class="fa fa-home"></i> خانه <span class="sr-only">(current)</span></a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">بازی ها</a>
+                        <a class="nav-link" href="{{route('games')}}">بازی ها</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="{{ url('/') }}">مسابقات</a>

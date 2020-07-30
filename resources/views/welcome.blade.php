@@ -65,7 +65,7 @@
                     <div class="m-title">
                       <div class="row">
                         <div class="col-md-3"> بازی ها </div>
-                        <a class="show-more text-center" href="#">
+                        <a class="show-more text-center" href="{{route('games')}}">
                           نمایش همه بازی ها
                         </a>
                       </div>
@@ -75,30 +75,32 @@
                 </div>
                 <div class="row">
                   @foreach ($games_list as $item)
-                  <div class="col-md-4 game-item text-center">
-                    <div class="game-image">
-                      <img src="images/games/{{$item->image}}" width="350" alt="">
-                      <div class="game-text">
-                        <span class="game-name"> {{$item->name}} </span>
-                        @php
-                        $decode = json_decode($item->platforms);
-                        @endphp
-                        <span class="game-platforms">
-                          @if(in_array("1", $decode))
-                          <i class="fas fa-desktop ml-1" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="PC"></i>
-                          @endif
+                  <a href="{{route('game', ['id' => $item->id])}}">
+                    <div class="col-md-4 game-item text-center">
+                      <div class="game-image">
+                        <img src="images/games/{{$item->image}}" width="350" alt="">
+                        <div class="game-text">
+                          <span class="game-name"> {{$item->name}} </span>
+                          @php
+                          $decode = json_decode($item->platforms);
+                          @endphp
+                          <span class="game-platforms">
+                            @if(in_array("1", $decode))
+                            <i class="fas fa-desktop ml-1" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="PC"></i>
+                            @endif
 
-                          @if(in_array("2", $decode))
-                          <i class="fab fa-playstation ml-1" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="PlayStation 4"></i>
-                          @endif
+                            @if(in_array("2", $decode))
+                            <i class="fab fa-playstation ml-1" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="PlayStation 4"></i>
+                            @endif
 
-                          @if(in_array("3", $decode))
-                          <i class="fab fa-xbox ml-1" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Xbox One"></i>
-                          @endif
-                        </span>
+                            @if(in_array("3", $decode))
+                            <i class="fab fa-xbox ml-1" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Xbox One"></i>
+                            @endif
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </a>
                   @endforeach
                 </div>
                 <!-- Games list Section End -->

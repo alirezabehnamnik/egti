@@ -15602,3 +15602,22 @@ a:hover {
   padding: 7px;
 }
 
+.no-data {
+  min-height: 45vh;
+  position: relative;
+}
+
+.no-data span {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 25px;
+  height: 30px;
+  text-align: center;
+  border-radius: 30px;
+  color: #828282;
+}
+
