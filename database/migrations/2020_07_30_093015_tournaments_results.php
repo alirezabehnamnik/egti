@@ -15,8 +15,8 @@ class TournamentsResults extends Migration
     {
       Schema::create('tournaments_results', function (Blueprint $table) {
           $table->id();
-          $table->unsignedBigInteger('tournament_id')->unique();
-          $table->foreign('tournament_id')->references('id')->on('tournaments');
+          $table->unsignedBigInteger('tournaments_id')->unique();
+          $table->foreign('tournaments_id')->references('id')->on('tournaments');
           $table->unsignedBigInteger('fplace_id');
           $table->foreign('fplace_id')->references('id')->on('teams');
           $table->unsignedBigInteger('splace_id');
