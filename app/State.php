@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\City;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,4 +12,9 @@ class State extends Model
      * @var string
      */
     protected $table = 'states';
+
+    public function City()
+    {
+        return $this->hasMany(City::class, 'state_id');
+    }
 }

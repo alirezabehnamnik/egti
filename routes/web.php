@@ -23,6 +23,10 @@ Route::get('/game/{id}', 'GamesController@game')->name('game');
 
 // Tournaments Route
 Route::get('/tournaments', 'TournamentsController@index')->name('tournaments');
+Route::get('/tournament/result/{id}', 'TournamentsController@result')->name('tournament_results');
+
+// Profile Route
+Route::get('/user/{username}', 'ProfileController@index')->name('user_profile');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

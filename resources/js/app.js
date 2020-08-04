@@ -47,6 +47,7 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 
+
 // Sponsers Slider
 $('.owl-sponsers').owlCarousel({
     rtl:true,

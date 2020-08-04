@@ -23,7 +23,7 @@
 
         <div id="mask">
           <div class="loader">
-              <img src="/images/loading.gif" width="140" alt='loading'>
+              <img src="//images/loading.gif" width="140" alt='loading'>
           </div>
         </div>
 
@@ -113,24 +113,24 @@
                       <span> مارا در شبکه ها اجتماعی دنبال کنید: </span>
                       <div class="footer-social-link">
                         <a href="#" target="_blank">
-                          <img src="images/instagram-icon.png" with="40" alt="" data-toggle="tooltip" data-placement="top" title="Instagram">
+                          <img src="/images/instagram-icon.png" with="40" alt="" data-toggle="tooltip" data-placement="top" title="Instagram">
                         </a>
                       </div>
                       <div class="footer-social-link">
                         <a href="#" target="_blank">
-                          <img src="images/telegram-icon.png" with="40" alt="" data-toggle="tooltip" data-placement="top" title="Telegram">
+                          <img src="/images/telegram-icon.png" with="40" alt="" data-toggle="tooltip" data-placement="top" title="Telegram">
                         </a>
                       </div>
                       <div class="footer-social-link">
                         <a href="#" target="_blank">
-                          <img src="images/youtube-icon.png" with="40" alt="" data-toggle="tooltip" data-placement="top" title="YouTube">
+                          <img src="/images/youtube-icon.png" with="40" alt="" data-toggle="tooltip" data-placement="top" title="YouTube">
                         </a>
                       </div>
 
                     </div>
 
                     <div class="col-md-6 footer-left">
-                      info@e-gaming.ir <img src="images/mail.png" width="40" alt="">
+                      info@e-gaming.ir <img src="/images/mail.png" width="40" alt="">
                     </div>
                   </div>
 
@@ -214,17 +214,17 @@
                       <div class="owl-carousel owl-certs owl-theme text-center">
                         <div class="item">
                             <a href="#" target="_blank">
-                              <img src="images/etemad.png" alt="">
+                              <img src="/images/etemad.png" alt="">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#" target="_blank">
-                              <img src="images/samandehi.png" alt="">
+                              <img src="/images/samandehi.png" alt="">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#" target="_blank">
-                              <img src="images/bonyad.png" alt="">
+                              <img src="/images/bonyad.png" alt="">
                             </a>
                         </div>
                       </div>

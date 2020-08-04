@@ -102,7 +102,7 @@ class RegisterController extends Controller
     }
 
     public function getcities($id) {
-      $cities = City::where('state_id', $id)->get();
+      $cities = State::find($id)->City;
       return response()->json($cities);
     }
 

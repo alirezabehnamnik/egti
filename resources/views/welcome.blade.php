@@ -115,7 +115,7 @@
                     <div class="m-title">
                       <div class="row">
                         <div class="col-md-3"> مسابقات جدید </div>
-                        <a class="show-more text-center" href="#">
+                        <a class="show-more text-center" href="{{route('tournaments')}}">
                           نمایش همه مسابقات
                         </a>
                       </div>
@@ -235,6 +235,10 @@
                         <a class="tr-register disabled-register" data-toggle="tooltip" data-placement="top" title="مهلت ثبت نام در این مسابقه به پایان رسیده است">
                           ثبت نام
                         </a>
+                      @elseif ($item->enabled == -1)
+                      <a href="{{route('tournament_results', ['id' => $item->id])}}" target="_blank" class="tr-result">
+                        نمایش نتایج
+                      </a>
                       @endif
                     </div>
                   </div>

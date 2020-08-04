@@ -6106,6 +6106,98 @@ readers do not read off random characters that represent icons */
   src: url(/fonts/IRANSansWeb.eot?9dd18d8308d2fb077a1ca11e6cdcd778) format("eot"), url(/fonts/IRANSansWeb.woff?c5ccd752c6fd1e7c344e07299318be5b) format("woff"), url(/fonts/IRANSansWeb.ttf?87536333b99ad831f9cfa0ebc0e675c2) format("truetype");
 }
 
+.hidden {
+  display: none !important;
+}
+
+.no-data {
+  min-height: 45vh;
+  position: relative;
+}
+
+.no-data span {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 25px;
+  height: 30px;
+  text-align: center;
+  border-radius: 30px;
+  color: #828282;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.shadow {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.required {
+  color: red;
+}
+
+.carousel {
+  cursor: pointer;
+}
+
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mt-6 {
+  margin-top: 4.5rem !important;
+}
+
+.mt-7 {
+  margin-top: 6.5rem !important;
+}
+
+.mmt-1 {
+  margin-top: -2rem;
+}
+
+.gold {
+  color: gold;
+}
+
+.silver {
+  color: silver;
+}
+
+.bronze {
+  color: #cd7f32;
+}
+
+.bg-gold {
+  background: gold;
+}
+
+.bg-silver {
+  background: silver;
+}
+
+.bg-bronze {
+  background: #cd7f32;
+}
+
+.link-color {
+  color: #545454 !important;
+}
+
+.pull-right {
+  float: right !important;
+}
+
 .dropdown-item.active,
 .dropdown-item:active {
   background-color: #ff6565 !important;
@@ -6478,6 +6570,16 @@ readers do not read off random characters that represent icons */
 .owl-theme .owl-dots .owl-dot.active span,
 .owl-theme .owl-dots .owl-dot:hover span {
   background: #869791;
+}
+
+.page-item.active .page-link {
+  background-color: #ff6565 !important;
+  border-color: #d84e4e !important;
+  color: #FFF !important;
+}
+
+.page-link {
+  color: #ff6565 !important;
 }
 
 /*!
@@ -15345,55 +15447,6 @@ a.text-dark:hover {
   visibility: hidden !important;
 }
 
-a:hover {
-  text-decoration: none !important;
-}
-
-.shadow {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-}
-
-.shadow-sm {
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-}
-
-.required {
-  color: red;
-}
-
-.carousel {
-  cursor: pointer;
-}
-
-.nopadding {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.mt-6 {
-  margin-top: 4.5rem !important;
-}
-
-.mt-7 {
-  margin-top: 6.5rem !important;
-}
-
-.mmt-1 {
-  margin-top: -2rem;
-}
-
-.gold {
-  color: gold;
-}
-
-.silver {
-  color: silver;
-}
-
-.bronze {
-  color: #cd7f32;
-}
-
 #mask {
   position: fixed;
   height: 100%;
@@ -15539,6 +15592,24 @@ a:hover {
   background: #2fa92f;
 }
 
+.tr-result {
+  display: inline-block;
+  background: #ff6565;
+  color: #fff;
+  text-align: center;
+  padding: 10px 25%;
+  border-radius: 150px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  margin: 45px auto 35px auto;
+  box-shadow: 0px 6px 15px -3px rgba(0, 0, 0, 0.7);
+}
+
+.tr-result:hover {
+  color: #FFF;
+  background: #d04d4d;
+}
+
 .disabled-register {
   background: darkgray !important;
   color: #505050 !important;
@@ -15602,22 +15673,70 @@ a:hover {
   padding: 7px;
 }
 
-.no-data {
-  min-height: 45vh;
+.result-name {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.first-place {
+  background: #ff6565;
+  color: #FFF;
+}
+
+.second-place {
+  background: #8c8c8c;
+  color: #FFF;
+}
+
+.fplace {
+  margin-top: 40px;
+  font-size: 20px;
+  color: #ff6565;
+  background: #FFF;
+}
+
+.winner-image {
   position: relative;
 }
 
-.no-data span {
-  margin: auto;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  font-size: 25px;
-  height: 30px;
+.winner-image img {
+  cursor: pointer;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-top-right-radius: 35px;
+  border-top-left-radius: 35px;
+  background: #34373a;
+}
+
+.winner-text {
+  position: relative;
+  background: #ececec;
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin: 15px;
   text-align: center;
-  border-radius: 30px;
-  color: #828282;
+}
+
+.rank {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 25px;
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+  padding-top: 5px;
+  color: rgba(0, 0, 0, 0.35);
+  border: 2px solid;
+}
+
+.winning-icon {
+  float: right !important;
+  background: #545454;
+  color: #FFF;
+  padding: 5px 15px;
+  border-radius: 100px;
+  position: relative;
+  right: -10px;
 }
 
