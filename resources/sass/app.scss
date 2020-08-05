@@ -26,6 +26,9 @@
 // Bootstrap
 @import "~rtl-bootstrap/scss/bootstrap";
 
+main {
+  min-height: 46vh;
+}
 #mask {
 position: fixed;
 height: 100%;
@@ -182,7 +185,7 @@ left: 0;
 
 .tr-result {
     display: inline-block;
-    background: #ff6565;
+    background: #ff5400;
     color: #fff;
     text-align: center;
     padding: 10px 25%;
@@ -200,7 +203,7 @@ left: 0;
 
 .tr-result:hover {
   color:#FFF;
-  background: #d04d4d;
+  background: #ff8245;
 }
 
 .disabled-register {
@@ -272,7 +275,7 @@ left: 0;
 }
 
 .first-place {
-  background: #ff6565;
+  background: #ff5400;
   color: #FFF;
 }
 
@@ -284,7 +287,7 @@ left: 0;
 .fplace {
   margin-top: 40px;
   font-size: 20px;
-  color: #ff6565;
+  color: #ff5400;
   background: #FFF;
 }
 
@@ -326,7 +329,7 @@ left: 0;
 
 .winning-icon {
     float: right !important;
-    background: #ff6565;
+    background: #ff5400;
     color: #FFF;
     padding: 5px 15px;
     border-radius: 100px;

@@ -1,13 +1,13 @@
 .dropdown-item.active, .dropdown-item:active {
-    background-color: #ff6565 !important;
+    background-color: #ff5400 !important;
 }
 
 .navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
-    color: #ff6565 !important;
+    color: #ff5400 !important;
 }
 
 .red-icon {
-  color: #ff6565 !important;
+  color: #ff5400 !important;
 }
 
 .red-bar {
@@ -34,7 +34,7 @@
 
 .btn-red:not([disabled]):not(.disabled):active, .btn-red:not([disabled]):not(.disabled).active, .show > .btn-red.dropdown-toggle {
     color: #fff;
-    background-color: #ff6565;
+    background-color: #ff5400;
     border-color: transparent;
     box-shadow: 0 0 0 0.2rem rgba(255, 185, 185, 0.5);
 }

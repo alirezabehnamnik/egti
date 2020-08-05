@@ -6200,18 +6200,18 @@ a:hover {
 
 .dropdown-item.active,
 .dropdown-item:active {
-  background-color: #ff6565 !important;
+  background-color: #ff5400 !important;
 }
 
 .navbar-light .navbar-nav .show > .nav-link,
 .navbar-light .navbar-nav .active > .nav-link,
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .nav-link.active {
-  color: #ff6565 !important;
+  color: #ff5400 !important;
 }
 
 .red-icon {
-  color: #ff6565 !important;
+  color: #ff5400 !important;
 }
 
 .red-bar {
@@ -6241,7 +6241,7 @@ a:hover {
 .btn-red:not([disabled]):not(.disabled).active,
 .show > .btn-red.dropdown-toggle {
   color: #fff;
-  background-color: #ff6565;
+  background-color: #ff5400;
   border-color: transparent;
   box-shadow: 0 0 0 0.2rem rgba(255, 185, 185, 0.5);
 }
@@ -6573,13 +6573,13 @@ a:hover {
 }
 
 .page-item.active .page-link {
-  background-color: #ff6565 !important;
+  background-color: #ff5400 !important;
   border-color: #d84e4e !important;
   color: #FFF !important;
 }
 
 .page-link {
-  color: #ff6565 !important;
+  color: #ff5400 !important;
 }
 
 /*!
@@ -15447,6 +15447,10 @@ a.text-dark:hover {
   visibility: hidden !important;
 }
 
+main {
+  min-height: 46vh;
+}
+
 #mask {
   position: fixed;
   height: 100%;
@@ -15594,7 +15598,7 @@ a.text-dark:hover {
 
 .tr-result {
   display: inline-block;
-  background: #ff6565;
+  background: #ff5400;
   color: #fff;
   text-align: center;
   padding: 10px 25%;
@@ -15607,7 +15611,7 @@ a.text-dark:hover {
 
 .tr-result:hover {
   color: #FFF;
-  background: #d04d4d;
+  background: #ff8245;
 }
 
 .disabled-register {
@@ -15679,7 +15683,7 @@ a.text-dark:hover {
 }
 
 .first-place {
-  background: #ff6565;
+  background: #ff5400;
   color: #FFF;
 }
 
@@ -15691,7 +15695,7 @@ a.text-dark:hover {
 .fplace {
   margin-top: 40px;
   font-size: 20px;
-  color: #ff6565;
+  color: #ff5400;
   background: #FFF;
 }
 
@@ -15732,7 +15736,7 @@ a.text-dark:hover {
 
 .winning-icon {
   float: right !important;
-  background: #ff6565;
+  background: #ff5400;
   color: #FFF;
   padding: 5px 15px;
   border-radius: 100px;
