@@ -9,15 +9,21 @@
         <div class="m-title">
           <div class="row">
             <div class="col-md-12 text-center">
-              نتایج مسابقات {{$tournament->name}}
+              نتایج مسابقات {{$tournament->name}} بازی {{$tournament->game->name}}
+              <br>
+              <br>
+              @php
+              $prize_pool = number_format($tournament->prize_pool);
+              $fprize = number_format($tournament->fplace_reward);
+              $sprize = number_format($tournament->splace_reward);
+              $tprize = number_format($tournament->tplace_reward);
+              @endphp
+              <h5> <i class="fas fa-star gold" aria-hidden="true"></i> مبلغ کل جایزه: {{$prize_pool}} تومان </h5>
             </div>
           </div>
         </div>
         <hr>
-        @php
-        $prize_pool = number_format($tournament->prize_pool);
-        @endphp
-        <span> مبلغ کل جایزه: {{$prize_pool}} </span>
+
 
       </div>
     </div>
@@ -35,16 +41,23 @@
             <h5 class="text-center"> {{ $trResult->tplace->name }} </h5>
             <hr>
             <li>
+                مبلغ جایزه:
+                <br>
+                <div class="winner-text"> <i class="far fa-money-bill-alt winning-icon"></i> {{$tprize}} تومان  </div>
+            </li>
+            <li>
                اعضا:
                <br>
               <a href="{{route('user_profile', ['username' => $tplace->captain->username])}}" target="_blank" class="link-color">
                 <div class="winner-text" data-placement="top" data-toggle="tooltip" title="کاپیتان"> <i class="fas fa-user-tie winning-icon" aria-hidden="true"></i> {{ $tplace->captain->username }} </div>
               </a>
+              <hr>
               @foreach ($tp_players as $item)
               <a href="{{route('user_profile', ['username' => $item->username])}}" class="link-color">
                 <div class="winner-text" data-placement="top" data-toggle="tooltip" title="بازیکن"> <i class="fas fa-users winning-icon" aria-hidden="true"></i> {{ $item->username }} </div>
               </a>
               @endforeach
+              <hr>
               <a href="{{route('user_profile', ['username' => $tplace->standin->username])}}" class="link-color">
                 <div class="winner-text" data-placement="top" data-toggle="tooltip" title="بازیکن ذخیره"> <i class="fas fa-people-arrows winning-icon" aria-hidden="true"></i> {{ $tplace->standin->username }} </div>
               </a>
@@ -66,16 +79,23 @@
             <h5 class="text-center"> {{ $trResult->fplace->name }} </h5>
             <hr>
             <li>
+                مبلغ جایزه:
+                <br>
+                <div class="winner-text"> <i class="far fa-money-bill-alt winning-icon"></i> {{$fprize}} تومان  </div>
+            </li>
+            <li>
                اعضا:
                <br>
               <a href="{{route('user_profile', ['username' => $fplace->captain->username])}}" target="_blank" class="link-color">
                 <div class="winner-text" data-placement="top" data-toggle="tooltip" title="کاپیتان"> <i class="fas fa-user-tie winning-icon" aria-hidden="true"></i> {{ $fplace->captain->username }} </div>
               </a>
+              <hr>
               @foreach ($fp_players as $item)
               <a href="{{route('user_profile', ['username' => $item->username])}}" class="link-color">
                 <div class="winner-text" data-placement="top" data-toggle="tooltip" title="بازیکن"> <i class="fas fa-users winning-icon" aria-hidden="true"></i> {{ $item->username }} </div>
               </a>
               @endforeach
+              <hr>
               <a href="{{route('user_profile', ['username' => $fplace->standin->username])}}" class="link-color">
                 <div class="winner-text" data-placement="top" data-toggle="tooltip" title="بازیکن ذخیره"> <i class="fas fa-people-arrows winning-icon" aria-hidden="true"></i> {{ $fplace->standin->username }} </div>
               </a>
@@ -97,16 +117,23 @@
             <h5 class="text-center"> {{ $trResult->splace->name }} </h5>
             <hr>
             <li>
+                مبلغ جایزه:
+                <br>
+                <div class="winner-text"> <i class="far fa-money-bill-alt winning-icon"></i> {{$sprize}} تومان  </div>
+            </li>
+            <li>
                اعضا:
                <br>
               <a href="{{route('user_profile', ['username' => $splace->captain->username])}}" target="_blank" class="link-color">
                 <div class="winner-text" data-placement="top" data-toggle="tooltip" title="کاپیتان"> <i class="fas fa-user-tie winning-icon" aria-hidden="true"></i> {{ $splace->captain->username }} </div>
               </a>
+              <hr>
               @foreach ($sp_players as $item)
               <a href="{{route('user_profile', ['username' => $item->username])}}" class="link-color">
                 <div class="winner-text" data-placement="top" data-toggle="tooltip" title="بازیکن"> <i class="fas fa-users winning-icon" aria-hidden="true"></i> {{ $item->username }} </div>
               </a>
               @endforeach
+              <hr>
               <a href="{{route('user_profile', ['username' => $splace->standin->username])}}" class="link-color">
                 <div class="winner-text" data-placement="top" data-toggle="tooltip" title="بازیکن ذخیره"> <i class="fas fa-people-arrows winning-icon" aria-hidden="true"></i> {{ $splace->standin->username }} </div>
               </a>
