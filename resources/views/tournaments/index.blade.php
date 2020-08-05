@@ -276,3 +276,5 @@
   {{ $etour->links() }}
 
 </div>
+
+@endsection
