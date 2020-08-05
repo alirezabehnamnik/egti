@@ -24,6 +24,7 @@ Route::get('/game/{id}', 'GamesController@game')->name('game');
 // Tournaments Route
 Route::get('/tournaments', 'TournamentsController@index')->name('tournaments');
 Route::get('/tournament/result/{id}', 'TournamentsController@result')->name('tournament_results');
+Route::get('/tournament/register', 'TournamentsController@register')->name('tournament_register');
 
 // Profile Route
 Route::get('/user/{username}', 'ProfileController@index')->name('user_profile');

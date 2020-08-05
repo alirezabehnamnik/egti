@@ -44,4 +44,14 @@ class TournamentsController extends Controller
         'tp_players' => $tp_players,
       ]);
     }
+
+    public function register()
+    {
+      if (Auth::check()) {
+        dd("here");
+      } else {
+        dd("hoer");
+      }
+      return view('tournaments.register');
+    }
 }
