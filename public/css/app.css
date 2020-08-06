@@ -6199,6 +6199,18 @@ a:hover {
   float: right !important;
 }
 
+.blue {
+  color: #3490dc;
+}
+
+.red {
+  color: #ff5400;
+}
+
+.purple {
+  color: #9561e2;
+}
+
 .dropdown-item.active,
 .dropdown-item:active {
   background-color: #ff5400 !important;
@@ -15812,6 +15824,7 @@ main {
   text-align: center;
   border-radius: 10px;
   position: relative;
+  margin-bottom: 10px;
 }
 
 .team-image {
@@ -15828,11 +15841,25 @@ main {
 }
 
 .team-text {
-  background: #ff5312;
-  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
   color: #ffffff;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  margin: 10px 0px;
+  padding: 2px;
+}
+
+.game-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.game-icon img {
+  border-radius: 100%;
+  background: #191919;
 }
 
 .logout-profile {
@@ -15847,5 +15874,34 @@ main {
 
 .logout-profile a {
   color: #FFF;
+}
+
+.team-panel {
+  padding-top: 20px;
+}
+
+.tmi {
+  margin-right: 5px;
+}
+
+.team-disabled {
+  background: rgba(0, 0, 0, 0.85);
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  border-top-right-radius: 10px;
+  height: 80%;
+  border-top-left-radius: 10px;
+  color: #fff;
+}
+
+.team-disabled span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height: 90px;
 }
 

@@ -18,12 +18,15 @@
       <a href="{{route('team_profile', ['tag' => $item->tag])}}">
         <div class="team-item">
           <div class="team-image">
-            <img src="images/teams/logo/{{$item->logo}}" alt="{{$item->name}}">
+            <img src="/images/teams/logo/{{$item->logo}}" alt="{{$item->name}}">
           </div>
           <div class="team-text">
             {{$item->name}}
-            <hr>
-            {{$item->game->name}}
+          </div>
+          <div class="game-icon" data-toggle="tooltip" data-placement="top" title="{{$item->game->name}}">
+            <a href="{{route('game', ['id' => $item->game->id])}}" target="_blank">
+              <img src="/images/games/logo/{{$item->game->image}}" width="48px" height="48px" alt="">
+            </a>
           </div>
         </div>
       </a>

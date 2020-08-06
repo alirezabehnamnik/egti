@@ -28,11 +28,18 @@ Route::get('/tournament/register', 'TournamentsController@register')->name('tour
 
 // Profile Route
 Route::get('/user/show/{username}', 'ProfileController@index')->name('user_profile');
+// Profile teams Route
+Route::get('/team/create', 'TeamsController@showCreate')->name('create_team');
+Route::post('/team/create', 'TeamsController@create')->name('add_team');
+Route::get('/team/manage', 'TeamsController@showManage')->name('manage_team');
+Route::get('/team/manage/delete/{id}', 'TeamsController@deleteTeam')->name('delete_team');
+Route::get('/team/manage/undelete/{id}', 'TeamsController@undeleteTeam')->name('undelete_team');
+Route::get('/team/manage/edit/{id}', 'TeamsController@showEdit')->name('edit_team');
+// Profile tournaments Route
+Route::get('/mytournaments', 'TournamentsController@myTournaments')->name('my_tournaments');
 
 // Team Route
 Route::get('/team/show/{tag}', 'TeamsController@index')->name('team_profile');
-Route::get('/team/create', 'TeamsController@showCreate')->name('create_team');
-Route::post('/team/create', 'TeamsController@create')->name('add_team');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -42,6 +49,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 // Registration Routes...
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
+
 // Filter Cities base on selected State
 Route::get('/city/{id}','Auth\RegisterController@getcities');
 
@@ -51,6 +59,7 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
+// Route::get('', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
 Route::group(['prefix' => 'help'] , function() {
     Route::get('/{drm}' , 'HelpController@drm');

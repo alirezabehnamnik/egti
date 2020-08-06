@@ -31,7 +31,7 @@ class TeamsController extends Controller
   /**
    * Create a new user instance after a valid registration.
    *
-   * @param  array  $data
+   * @param  Request  $request
    * @return \App\Teams
    */
   public function create(Request $request)
@@ -66,6 +66,43 @@ class TeamsController extends Controller
       return redirect()->back()->with('message', 'تیم جدید با موفقیت ایجاد شد!');
     }
 
+  }
+
+  public function showManage()
+  {
+    $teams = Teams::where('user_id', Auth::user()->id)->where('enabled', '!=', 0)->get();
+    return view('teams.manage.index', ['teams' => $teams,]);
+  }
+
+  public function deleteTeam($id)
+  {
+    $verifyUser = Teams::where('id', $id)->where('user_id', Auth::user()->id)->update(['enabled' => 2]);
+    if ($verifyUser) {
+      return redirect()->back()->with('message', 'تیم باموفقیت غیر فعال شد!');
+    } else {
+      abort(403, 'Access Denied!');
+    }
+  }
+
+  public function undeleteTeam($id)
+  {
+    $verifyUser = Teams::where('id', $id)->where('user_id', Auth::user()->id)->update(['enabled' => 1]);
+    if ($verifyUser) {
+      return redirect()->back()->with('message', 'تیم باموفقیت فعال شد!');
+    } else {
+      abort(403, 'Access Denied!');
+    }
+  }
+
+  public function showEdit($id)
+  {
+    $data = Teams::where('id', $id)->where('user_id', Auth::user()->id)->get();
+    if (!$data->isEmpty()) {
+      abort(403, 'Under Construction!');
+      // return view('teams.manage.edit', ['data' => $data]);
+    } else {
+      abort(403, 'Access Denied!');
+    }
   }
 
 

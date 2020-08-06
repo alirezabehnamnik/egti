@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $teams = Teams::where('user_id', Auth::user()->id)->get()->sortBy('game_id')->random(6);
+        $teams = Teams::where('user_id', Auth::user()->id)->where('enabled', 1)->limit(6)->get()->sortBy('game_id');
         return view('profile.index', ['teams' => $teams]);
     }
 }

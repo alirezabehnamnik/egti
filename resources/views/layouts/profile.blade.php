@@ -63,13 +63,13 @@
                   <i class="fas fa-plus" aria-hidden="true"></i> ایجاد تیم
                 </li>
               </a>
-              <a href="/ticket_list.cfm">
+              <a href="{{route('manage_team')}}">
                 <li style="margin-right: 10px;">
                   <i class="fas fa-cog" aria-hidden="true"></i> مدیریت تیم
                 </li>
               </a>
             </div>
-            <a href="{{route('profile')}}">
+            <a href="{{route('my_tournaments')}}">
               <li> <i class="fas fa-clipboard-list" aria-hidden="true"></i> مسابقات من </li>
             </a>
           </div>
