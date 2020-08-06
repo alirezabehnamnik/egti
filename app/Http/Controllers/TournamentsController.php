@@ -28,10 +28,9 @@ class TournamentsController extends Controller
       $splace = Teams::find($trResult->splace_id);
       $tplace = Teams::find($trResult->tplace_id);
 
-
-      $fp_players = User::whereIn('id', str_split(str_replace(',', '', $fplace->players_id)))->get();
-      $sp_players = User::whereIn('id', str_split(str_replace(',', '', $splace->players_id)))->get();
-      $tp_players = User::whereIn('id', str_split(str_replace(',', '', $tplace->players_id)))->get();
+      $fp_players = User::whereIn('id', $fplace->players_id)->get();
+      $sp_players = User::whereIn('id', $splace->players_id)->get();
+      $tp_players = User::whereIn('id', $tplace->players_id)->get();
 
       return view('tournaments.result', [
         'tournament' => $tournaments,

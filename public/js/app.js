@@ -36829,10 +36829,12 @@ $(document).ready(function () {
   });
   $('#standin_id').select2({
     theme: 'bootstrap4',
+    placeholder: 'انتخاب کنید',
     language: "fa"
   });
   $('#game_id').select2({
     theme: 'bootstrap4',
+    placeholder: 'انتخاب کنید',
     language: "fa"
   });
 });

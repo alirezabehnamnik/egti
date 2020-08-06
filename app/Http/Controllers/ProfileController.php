@@ -8,6 +8,6 @@ class ProfileController extends Controller
 {
     public function index($username)
     {
-      return view('profile.index', ['username' => $username,]);
+      return view('users.index', ['username' => $username,]);
     }
 }

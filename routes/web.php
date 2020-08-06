@@ -27,7 +27,7 @@ Route::get('/tournament/result/{id}', 'TournamentsController@result')->name('tou
 Route::get('/tournament/register', 'TournamentsController@register')->name('tournament_register');
 
 // Profile Route
-Route::get('/user/{username}', 'ProfileController@index')->name('user_profile');
+Route::get('/user/show/{username}', 'ProfileController@index')->name('user_profile');
 
 // Team Route
 Route::get('/team/show/{tag}', 'TeamsController@index')->name('team_profile');

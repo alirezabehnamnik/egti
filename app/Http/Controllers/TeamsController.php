@@ -38,31 +38,34 @@ class TeamsController extends Controller
   {
 
     $user_id = Auth::user()->id;
+    $validated = $request->validate([
+      'name' => ['required', 'string', 'min:3', 'alpha_dash'],
+      'tag' => ['required', 'string', 'min:3', 'regex:/(^([a-zA-Z]+)(\d+)?$)/u', 'unique:teams'],
+      'logo' => ['required', 'image','mimes:jpeg,png,jpg', 'max:2048', 'dimensions:mwidth=256,height=256'],
+      'players_id' => ['required', 'numeric'],
+      'standin_id' => ['required', 'numeric'],
+      'game_id' => ['required', 'numeric'],
+    ]);
     $checkDup = Teams::where('user_id', $user_id)->where('game_id', $request['game_id'])->get();
     if ($checkDup) {
       return back()->with('error', 'شما درحال حاظر یک تیم فعال برای این بازی دارید و مجاز به ساخت تیم مجدد نمی باشید!');
     } else {
-      dd("nadare");
+      $extension = $request['logo']->extension();
+      $name = $request['tag'].".".$extension;
+      $url = $request->file('logo')->move(public_path('\images\teams\logo'), $name);
+      $sql = Teams::create([
+          'name' => $request['name'],
+          'tag' => $request['tag'],
+          'logo' => $name,
+          'user_id' => $user_id,
+          'players_id' => $request['players_id'],
+          'standin_id' => $request['standin_id'],
+          'game_id' => $request['game_id'],
+          'enabled' => 1,
+      ]);
+      dd($sql);
     }
-    $validated = $request->validate([
-      'name' => ['required', 'string', 'min:3', 'alpha_dash'],
-      'tag' => ['required', 'string', 'min:3', 'regex:/(^([a-zA-Z]+)(\d+)?$)/u', 'unique:teams'],
-      'logo' => ['required', 'image','mimes:jpeg,png,jpg', 'max:2048'],
-    ]);
-    $extension = $request['logo']->extension();
-    $name = $request['tag'].".".$extension;
-    $url = $request->file('logo')->move(public_path('\images\teams\logo'), $name);
-    $sql = Teams::create([
-        'name' => $request['name'],
-        'tag' => $request['tag'],
-        'logo' => $name,
-        'user_id' => $user_id,
-        'players_id' => $request['players_id'],
-        'standin_id' => $request['standin_id'],
-        'game_id' => $request['game_id'],
-        'enabled' => 1,
-    ]);
-    dd($sql);
+
   }
 
 
