@@ -20,7 +20,17 @@ class Teams extends Model
    * @var array
    */
   protected $fillable = [
-      'name', 'tag', 'logo'
+      'name', 'tag', 'logo', 'user_id', 'players_id', 'standin_id', 'game_id', 'enabled'
+    ];
+
+  /**
+   * The attributes that should be cast to native types.
+   *
+   * @var array
+   */
+  protected $casts = [
+      'players_id' => 'array',
+  ];
 
   public function captain()
   {

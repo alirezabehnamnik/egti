@@ -1,6 +1,9 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
+@import '../../node_modules/select2/dist/css/select2.min.css';
+@import '../../node_modules/@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css';
+
 // FortAwesome
 @import '~@fortawesome/fontawesome-free/scss/brands';
 @import '~@fortawesome/fontawesome-free/scss/regular';
@@ -426,4 +429,18 @@ left: 0;
     color: #ffffff;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+}
+
+.logout-profile {
+    font-size: 23px;
+    position: absolute;
+    left: 10px;
+    top: 7px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 100%;
+    padding: 7px 8px 0px 12px;
+}
+
+.logout-profile a {
+  color: #FFF;
 }

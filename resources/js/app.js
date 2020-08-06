@@ -105,3 +105,20 @@ $('.owl-certs').owlCarousel({
     center: true,
     items:1,
 });
+
+// Players id in Team creation form Select2
+$(document).ready(function() {
+    $('#players_id').select2({
+      theme: 'bootstrap4',
+      language: "fa",
+      multiple: true,
+    });
+    $('#standin_id').select2({
+      theme: 'bootstrap4',
+      language: "fa",
+    });
+    $('#game_id').select2({
+      theme: 'bootstrap4',
+      language: "fa",
+    });
+});

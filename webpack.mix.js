@@ -11,8 +11,10 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js([
-    'resources/js/app.js',
+mix
+    .js([
+      'resources/js/app.js',
+      'node_modules/select2/dist/js/select2.min.js',
     ], 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .copy('resources/assets/images' , 'public/images', false)

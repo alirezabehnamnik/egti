@@ -29,6 +29,14 @@
 
         <div class="sidenav">
           <div class="sidenav-profile text-center">
+            <div class="logout-profile" data-toggle="tooltip" data-placement="bottom" title="خروج">
+              <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                 <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+            </div>
             <img src="/images/avatars/{{Auth::user()->avatar}}" width="128px" height="128px" alt="{{Auth::user()->username}}">
             <br>
             <br>
