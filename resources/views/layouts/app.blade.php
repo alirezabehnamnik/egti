@@ -23,7 +23,7 @@
 
         <div id="mask">
           <div class="loader">
-              <img src="//images/loading.gif" width="140" alt='loading'>
+              <img src="/images/loading.gif" width="140" alt='loading'>
           </div>
         </div>
 
@@ -37,7 +37,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                       <li class="nav-item active">
-                        <a class="nav-link" href="{{ url('/') }}"><i class="fa fa-home"></i> خانه <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{route('home')}}"><i class="fa fa-home"></i> خانه <span class="sr-only">(current)</span></a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="{{route('games')}}">بازی ها</a>
@@ -66,7 +66,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('home') }}">
+                                    <a class="dropdown-item" href="{{ route('profile') }}">
                                         {{ __('پروفایل') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Teams;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $teams = Teams::where('user_id', Auth::user()->id)->get()->sortBy('game_id')->random(6);
+        return view('profile.index', ['teams' => $teams]);
     }
 }
