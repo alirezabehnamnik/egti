@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 use App\Tournaments;
 use App\TournamentsResults;
+use App\TournamentsRegister;
 use App\Teams;
 use App\User;
 
 
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 
 class TournamentsController extends Controller
 {
@@ -52,5 +54,11 @@ class TournamentsController extends Controller
         dd("hoer");
       }
       return view('tournaments.register');
+    }
+
+    public function myTournaments()
+    {
+      $data = TournamentsRegister::where('user_id', Auth::user()->id)->paginate(4);
+      return view('tournaments.mytournaments', ['data' => $data]);
     }
 }
