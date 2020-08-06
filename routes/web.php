@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'MainController@index');
+Route::get('/', 'MainController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile', 'HomeController@index')->name('profile');
 
 // Games Routes
 Route::get('/games', 'GamesController@index')->name('games');
@@ -28,6 +28,11 @@ Route::get('/tournament/register', 'TournamentsController@register')->name('tour
 
 // Profile Route
 Route::get('/user/{username}', 'ProfileController@index')->name('user_profile');
+
+// Team Route
+Route::get('/team/show/{tag}', 'TeamsController@index')->name('team_profile');
+Route::get('/team/create', 'TeamsController@showCreate')->name('create_team');
+Route::post('/team/create', 'TeamsController@create')->name('add_team');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

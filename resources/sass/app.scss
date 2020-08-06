@@ -336,3 +336,94 @@ left: 0;
     position: relative;
     right: -10px;
   }
+
+.profile-icons {
+    background: #ff5400;
+    font-size: 33px;
+    color: #FFF;
+    border-radius: 5px;
+}
+
+.profile-icons a {
+  color: #FFF !important;
+}
+
+// Sidenav
+.sidenav {
+  height: 100%;
+  width: 15%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #282f39;
+  overflow-x: hidden;
+  padding-top: 20px;
+  color: #fff;
+}
+
+.sidenav-profile img {
+    background: #1f252d;
+    border-radius: 100%;
+    padding: 10px;
+}
+
+.sidenav-link a {
+  color: #fff !important;
+}
+
+.sidenav-link a:hover {
+  color: #fff !important;
+}
+
+.sidenav-link li {
+    list-style: none;
+    background: rgba(0,0,0,0.2);
+    padding: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.sidenav-link li:hover {
+  background: rgba(0,0,0,0.4);
+}
+
+.sidenav-footer {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 7px;
+    position: absolute;
+    bottom: 0;
+    font-size: 14px;
+    color: #FFF;
+    border-top: 1px solid rgba(0,0,0,0.2);
+}
+
+.team-item {
+    background: #dadada;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+}
+
+.team-image {
+    position: relative;
+    width: 230px;
+    margin-right: 5px;
+    padding: 10px 5px;
+}
+
+.team-image img {
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.team-text {
+    background: #ff5312;
+    width: 100%;
+    color: #ffffff;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
