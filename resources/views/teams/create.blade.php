@@ -24,6 +24,14 @@
             </div>
           @endif
 
+          @if(session()->has('message'))
+          <div class="col-md-6 offset-md-3">
+            <div class="alert alert-success">
+                <i class="far fa-check-circle" aria-hidden="true"></i> {{ session()->get('message') }}
+            </div>
+          </div>
+          @endif
+
           <div class="form-group row">
               <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('نام تیم:') }} <span class="required">*</span> </label>
 
@@ -60,6 +68,8 @@
                   <small> حداکثر حجم مجاز 2MB می باشد </small>
                   <br>
                   <small> لوگو تیم باید در سایز 256x256 باشد. </small>
+                  <br>
+                  <small> فرمت های مجاز: png,jpeg,jpg </small>
                   @error('logo')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
