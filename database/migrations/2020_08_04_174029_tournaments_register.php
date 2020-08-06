@@ -17,8 +17,6 @@ class TournamentsRegister extends Migration
           $table->id();
           $table->unsignedBigInteger('tournament_id');
           $table->foreign('tournament_id')->references('id')->on('tournaments');
-          $table->unsignedBigInteger('user_id');
-          $table->foreign('user_id')->references('id')->on('users');
           $table->unsignedBigInteger('team_id');
           $table->foreign('team_id')->references('id')->on('teams');
           $table->unsignedBigInteger('enabled');
