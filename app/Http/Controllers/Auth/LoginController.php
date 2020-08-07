@@ -53,7 +53,7 @@ class LoginController extends Controller
            return redirect()->route('profile');
        }else{
            return redirect()->route('login')
-               ->with('error','Email-Address And Password Are Wrong.');
+               ->with('error','نام کاربری و یا رمزعبور اشتباه است.');
        }
 
    }
