@@ -123,4 +123,9 @@ $(document).ready(function() {
       placeholder: 'انتخاب کنید',
       language: "fa",
     });
+    $('#team_id').select2({
+      theme: 'bootstrap4',
+      placeholder: 'انتخاب کنید',
+      language: "fa",
+    });
 });

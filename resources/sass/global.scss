@@ -94,10 +94,32 @@ a:hover {
   color: $blue;
 }
 
+.green {
+  color: $green;
+}
+
+.orange {
+  color: $orange;
+}
+
+.dorange {
+  color: $dorange;
+}
+
 .red {
   color: $red;
 }
 
 .purple {
   color: $purple;
+}
+
+.btn-dorange {
+  background: $dorange;
+  color: #FFF;
+  border-color: transparent;
+}
+
+.btn-dorange:hover {
+  background: $orange;
 }

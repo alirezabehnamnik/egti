@@ -127,7 +127,7 @@
         @endif
 
         @if ($item->enabled == 1)
-          <a href="#" target="_blank" class="tr-register">
+          <a href="{{route('show_tr_register', ['id' => $item->id])}}" class="tr-register">
             ثبت نام
           </a>
         @elseif ($item->enabled == 2)

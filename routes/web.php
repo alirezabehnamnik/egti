@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@index')->name('home');
 
-Route::get('/profile', 'HomeController@index')->name('profile');
 
 // Games Routes
 Route::get('/games', 'GamesController@index')->name('games');
@@ -24,19 +23,23 @@ Route::get('/game/{id}', 'GamesController@game')->name('game');
 // Tournaments Route
 Route::get('/tournaments', 'TournamentsController@index')->name('tournaments');
 Route::get('/tournament/result/{id}', 'TournamentsController@result')->name('tournament_results');
-Route::get('/tournament/register', 'TournamentsController@register')->name('tournament_register');
+Route::get('/tournament/register/{id}', 'TournamentsController@showRegister')->name('show_tr_register');
+Route::post('/tournament/register', 'TournamentsController@register')->name('tr_register');
+
+// User Profile Route
+Route::get('/user/show/{username}', 'ProfileController@index')->name('user_profile');
 
 // Profile Route
-Route::get('/user/show/{username}', 'ProfileController@index')->name('user_profile');
-// Profile teams Route
-Route::get('/team/create', 'TeamsController@showCreate')->name('create_team');
-Route::post('/team/create', 'TeamsController@create')->name('add_team');
-Route::get('/team/manage', 'TeamsController@showManage')->name('manage_team');
-Route::get('/team/manage/delete/{id}', 'TeamsController@deleteTeam')->name('delete_team');
-Route::get('/team/manage/undelete/{id}', 'TeamsController@undeleteTeam')->name('undelete_team');
-Route::get('/team/manage/edit/{id}', 'TeamsController@showEdit')->name('edit_team');
-// Profile tournaments Route
-Route::get('/mytournaments', 'TournamentsController@myTournaments')->name('my_tournaments');
+Route::get('/profile', 'HomeController@index')->name('profile');
+  // Profile teams Route
+  Route::get('/team/create', 'TeamsController@showCreate')->name('create_team');
+  Route::post('/team/create', 'TeamsController@create')->name('add_team');
+  Route::get('/team/manage', 'TeamsController@showManage')->name('manage_team');
+  Route::get('/team/manage/delete/{id}', 'TeamsController@deleteTeam')->name('delete_team');
+  Route::get('/team/manage/undelete/{id}', 'TeamsController@undeleteTeam')->name('undelete_team');
+  Route::get('/team/manage/edit/{id}', 'TeamsController@showEdit')->name('edit_team');
+  // Profile tournaments Route
+  Route::get('/mytournaments', 'TournamentsController@myTournaments')->name('my_tournaments');
 
 // Team Route
 Route::get('/team/show/{tag}', 'TeamsController@index')->name('team_profile');

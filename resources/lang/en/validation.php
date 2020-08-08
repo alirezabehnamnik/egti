@@ -165,6 +165,9 @@ return [
       'standin_id' => 'انتخاب بازیکن ذخیره',
       'game_id' => 'انتخاب بازی',
 
+      // Register in Tournament
+      'team_id' => 'انتخاب تیم'
+
       //
     ],
 

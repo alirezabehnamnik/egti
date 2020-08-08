@@ -38,7 +38,10 @@
             </div>
             <br>
             <br>
-            <h5 class="text-center"> {{ $trResult->tplace->name }} </h5>
+            <a style="color: #545454;" href="{{route('team_profile', ['tag' => $trResult->tplace->tag])}}">
+              <h5 class="text-center"> {{ $trResult->tplace->name }} </h5>
+              <span style="font-size: 15px;"> [{{ $trResult->tplace->tag }}] </span>
+            </a>
             <hr>
             <li>
                 مبلغ جایزه:
@@ -76,7 +79,10 @@
             </div>
             <br>
             <br>
-            <h5 class="text-center"> {{ $trResult->fplace->name }} </h5>
+            <a style="color: #545454;" href="{{route('team_profile', ['tag' => $trResult->fplace->tag])}}">
+              <h5 class="text-center"> {{ $trResult->fplace->name }} </h5>
+              <span style="font-size: 15px;"> [{{ $trResult->fplace->tag }}] </span>
+            </a>
             <hr>
             <li>
                 مبلغ جایزه:
@@ -114,7 +120,10 @@
             </div>
             <br>
             <br>
-            <h5 class="text-center"> {{ $trResult->splace->name }} </h5>
+            <a style="color: #545454;" href="{{route('team_profile', ['tag' => $trResult->splace->tag])}}">
+              <h5 class="text-center"> {{ $trResult->splace->name }} </h5>
+              <span style="font-size: 15px;"> [{{ $trResult->splace->tag }}] </span>
+            </a>
             <hr>
             <li>
                 مبلغ جایزه:

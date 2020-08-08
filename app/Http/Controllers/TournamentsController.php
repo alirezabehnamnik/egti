@@ -46,14 +46,41 @@ class TournamentsController extends Controller
       ]);
     }
 
-    public function register()
+    public function showRegister($id)
     {
       if (Auth::check()) {
-        dd("here");
+
+        $data = Tournaments::where('id', $id)->first();
+        $d = $data->game_id;
+        $teams = Teams::where('user_id', Auth::user()->id)->where('game_id', $d)->where('enabled', 1)->get();
+        return view('tournaments.register', ['data' => $data, 'teams' => $teams]);
+
       } else {
-        dd("hoer");
+
+        return redirect()->route('login');
+
       }
-      return view('tournaments.register');
+    }
+
+    public function register(Request $request)
+    {
+      $user_id = Auth::user()->id;
+      $validated = $request->validate([
+        'team_id' => ['required', 'numeric'],
+        'rules' => ['accepted'],
+      ]);
+      $checkDup = TournamentsRegister::where('user_id', $user_id)->where('tournament_id', $request['tournament_id'])->get();
+      if (!$checkDup->isEmpty()) {
+        return back()->with('error', 'شما قبلا در این مسابقه ثبت نام کرده اید و مجاز به ثبت نام مجدد نمی باشید!');
+      } else {
+         $sql = TournamentsRegister::create([
+            'tournament_id' => $request['tournament_id'],
+            'team_id' => $request['team_id'],
+            'user_id' => $user_id,
+            'enabled' => 1,
+        ]);
+        return redirect()->back()->with('message', 'شما با موفقیت در مسابقه '. $request['tournament_name'] .' ثبت نام کردید!');
+      }
     }
 
     public function myTournaments()

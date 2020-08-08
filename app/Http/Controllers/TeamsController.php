@@ -36,7 +36,6 @@ class TeamsController extends Controller
    */
   public function create(Request $request)
   {
-
     $user_id = Auth::user()->id;
     $validated = $request->validate([
       'name' => ['required', 'string', 'min:3', 'regex: (^[a-zA-Z\d\-_\s]+$)', ],

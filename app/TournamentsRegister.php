@@ -15,6 +15,15 @@ class TournamentsRegister extends Model
    */
   protected $table = 'tournaments_register';
 
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+      'team_id', 'tournament_id', 'user_id', 'enabled'
+    ];
+
   public function tournament()
   {
     return $this->hasOne(Tournaments::class, 'id', 'tournament_id');
