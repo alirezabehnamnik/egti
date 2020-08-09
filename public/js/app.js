@@ -36834,8 +36834,8 @@ $(document).ready(function () {
   });
   $('#game_id').select2({
     theme: 'bootstrap4',
-    placeholder: 'انتخاب کنید',
-    language: "fa"
+    language: "fa",
+    multiple: true
   });
   $('#team_id').select2({
     theme: 'bootstrap4',

@@ -124,16 +124,14 @@
 
                 <div class="col-md-7">
 
-                  <select class="form-control @error('game_id') is-invalid @enderror" id="game_id" name="game_id">
-                    <option></option>
-
+                  <select class="form-control @error('game_id') is-invalid @enderror" id="game_id" name="game_id[]" multiple="multiple">
                     @foreach ($games as $v)
                     <option value="{{$v->id}}">{{$v->name}}</option>
                     @endforeach
                   </select>
-                  <small> شما باید برای هر بازی , یک تیم جدا ایجاد کنید. </small>
+                  <small> شما می توانید چند بازی برای یک تیم انتخاب کنید. </small>
                   <br>
-                  <small> انتخاب بازیکن تکراری برای بازی های مختلف مجاز است. </small>
+                  <small> شما برای هر بازی فقط یک تیم می توانید داشته باشید پس در صورتی که می خواهید برای بازی دیگری , تیمی با بازیکن های مختلف داشته باشید , یک تیم جدید ایجاد کنید. </small>
                     @error('game_id')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

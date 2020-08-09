@@ -15513,6 +15513,11 @@ main {
   font-size: 25px;
 }
 
+.m-title span {
+  border-bottom: 4px solid #ff5400;
+  padding-bottom: 14px;
+}
+
 .m-title a {
   color: #212529;
 }
@@ -15932,6 +15937,7 @@ main {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50px;
   padding: 10px;
+  margin-bottom: 35px;
   box-shadow: 0px 5px 17px -9px #000;
 }
 
@@ -15944,5 +15950,9 @@ main {
 
 .alert-button:hover {
   color: #FFF;
+}
+
+.select2-results__option[aria-selected=true] {
+  display: none;
 }
 

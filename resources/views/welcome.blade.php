@@ -64,7 +64,7 @@
                   <div class="col-md-12">
                     <div class="m-title">
                       <div class="row">
-                        <div class="col-md-3"> بازی ها </div>
+                        <div class="col-md-3"> <span> بازی ها </span> </div>
                         <a class="show-more text-center" href="{{route('games')}}">
                           نمایش همه بازی ها
                         </a>
@@ -114,7 +114,7 @@
                   <div class="col-md-12">
                     <div class="m-title">
                       <div class="row">
-                        <div class="col-md-3"> مسابقات جدید </div>
+                        <div class="col-md-3"> <span> مسابقات جدید </span> </div>
                         <a class="show-more text-center" href="{{route('tournaments')}}">
                           نمایش همه مسابقات
                         </a>
@@ -255,7 +255,7 @@
                   <div class="col-md-12">
                     <div class="m-title">
                       <div class="row">
-                        <div class="col-md-3"> اسپانسر ها </div>
+                        <div class="col-md-3"> <span> اسپانسر ها </span> </div>
                       </div>
                     </div>
                     <hr>
@@ -284,7 +284,7 @@
                   <div class="col-md-12">
                     <div class="m-title">
                       <div class="row">
-                        <div class="col-md-3"> همکاران </div>
+                        <div class="col-md-3"> <span> همکاران </span> </div>
                       </div>
                     </div>
                     <hr>

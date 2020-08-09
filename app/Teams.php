@@ -30,6 +30,7 @@ class Teams extends Model
    */
   protected $casts = [
       'players_id' => 'array',
+      'game_id' => 'array',
   ];
 
   public function captain()
