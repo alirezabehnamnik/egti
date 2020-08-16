@@ -29,6 +29,11 @@
 // Bootstrap
 @import "~rtl-bootstrap/scss/bootstrap";
 
+// Remove selected item in select2
+.select2-results__option[aria-selected=true] {
+    display: none;
+}
+
 main {
   min-height: 46vh;
 }
@@ -409,11 +414,15 @@ left: 0;
 }
 
 .team-item {
-    background: #dadada;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.2);
     text-align: center;
     border-radius: 10px;
     position: relative;
     margin-bottom: 10px;
+    padding-bottom: 15px;
+    -webkit-box-shadow: -5px 6px 22px -15px rgba(0, 0, 0, 0.7);
+    box-shadow: -5px 6px 22px -15px rgba(0, 0, 0, 0.7);
 }
 
 .team-image {
@@ -462,12 +471,12 @@ left: 0;
   color: #FFF;
 }
 
-.team-panel {
-  padding-top: 20px;
-}
-
 .tmi {
-  margin-right: 5px;
+    font-size: 13px;
+    margin-right: 5px;
+    border: 2px solid;
+    border-radius: 100px;
+    padding: 1px 10px;
 }
 
 
@@ -512,6 +521,10 @@ left: 0;
   color: #FFF;
 }
 
-.select2-results__option[aria-selected=true] {
-    display: none;
+.team-game-name {
+    list-style: none;
+    margin: 10px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 100px;
+    cursor: pointer;
 }

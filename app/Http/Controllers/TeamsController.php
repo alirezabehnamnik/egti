@@ -7,6 +7,7 @@ use App\Games;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class TeamsController extends Controller
 {
@@ -107,17 +108,15 @@ class TeamsController extends Controller
     $user_id = Auth::user()->id;
     $verifyUser = Teams::select('user_id')->where('id', $id)->first();
     if ($verifyUser->user_id == $user_id) {
-      $data = Teams::select('game_id')->where('user_id', $user_id)->get();
-      $checkDup = Teams::select('game_id')->where('id', $id)->get();
-      $j = count($checkDup);
-      for ($i=0; $i < $j ; $i++) {
-        foreach ($data as $v) {
-          foreach ($checkDup as $k) {
-            if (in_array($k->game_id[$i], $v->game_id)) {
-              return redirect()->back()->with('error', 'شما درحال حاظر یک تیم فعال برای بازی '. $v->game->name .' دارید و مجاز به ساخت مجدد تیم نمی باشید!');
-            } else {
-              continue;
-            }
+      $data = Teams::select('game_id')->where('user_id', $user_id)->where('enabled', 1)->get();
+      $checkDup = Teams::select('game_id')->where('id', $id)->first();
+      $game_id = $checkDup->game_id;
+      foreach ($data as $v) {
+        foreach ($game_id as $k) {
+          $str = $v->game_id;
+          $d = Str::contains($k, $str);
+          if ($d) {
+            return redirect()->back()->with('error', 'شما درحال حاظر یک تیم فعال برای یکی از بازی های این تیم دارید و مجاز به فعال کردن این تیم نمی باشید!');
           }
         }
       }
