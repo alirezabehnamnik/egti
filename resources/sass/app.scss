@@ -433,7 +433,6 @@ left: 0;
 }
 
 .team-image img {
-  cursor: pointer;
   border-radius: 5px;
   width: 100%;
 }
@@ -477,6 +476,32 @@ left: 0;
     border: 2px solid;
     border-radius: 100px;
     padding: 1px 10px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.edit-b:hover {
+  -webkit-box-shadow:inset 1000px 1000px 0 0 $green;
+  box-shadow:inset 1000px 1000px 0 0 $green;
+  color: #FFF !important;
+  border-color: $green;
+}
+
+.lock-b:hover {
+    -webkit-box-shadow:inset 1000px 1000px 0 0 $dorange;
+    box-shadow:inset 1000px 1000px 0 0 $dorange;
+    color: #FFF !important;
+    border-color: $dorange;
+}
+
+.unlock-b:hover {
+    -webkit-box-shadow:inset 1000px 1000px 0 0 $red;
+    box-shadow:inset 1000px 1000px 0 0 $red;
+    color: #FFF !important;
+    border-color: $red;
 }
 
 

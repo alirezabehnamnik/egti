@@ -60,15 +60,15 @@
         @endforeach
         <hr>
         <div class="team-panel">
-          <a href="#" class="tmi green">
+          <a href="#" class="tmi edit-b green">
             <span> <i class="fas fa-edit" aria-hidden="true"></i> ویرایش </span>
           </a>
           @if ($item->enabled == 2)
-            <a href="{{route('undelete_team', ['id' => $item->id])}}" class="tmi red">
+            <a href="{{route('undelete_team', ['id' => $item->id])}}" class="tmi unlock-b red">
               <span> <i class="fas fa-unlock" aria-hidden="true"></i> فعال کردن </span>
             </a>
           @else
-            <a href="{{route('delete_team', ['id' => $item->id])}}" class="tmi dorange">
+            <a href="{{route('delete_team', ['id' => $item->id])}}" class="tmi lock-b dorange">
               <span> <i class="fas fa-lock" aria-hidden="true"></i> غیر فعال کردن </span>
             </a>
           @endif
