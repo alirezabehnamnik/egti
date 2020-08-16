@@ -51,7 +51,7 @@ class TeamsController extends Controller
     for ($i=0; $i < $j ; $i++) {
       foreach ($data as $v) {
         if (in_array($game_id[$i], $v->game_id)) {
-          return back()->with('error', 'شما درحال حاظر یک تیم فعال برای بازی '. $v->game->name .' دارید و مجاز به ساخت مجدد تیم نمی باشید!');
+          return back()->with('error', 'شما درحال حاظر یک تیم فعال برای یکی از بازی های انتخاب شده دارید و مجاز به ساخت مجدد تیم نمی باشید!');
         } else {
           continue;
         }
@@ -110,21 +110,17 @@ class TeamsController extends Controller
       $data = Teams::select('game_id')->where('user_id', $user_id)->get();
       $checkDup = Teams::select('game_id')->where('id', $id)->get();
       $j = count($checkDup);
-      $hast = null;
-      $nist = null;
-      $cnt = null;
       for ($i=0; $i < $j ; $i++) {
         foreach ($data as $v) {
           foreach ($checkDup as $k) {
             if (in_array($k->game_id[$i], $v->game_id)) {
-              // return redirect()->back()->with('error', 'شما درحال حاظر یک تیم فعال برای بازی '. $v->game->name .' دارید و مجاز به ساخت مجدد تیم نمی باشید!');
+              return redirect()->back()->with('error', 'شما درحال حاظر یک تیم فعال برای بازی '. $v->game->name .' دارید و مجاز به ساخت مجدد تیم نمی باشید!');
             } else {
               continue;
             }
           }
         }
       }
-      // dd($cnt, $hast, $nist);
       Teams::where('id', $id)->where('user_id', $user_id)->update(['enabled' => 1]);
       return redirect()->back()->with('message', 'تیم باموفقیت فعال شد!');
     } else {
