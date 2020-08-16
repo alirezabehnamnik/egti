@@ -48,19 +48,13 @@ class TeamsController extends Controller
     ]);
     $data = Teams::select('game_id')->where('user_id', $user_id)->where('enabled', 1)->get();
     $j = count($game_id);
-    $cnt = null;
-    $hast = null;
-    $nist = null;
     for ($i=0; $i < $j ; $i++) {
       foreach ($data as $v) {
         if (in_array($game_id[$i], $v->game_id)) {
-          $hast++;
           return back()->with('error', 'شما درحال حاظر یک تیم فعال برای بازی '. $v->game->name .' دارید و مجاز به ساخت مجدد تیم نمی باشید!');
         } else {
-          $nist++;
           continue;
         }
-        $cnt++;
       }
     }
     $extension = $request['logo']->extension();
@@ -83,10 +77,22 @@ class TeamsController extends Controller
   public function showManage()
   {
     $teams = Teams::where('user_id', Auth::user()->id)->where('enabled', '!=', 0)->get();
-    return view('teams.manage.index', ['teams' => $teams,]);
+    $array = array();
+    foreach ($teams as $v) {
+      $data = $v->game_id;
+      $array[$v->id] = array(
+        'games' => array(
+        )
+      );
+      $games = Games::whereIn('id', $data)->get();
+      foreach ($games as $k) {
+        array_push($array[$v->id]['games'], $k->name);
+      }
+    }
+    return view('teams.manage.index', ['teams' => $teams, 'data' => $array]);
   }
 
-  public function deleteTeam($id)
+  public function disableTeam($id)
   {
     $verifyUser = Teams::where('id', $id)->where('user_id', Auth::user()->id)->update(['enabled' => 2]);
     if ($verifyUser) {
@@ -96,10 +102,30 @@ class TeamsController extends Controller
     }
   }
 
-  public function undeleteTeam($id)
+  public function enableTeam($id)
   {
-    $verifyUser = Teams::where('id', $id)->where('user_id', Auth::user()->id)->update(['enabled' => 1]);
-    if ($verifyUser) {
+    $user_id = Auth::user()->id;
+    $verifyUser = Teams::select('user_id')->where('id', $id)->first();
+    if ($verifyUser->user_id == $user_id) {
+      $data = Teams::select('game_id')->where('user_id', $user_id)->get();
+      $checkDup = Teams::select('game_id')->where('id', $id)->get();
+      $j = count($checkDup);
+      $hast = null;
+      $nist = null;
+      $cnt = null;
+      for ($i=0; $i < $j ; $i++) {
+        foreach ($data as $v) {
+          foreach ($checkDup as $k) {
+            if (in_array($k->game_id[$i], $v->game_id)) {
+              // return redirect()->back()->with('error', 'شما درحال حاظر یک تیم فعال برای بازی '. $v->game->name .' دارید و مجاز به ساخت مجدد تیم نمی باشید!');
+            } else {
+              continue;
+            }
+          }
+        }
+      }
+      // dd($cnt, $hast, $nist);
+      Teams::where('id', $id)->where('user_id', $user_id)->update(['enabled' => 1]);
       return redirect()->back()->with('message', 'تیم باموفقیت فعال شد!');
     } else {
       abort(403, 'Access Denied!');

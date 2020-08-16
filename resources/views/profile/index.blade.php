@@ -23,9 +23,11 @@
           <div class="team-text">
             {{$item->name}}
           </div>
-          <div class="game-icon" data-toggle="tooltip" data-placement="top" title="{{$item->game->name}}">
-            <a href="{{route('game', ['id' => $item->game->id])}}" target="_blank">
-              <img src="/images/games/logo/{{$item->game->image}}" width="48px" height="48px" alt="">
+          
+          <!-- Change game string -->
+          <div class="game-icon" data-toggle="tooltip" data-placement="top" title="{{$item->name}}">
+            <a href="{{route('game', ['id' => $item->id])}}" target="_blank">
+              <img src="/images/games/logo/{{$item->image}}" width="48px" height="48px" alt="">
             </a>
           </div>
         </div>

@@ -35,8 +35,8 @@ Route::get('/profile', 'HomeController@index')->name('profile');
   Route::get('/team/create', 'TeamsController@showCreate')->name('create_team');
   Route::post('/team/create', 'TeamsController@create')->name('add_team');
   Route::get('/team/manage', 'TeamsController@showManage')->name('manage_team');
-  Route::get('/team/manage/delete/{id}', 'TeamsController@deleteTeam')->name('delete_team');
-  Route::get('/team/manage/undelete/{id}', 'TeamsController@undeleteTeam')->name('undelete_team');
+  Route::get('/team/manage/disbale/{id}', 'TeamsController@disableTeam')->name('delete_team');
+  Route::get('/team/manage/enable/{id}', 'TeamsController@enableTeam')->name('undelete_team');
   Route::get('/team/manage/edit/{id}', 'TeamsController@showEdit')->name('edit_team');
   // Profile tournaments Route
   Route::get('/mytournaments', 'TournamentsController@myTournaments')->name('my_tournaments');

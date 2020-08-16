@@ -17,4 +17,5 @@ class Games extends Model
   {
     return $this->hasMany(Tournaments::class, 'game_id');
   }
+
 }
