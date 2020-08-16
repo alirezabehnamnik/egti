@@ -28,6 +28,8 @@ Route::post('/tournament/register', 'TournamentsController@register')->name('tr_
 
 // User Profile Route
 Route::get('/user/show/{username}', 'ProfileController@index')->name('user_profile');
+Route::get('/user/edit', 'ProfileController@edit')->name('edit_profile');
+Route::post('/user/edit', 'ProfileController@save')->name('save_edit');
 
 // Profile Route
 Route::get('/profile', 'HomeController@index')->name('profile');
