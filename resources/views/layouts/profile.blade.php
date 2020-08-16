@@ -54,6 +54,9 @@
               <li> <i class="fas fa-trophy" aria-hidden="true"></i> مسابقات </li>
             </a>
             <a href="{{route('profile')}}">
+              <li> <i class="fas fa-user" aria-hidden="true"></i> پروفایل </li>
+            </a>
+            <a href="{{route('profile')}}">
               <li> <i class="fas fa-user-edit" aria-hidden="true"></i> ویرایش اطلاعات </li>
             </a>
             <li data-toggle="collapse" data-target="#team"> <i class="fas fa-users-cog" aria-hidden="true"></i> مدیریت تیم <span style="float:left;"> + </span> </li>
