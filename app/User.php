@@ -1,6 +1,8 @@
 <?php
 
 namespace App;
+use App\State;
+use App\City;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -38,4 +40,13 @@ class User extends Authenticatable
         'mygames' => 'array',
         'platforms_id' => 'array',
     ];
+
+    public function state()
+    {
+      return $this->hasOne(State::class, 'id', 'state_id');
+    }
+    public function city()
+    {
+      return $this->hasOne(City::class, 'id', 'city_id');
+    }
 }

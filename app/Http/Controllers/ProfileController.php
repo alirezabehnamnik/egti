@@ -11,7 +11,9 @@ class ProfileController extends Controller
 {
     public function index($username)
     {
-      return view('users.index', ['username' => $username,]);
+      $data = User::where('username', $username)->first();
+      $games = MyGames::select('name')->whereIn('id', $data->mygames)->get();
+      return view('users.index', ['data' => $data, 'games' => $games]);
     }
 
     public function edit()

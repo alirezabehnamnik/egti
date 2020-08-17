@@ -40,7 +40,9 @@
             <img src="/images/avatars/{{Auth::user()->avatar}}" width="128px" height="128px" alt="{{Auth::user()->username}}">
             <br>
             <br>
-            <span> {{Auth::user()->username}} </span>
+            <a href="{{route('user_profile', ['username' => Auth::user()->username])}}" target="_blank" style="color:#FFF;">
+              <span> {{Auth::user()->username}} </span>
+            </a>
           </div>
           <hr>
           <div class="sidenav-link">
