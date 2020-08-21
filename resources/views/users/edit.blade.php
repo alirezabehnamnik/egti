@@ -29,7 +29,7 @@
             <br>
 
             <div class="form-group row">
-                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('رمزعبور:') }} <span class="required">*</span></label>
+                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('رمزعبور:') }}</label>
 
                 <div class="col-md-6">
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
@@ -43,7 +43,7 @@
             </div>
 
             <div class="form-group row">
-                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('تکرار رمزعبور') }} <span class="required">*</span></label>
+                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('تکرار رمزعبور') }}</label>
 
                 <div class="col-md-6">
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
@@ -52,7 +52,7 @@
 
 
             <div class="form-group row">
-                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('نام:') }} <span class="required">*</span></label>
+                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('نام:') }}</label>
 
                 <div class="col-md-6">
                     <input id="name" type="text" placeholder="نام" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$user->name}}" autocomplete="name">
@@ -66,12 +66,30 @@
             </div>
 
             <div class="form-group row">
-                <label for="family" class="col-md-4 col-form-label text-md-right">{{ __('نام خانوادگی:') }} <span class="required">*</span></label>
+                <label for="family" class="col-md-4 col-form-label text-md-right">{{ __('نام خانوادگی:') }}</label>
 
                 <div class="col-md-6">
                     <input id="family" type="text" class="form-control @error('family') is-invalid @enderror" name="family" value="{{$user->family}}" autocomplete="family">
 
                     @error('family')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="avatar2" class="col-md-4 col-form-label text-md-right">{{ __('آواتار:') }} </label>
+
+                <div class="col-md-6">
+                    <input id="avatar2" type="file" class="form-control @error('avatar2') is-invalid @enderror" name="avatar2">
+                    <small> حداکثر حجم مجاز 2MB می باشد </small>
+                    <br>
+                    <small> آواتار باید در سایز 256x256 باشد. </small>
+                    <br>
+                    <small> فرمت های مجاز: png,jpeg,jpg </small>
+                    @error('avatar2')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

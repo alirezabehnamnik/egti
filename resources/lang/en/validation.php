@@ -168,6 +168,9 @@ return [
       // Register in Tournament
       'team_id' => 'انتخاب تیم'
 
+      //  User edit profile
+      'avatar' => 'آواتار',
+
       //
     ],
 
