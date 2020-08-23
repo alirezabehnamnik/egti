@@ -23,6 +23,9 @@
     @foreach ($teams as $item)
     <div class="col-md-2 text-center">
         <div class="team-item">
+          @if ($item->user_id == Auth::user()->id)
+          <div class="team-captain" data-toggle="tooltip" data-placement="top" title="کاربر در این تیم کاپیتان است"> <i class="fas fa-star" aria-hidden="true"></i> </div>
+          @endif
           <div class="team-image">
             <img src="/images/teams/logo/{{$item->logo}}" alt="{{$item->name}}">
           </div>

@@ -27,7 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $teams = Teams::where('user_id', Auth::user()->id)->where('enabled', 1)->limit(6)->get()->sortBy('game_id');
+        $id = Auth::user()->id;
+        $id = "$id";
+        $teams = Teams::where('user_id', Auth::user()->id)->orWhere('standin_id', Auth::user()->id)->orWhereJsonContains('players_id', $id)->where('enabled', 1)->limit(6)->get()->sortBy('game_id');
         $array = array();
         foreach ($teams as $v) {
           $data = $v->game_id;

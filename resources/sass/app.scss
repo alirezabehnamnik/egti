@@ -645,3 +645,14 @@ left: 0;
   background: #4e4e4e;
   color: #FFF;
 }
+
+.team-captain {
+    position: absolute;
+    color: white;
+    background: #ff5400;
+    padding: 6px 8px 1px 6px;
+    z-index: 99;
+    border-radius: 100%;
+    top: 5px;
+    right: 5px;
+}

@@ -6217,8 +6217,18 @@ a:hover {
   color: #f6993f !important;
 }
 
+.bg-orange {
+  background: #f6993f !important;
+  color: #FFF !important;
+}
+
 .dorange {
   color: #ff5400 !important;
+}
+
+.bg-dorange {
+  background: #ff5400 !important;
+  color: #FFF !important;
 }
 
 .red {
@@ -16091,5 +16101,16 @@ main {
 .game-name:hover {
   background: #4e4e4e;
   color: #FFF;
+}
+
+.team-captain {
+  position: absolute;
+  color: white;
+  background: #ff5400;
+  padding: 6px 8px 1px 6px;
+  z-index: 99;
+  border-radius: 100%;
+  top: 5px;
+  right: 5px;
 }
 

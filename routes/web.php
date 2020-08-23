@@ -26,13 +26,13 @@ Route::get('/tournament/result/{id}', 'TournamentsController@result')->name('tou
 Route::get('/tournament/register/{id}', 'TournamentsController@showRegister')->name('show_tr_register');
 Route::post('/tournament/register', 'TournamentsController@register')->name('tr_register');
 
-// User Profile Route
-Route::get('/user/show/{username}', 'ProfileController@index')->name('user_profile');
-Route::get('/user/edit', 'ProfileController@edit')->name('edit_profile');
-Route::post('/user/edit', 'ProfileController@save')->name('save_edit');
+// User Route
+Route::get('/user/show/{username}', 'UserController@index')->name('user_profile');
+  // Profile Route
+  Route::get('/profile', 'HomeController@index')->name('profile');
+  Route::get('/profile/edit', 'ProfileController@edit')->name('edit_profile');
+  Route::post('/profile/edit', 'ProfileController@save')->name('save_edit');
 
-// Profile Route
-Route::get('/profile', 'HomeController@index')->name('profile');
   // Profile teams Route
   Route::get('/team/create', 'TeamsController@showCreate')->name('create_team');
   Route::post('/team/create', 'TeamsController@create')->name('add_team');

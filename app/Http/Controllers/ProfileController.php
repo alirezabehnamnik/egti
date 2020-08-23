@@ -9,12 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    public function index($username)
-    {
-      $data = User::where('username', $username)->first();
-      $games = MyGames::select('name')->whereIn('id', $data->mygames)->get();
-      return view('users.index', ['data' => $data, 'games' => $games]);
-    }
+    
 
     public function edit()
     {
