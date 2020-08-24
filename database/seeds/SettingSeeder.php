@@ -13,7 +13,6 @@ class SettingSeeder extends Seeder
     {
       DB::table('settings')->insert(
         [
-         'navbar_items' => '[{"text":"خانه","icon":"fas fa-home","link":"home"},{"text":"بازی ها","icon":"fas fa-gamepad","link":"games"},{"text":"مسابقات","icon":"fas fa-clipboard-list","link":"tournaments"}]',
          'slider' => '[{"image":"slide1.jpg","title":"First Slide","text":"First Slide"},{"image":"slide2.jpg","title":"Second Slide","text":"Second Slide"},{"image":"slide3.jpg","title":"Third Slide","text":"Third Slide"}]',
          'showSponsers' => 1,
          'showPartners' => 1,

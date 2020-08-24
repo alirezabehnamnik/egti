@@ -15,8 +15,6 @@ class Settings extends Migration
     {
       Schema::create('settings', function (Blueprint $table) {
           $table->id();
-          // Navbar
-          $table->string('navbar_items'); // [{"text":"خانه","icon":"fas fa-home","link":"home"}]
           // Slider
           $table->string('slider'); // [{"image":"slide2.jpg","title":"Second Slide","text":"Second Slide"},{"image":"slide1.jpg","title":"First Slide","text":"First Slide"}]
           // Home page
