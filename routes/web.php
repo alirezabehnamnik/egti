@@ -15,36 +15,65 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@index')->name('home');
 
+// Admin Route
+Route::group(['prefix' => 'admin'] , function() {
+    Route::get('/login' , 'AdminController@showLogin')->name('admin_show_login');
+    Route::post('/login' , 'AdminController@login')->name('admin_login');
+    Route::get('/panel' , 'AdminController@index')->name('admin_panel');
+    Route::get('/settings' , 'AdminController@showSetting')->name('admin_settings');
+    // Users
+    Route::group(['prefix' => 'users'] , function() {
+        Route::get('/' , 'AdminController@showUsers')->name('admin_users');
+        Route::get('/add' , 'AdminController@addUserShow')->name('admin_user_add');
+    });
+    // Games
+    Route::group(['prefix' => 'games'] , function() {
+        Route::get('/' , 'AdminController@showGames')->name('admin_games');
+        Route::get('/add' , 'AdminController@addGameShow')->name('admin_game_add');
+    });
+    // Tournaments
+    Route::group(['prefix' => 'tournaments'] , function() {
+        Route::get('/' , 'AdminController@showTournaments')->name('admin_tournaments');
+        Route::get('/add' , 'AdminController@addTournamentShow')->name('admin_tournament_add');
+    });
+    // Teams
+    Route::get('/teams' , 'AdminController@showTeams')->name('admin_teams');
+});
 
 // Games Routes
 Route::get('/games', 'GamesController@index')->name('games');
 Route::get('/game/{id}', 'GamesController@game')->name('game');
 
 // Tournaments Route
-Route::get('/tournaments', 'TournamentsController@index')->name('tournaments');
-Route::get('/tournament/result/{id}', 'TournamentsController@result')->name('tournament_results');
-Route::get('/tournament/register/{id}', 'TournamentsController@showRegister')->name('show_tr_register');
-Route::post('/tournament/register', 'TournamentsController@register')->name('tr_register');
+Route::group(['prefix' => 'tournament'] , function() {
+    Route::get('/', 'TournamentsController@index')->name('tournaments');
+    Route::get('/result/{id}', 'TournamentsController@result')->name('tournament_results');
+    Route::get('/register/{id}', 'TournamentsController@showRegister')->name('show_tr_register');
+    Route::post('/register', 'TournamentsController@register')->name('tr_register');
+});
 
 // User Route
 Route::get('/user/show/{username}', 'UserController@index')->name('user_profile');
   // Profile Route
-  Route::get('/profile', 'HomeController@index')->name('profile');
-  Route::get('/profile/edit', 'ProfileController@edit')->name('edit_profile');
-  Route::post('/profile/edit', 'ProfileController@save')->name('save_edit');
+  Route::group(['prefix' => 'profile'] , function() {
+      Route::get('/', 'HomeController@index')->name('profile');
+      Route::get('/edit', 'ProfileController@edit')->name('edit_profile');
+      Route::post('/edit', 'ProfileController@save')->name('save_edit');
+  });
 
-  // Profile teams Route
-  Route::get('/team/create', 'TeamsController@showCreate')->name('create_team');
-  Route::post('/team/create', 'TeamsController@create')->name('add_team');
-  Route::get('/team/manage', 'TeamsController@showManage')->name('manage_team');
-  Route::get('/team/manage/disbale/{id}', 'TeamsController@disableTeam')->name('delete_team');
-  Route::get('/team/manage/enable/{id}', 'TeamsController@enableTeam')->name('undelete_team');
-  Route::get('/team/manage/edit/{id}', 'TeamsController@showEdit')->name('edit_team');
+  // Team Route
+  Route::group(['prefix' => 'team'] , function() {
+      Route::get('/show/{tag}', 'TeamsController@index')->name('team_profile');
+      Route::get('/create', 'TeamsController@showCreate')->name('create_team');
+      Route::post('/create', 'TeamsController@create')->name('add_team');
+      Route::get('/manage', 'TeamsController@showManage')->name('manage_team');
+      Route::get('/manage/disbale/{id}', 'TeamsController@disableTeam')->name('delete_team');
+      Route::get('/manage/enable/{id}', 'TeamsController@enableTeam')->name('undelete_team');
+      Route::get('/manage/edit/{id}', 'TeamsController@showEdit')->name('edit_team');
+  });
   // Profile tournaments Route
   Route::get('/mytournaments', 'TournamentsController@myTournaments')->name('my_tournaments');
 
-// Team Route
-Route::get('/team/show/{tag}', 'TeamsController@index')->name('team_profile');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -63,7 +92,6 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-
 // Route::get('', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
 Route::group(['prefix' => 'help'] , function() {

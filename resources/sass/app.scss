@@ -391,6 +391,7 @@ left: 0;
 
 .sidenav-link li {
     list-style: none;
+    position: relative;
     background: rgba(0,0,0,0.2);
     padding: 15px;
     border-bottom: 1px solid rgba(0,0,0,0.2);
@@ -672,4 +673,31 @@ left: 0;
 }
 .user-image img {
     width: 100%;
+}
+
+.nav-list-item {
+  margin-right: 10px;
+}
+
+.collapse-active {
+  background: rgba(0,0,0,0.4) !important;
+}
+
+.clps-icon {
+    position: absolute;
+    left: 20px;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    height: 15px;
+    -moz-transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+.clps-icon.down{
+    -ms-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
 }

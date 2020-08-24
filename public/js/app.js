@@ -36819,9 +36819,15 @@ $('.owl-certs').owlCarousel({
   autoplayHoverPause: true,
   center: true,
   items: 1
-}); // Players id in Team creation form Select2
-
+});
 $(document).ready(function () {
+  // Add class to li when collapse in admin panel
+  $(".collapse-li").on('click', function (event) {
+    $target = $(event.target);
+    $target.toggleClass("collapse-active");
+    $target.children(".clps-icon").toggleClass("down");
+  }); // Players id in Team creation form Select2
+
   $('#players_id').select2({
     theme: 'bootstrap4',
     language: "fa",
