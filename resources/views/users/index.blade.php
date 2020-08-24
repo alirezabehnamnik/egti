@@ -237,7 +237,7 @@
                   @foreach ($teams as $item)
                   <div class="col-10 col-md-2 text-center">
                       <div class="team-item">
-                        @if ($item->user_id == Auth::user()->id)
+                        @if ($item->user_id == $data->id)
                         <div class="team-captain" data-toggle="tooltip" data-placement="top" title="کاربر در این تیم کاپیتان است"> <i class="fas fa-star" aria-hidden="true"></i> </div>
                         @endif
                         <div class="team-image" style="width: 218px;">
@@ -245,6 +245,8 @@
                         </div>
                         <div class="team-text">
                           {{$item->name}}
+                          <br>
+                          <small>[{{$item->tag}}]</small>
                         </div>
                         <br>
                         <span> بازی های تیم: </span>

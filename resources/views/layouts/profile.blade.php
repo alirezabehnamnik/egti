@@ -61,7 +61,10 @@
             <a href="{{route('edit_profile')}}">
               <li> <i class="fas fa-user-edit" aria-hidden="true"></i> ویرایش اطلاعات </li>
             </a>
-            <li data-toggle="collapse" data-target="#team"> <i class="fas fa-users-cog" aria-hidden="true"></i> مدیریت تیم <span style="float:left;"> + </span> </li>
+            <li class="collapse-li" data-toggle="collapse" data-target="#team">
+               <i class="fas fa-users-cog" aria-hidden="true"></i> مدیریت تیم
+               <div class="clps-icon"> <i class="fas fa-angle-down" aria-hidden="true"></i> </div>
+             </li>
             <div class="nav-list collapse" id="team">
               <a href="{{route('create_team')}}">
                 <li style="margin-right: 10px;">

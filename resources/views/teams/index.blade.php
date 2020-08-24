@@ -129,7 +129,7 @@
                         <img src="/images/avatars/{{$captain->avatar}}" alt="{{$captain->name}}">
                       </div>
                       <div class="team-text">
-                        {{$captain->name}}
+                        {{$captain->username}}
                       </div>
                       <br>
                       <span> کاپیتان </span>
@@ -148,7 +148,7 @@
                           <img src="/images/avatars/{{$v->avatar}}" alt="{{$v->name}}">
                         </div>
                         <div class="team-text">
-                          {{$v->name}}
+                          {{$v->username}}
                         </div>
                         <br>
                         <span> بازیکن </span>
@@ -168,7 +168,7 @@
                         <img src="/images/avatars/{{$standin->avatar}}" alt="{{$standin->name}}">
                       </div>
                       <div class="team-text">
-                        {{$standin->name}}
+                        {{$standin->username}}
                       </div>
                       <br>
                       <span> بازیکن ذخیره </span>
