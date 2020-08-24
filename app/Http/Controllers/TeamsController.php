@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Teams;
 use App\User;
 use App\Games;
+use App\TournamentsRegister;
+use App\TournamentsResults;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +21,44 @@ class TeamsController extends Controller
 
   public function index($tag)
   {
-    return view('teams.index', ['tag' => $tag]);
+    $data = Teams::where('tag', $tag)->first();
+    $captain = User::where('id', $data->user_id)->first();
+    $players = User::whereIn('id', $data->players_id)->get();
+    $standin = User::where('id', $data->standin_id)->first();
+    $tournaments = TournamentsRegister::where('team_id', $data->id)->get();
+    $games = Games::whereIn('id', $data->game_id)->get();
+    $trIds = [];
+    foreach ($tournaments as $v)
+    {
+        array_push($trIds, $v->tournament_id);
+    }
+    $trResult = TournamentsResults::whereIn('tournaments_id', $trIds)->get();
+    $fplace = null;
+    $splace = null;
+    $tplace = null;
+    $foplace = null;
+    $fiplace = null;
+    foreach ($trResult as $v) {
+      if ($v->fplace_id == $data->id) {
+        $fplace++;
+      } elseif ($v->splace_id == $data->id) {
+        $splace++;
+      } elseif ($v->tplace_id == $data->id) {
+        $tplace++;
+      } elseif ($v->foplace_id == $data->id) {
+        $foplace++;
+      } elseif ($v->fiplace_id == $data->id) {
+        $fiplace++;
+      }
+    }
+    $result = [
+      'fplace' => $fplace,
+      'splace' => $splace,
+      'tplace' => $tplace,
+      'foplace' => $foplace,
+      'fiplace' => $fiplace,
+    ];
+    return view('teams.index', ['data' => $data, 'captain' => $captain, 'players' => $players, 'standin' => $standin, 'tournaments' => $tournaments, 'games' => $games, 'result' => $result]);
   }
 
   public function showCreate()

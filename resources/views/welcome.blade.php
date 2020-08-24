@@ -18,21 +18,21 @@
                       </ol>
                       <div class="carousel-inner">
                         <div class="carousel-item active">
-                          <img class="d-block w-100" src="images/slider/slide1.jpg" alt="First slide">
+                          <img class="d-block w-100" src="/images/slider/slide1.jpg" alt="First slide">
                           <div class="carousel-caption d-none d-md-block">
                           <h5>First Slide</h5>
                           <p>First Slide</p>
                       </div>
                         </div>
                         <div class="carousel-item">
-                          <img class="d-block w-100" src="images/slider/slide2.jpg" alt="Second slide">
+                          <img class="d-block w-100" src="/images/slider/slide2.jpg" alt="Second slide">
                           <div class="carousel-caption d-none d-md-block">
                           <h5>Second Slide</h5>
                           <p>Second Slide</p>
                       </div>
                         </div>
                         <div class="carousel-item">
-                          <img class="d-block w-100" src="images/slider/slide3.jpg" alt="Third slide">
+                          <img class="d-block w-100" src="/images/slider/slide3.jpg" alt="Third slide">
                           <div class="carousel-caption d-none d-md-block">
                           <h5>Third Slide</h5>
                           <p>Third Slide</p>
@@ -78,7 +78,7 @@
                   <a href="{{route('game', ['id' => $item->id])}}">
                     <div class="col-md-4 game-item text-center">
                       <div class="game-image">
-                        <img src="images/games/{{$item->image}}" width="350" alt="">
+                        <img src="/images/games/{{$item->image}}" width="350" alt="">
                         <div class="game-text">
                           <span class="game-name"> {{$item->name}} </span>
                           @php
@@ -129,7 +129,7 @@
 
                     <div class="tournament-details">
                       <div class="tournament-image">
-                        <img src="images/tournaments/{{$item->image}}" width="124" alt="{{$item->tag}}">
+                        <img src="/images/tournaments/{{$item->image}}" width="124" alt="{{$item->tag}}">
                         <br>
                         {{$item->g_name}}
                       </div>
@@ -265,10 +265,10 @@
                     <div class="item">
                       @if ($item->url)
                       <a href="{{$item->url}}" target="_blank">
-                        <img src="images/sponsers/{{$item->image}}.png" data-toggle="tooltip" data-placement="top" title="{{$item->name}}"/>
+                        <img src="/images/sponsers/{{$item->image}}.png" data-toggle="tooltip" data-placement="top" title="{{$item->name}}"/>
                       </a>
                       @else
-                      <img src="images/sponsers/{{$item->image}}.png" data-toggle="tooltip" data-placement="top" title="{{$item->name}}"/>
+                      <img src="/images/sponsers/{{$item->image}}.png" data-toggle="tooltip" data-placement="top" title="{{$item->name}}"/>
                       @endif
                     </div>
                     @endforeach
@@ -294,10 +294,10 @@
                     <div class="item">
                       @if ($item->url)
                       <a href="{{$item->url}}" target="_blank">
-                        <img src="images/sponsers/{{$item->image}}.png" data-toggle="tooltip" data-placement="top" title="{{$item->name}}"/>
+                        <img src="/images/sponsers/{{$item->image}}.png" data-toggle="tooltip" data-placement="top" title="{{$item->name}}"/>
                       </a>
                       @else
-                      <img src="images/sponsers/{{$item->image}}.png" data-toggle="tooltip" data-placement="top" title="{{$item->name}}"/>
+                      <img src="/images/sponsers/{{$item->image}}.png" data-toggle="tooltip" data-placement="top" title="{{$item->name}}"/>
                       @endif
                     </div>
                     @endforeach

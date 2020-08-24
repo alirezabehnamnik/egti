@@ -11,9 +11,7 @@
           <img src="/images/avatars/{{$data->avatar}}" width="128px" height="128px" alt="{{$data->username}}">
           <br>
           <br>
-          <a href="{{route('user_profile', ['username' => $data->username])}}" target="_blank" style="color:#FFF;">
-            <span> {{$data->username}} </span>
-          </a>
+          <span> {{$data->username}} </span>
         </div>
         <br>
         <div class="sidenav-link">
@@ -185,7 +183,7 @@
               <div class="row">
                 @if ($data->mygames)
                   @foreach ($games as $v)
-                    <span class="game-name"> {{$v->name}} </span>
+                    <span class="game-name-prof"> {{$v->name}} </span>
                   @endforeach
                 @else
                 <h5 class="text-muted"> اطلاعاتی برای نمایش وجود ندارد! </h5>

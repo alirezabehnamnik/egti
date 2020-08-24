@@ -16087,7 +16087,7 @@ main {
   /* IE6-9 */
 }
 
-.game-name {
+.game-name-prof {
   border: 2px solid #4e4e4e;
   margin: 0px 7px;
   padding: 5px 15px;
@@ -16098,7 +16098,7 @@ main {
   transition: all 0.3s ease-in-out;
 }
 
-.game-name:hover {
+.game-name-prof:hover {
   background: #4e4e4e;
   color: #FFF;
 }
@@ -16112,5 +16112,23 @@ main {
   border-radius: 100%;
   top: 5px;
   right: 5px;
+}
+
+.tr-result-icon {
+  font-size: 4vh;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.user-image {
+  position: relative;
+  background: #323232;
+  width: 100%;
+  padding: 10px 25px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.user-image img {
+  width: 100%;
 }
 

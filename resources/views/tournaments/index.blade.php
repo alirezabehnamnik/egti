@@ -23,7 +23,7 @@
 
       <div class="tournament-details">
         <div class="tournament-image">
-          <img src="images/tournaments/{{$item->image}}" width="124" alt="{{$item->tag}}">
+          <img src="/images/tournaments/{{$item->image}}" width="124" alt="{{$item->tag}}">
           <br>
           {{$item->g_name}}
         </div>
@@ -166,7 +166,7 @@
 
       <div class="tournament-details">
         <div class="tournament-image">
-          <img src="images/tournaments/{{$item->image}}" width="124" alt="{{$item->tag}}">
+          <img src="/images/tournaments/{{$item->image}}" width="124" alt="{{$item->tag}}">
           <br>
           {{$item->g_name}}
         </div>

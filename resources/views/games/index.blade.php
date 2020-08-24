@@ -19,7 +19,7 @@
     <a href="{{route('game', ['id' => $item->id])}}">
       <div class="col-md-4 game-item text-center">
         <div class="game-image">
-          <img src="images/games/{{$item->image}}" width="350" alt="">
+          <img src="/images/games/{{$item->image}}" width="350" alt="">
           <div class="game-text">
             <span class="game-name"> {{$item->name}} </span>
             @php
