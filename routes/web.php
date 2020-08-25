@@ -28,6 +28,7 @@ Route::group(['prefix' => 'admin'] , function() {
     Route::post('/login' , 'AdminController@login')->name('admin_login');
     Route::get('/panel' , 'AdminController@index')->name('admin_panel');
     Route::get('/settings' , 'AdminController@showSetting')->name('admin_settings');
+    Route::post('/settings' , 'AdminController@updateSetting')->name('admin_settings_update');
     // Users
     Route::group(['prefix' => 'users'] , function() {
         Route::get('/' , 'AdminController@showUsers')->name('admin_users');
