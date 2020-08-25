@@ -166,7 +166,7 @@ return [
       'game_id' => 'انتخاب بازی',
 
       // Register in Tournament
-      'team_id' => 'انتخاب تیم'
+      'team_id' => 'انتخاب تیم',
 
       //  User edit profile
       'avatar' => 'آواتار',

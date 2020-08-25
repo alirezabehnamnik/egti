@@ -36738,7 +36738,7 @@ $('#state_id').change(function () {
   if (sid) {
     $.ajax({
       type: "get",
-      url: "city/" + sid,
+      url: "/city/" + sid,
       success: function success(res) {
         if (res) {
           $("#city_id").empty();

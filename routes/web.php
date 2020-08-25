@@ -32,7 +32,11 @@ Route::group(['prefix' => 'admin'] , function() {
     // Users
     Route::group(['prefix' => 'users'] , function() {
         Route::get('/' , 'AdminController@showUsers')->name('admin_users');
-        Route::get('/add' , 'AdminController@addUserShow')->name('admin_user_add');
+        Route::get('/add' , 'AdminController@showAddUser')->name('admin_user_add');
+        Route::post('/add' , 'AdminController@addUser')->name('admin_user_save');
+        Route::get('/search' , 'AdminController@searchUser')->name('admin_users_search');
+        Route::get('/edit/{id}' , 'AdminController@showEditUser')->name('admin_user_edit');
+        Route::post('/edit/{id}' , 'AdminController@saveEditUser')->name('admin_user_edit_save');
     });
     // Games
     Route::group(['prefix' => 'games'] , function() {

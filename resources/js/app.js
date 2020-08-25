@@ -14,7 +14,7 @@ $('#state_id').change(function(){
    if(sid){
    $.ajax({
       type:"get",
-      url:"city/"+sid,
+      url:"/city/"+sid,
       success:function(res)
       {
            if(res)

@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 use App\Setting;
+use App\User;
+use App\State;
+use App\City;
+use App\MyGames;
+use App\Games;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -154,4 +160,117 @@ class AdminController extends Controller
             ->with('error','خطایی رخ داده است لطفا مجددا تلاش کنید!');
       }
     }
+
+    // Users
+    public function showUsers()
+    {
+      $data = User::paginate(100);
+      return view('admin.users.index', ['data' => $data]);
+    }
+
+    public function searchUser(Request $request)
+    {
+      $input = $request->all();
+      $id = $input['id'];
+      $username = $input['username'];
+      $email = $input['email'];
+      $family = $input['family'];
+      $phone_number = $input['phone_number'];
+      $query = User::select('id', 'username', 'email', 'family', 'phone_number');
+      if ($id) {
+        $query->where('id', $id);
+      }
+      if ($username) {
+        $query->where('username', 'like', '%'.$username.'%');
+      }
+      if ($email) {
+        $query->where('email', 'like', '%'.$email.'%');
+      }
+      if ($family) {
+        $query->where('family', 'like', '%'.$family.'%');
+      }
+      if ($phone_number) {
+        $query->where('phone_number', 'like', '%'.$phone_number.'%');
+      }
+      $data = $query->paginate(100);
+      return view('admin.users.index', ['data' => $data]);
+    }
+
+    // Edit User
+    public function showEditUser($id)
+    {
+      $data = User::where('id', $id)->first();
+      return view('admin.users.edit', ['data' => $data]);
+    }
+
+    public function saveEditUser(Request $request, $id)
+    {
+      if (!$request['password']) {
+          unset($request['password']);
+          unset($request['password_confirmation']);
+      }
+      unset($request['_token']);
+      $validated = $request->validate([
+        'password' => ['confirmed'],
+      ]);
+      if ($request['resetAvatar'] == 1) {
+        $request->request->add(['avatar' => 'default.png']);
+        unset($request['resetAvatar']);
+      }
+      User::where('id', $id)->update(request()->all());
+      return redirect()->back()->with('message', 'اطلاعات کاربر با موفقیت ویرایش شد.');
+    }
+
+    // Add User
+    public function showAddUser()
+    {
+      $state = State::where('enabled', 1)->get();
+      $games_list = MyGames::where('enabled', 1)->get();
+      return view('admin.users.add', ['state' => $state, 'games_list' => $games_list]);
+    }
+
+    public function addUser(Request $request)
+    {
+      $validated = $request->validate([
+        'username' => ['required', 'string', 'min:3', 'alpha_dash', 'unique:users'],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'name' => ['required', 'string', 'max:255'],
+        'family' => ['required', 'string', 'max:255'],
+        'state_id' => ['required', 'numeric'],
+        'city_id' => ['required', 'numeric'],
+        'phone_number' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/','min:10', 'unique:users'],
+      ]);
+      User::create([
+          'username' => $request['username'],
+          'password' => Hash::make($request['password']),
+          'email' => $request['email'],
+          'avatar' => 'default.png',
+          'name' => $request['name'],
+          'family' => $request['family'],
+          'state_id' => $request['state_id'],
+          'city_id' => $request['city_id'],
+          'address' => $request['address'],
+          'phone_number' => $request['phone_number'],
+          'steam' => $request['steam'],
+          'uplay' => $request['uplay'],
+          'epicgames' => $request['epicgames'],
+          'riot' => $request['riot'],
+          'mygames' => $request['mygames'],
+          'platforms_id' => $request['platforms_id'],
+      ]);
+      return redirect()->back()->with('message', 'کاربر با موفقیت افزوده شد.');
+    }
+    public function getcities($id) {
+      $cities = State::find($id)->City;
+      return response()->json($cities);
+    }
+
+    // Games
+    public function showGames()
+    {
+      $data = Games::all();
+      return view('admin.games.index')
+    }
+
 }
