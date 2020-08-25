@@ -10,7 +10,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -36,15 +36,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                      <li class="nav-item active">
-                        <a class="nav-link" href="{{route('home')}}"><i class="fa fa-home"></i> خانه <span class="sr-only">(current)</span></a>
+                      @php
+                        $fitem = json_decode($data->navbar_item);
+                      @endphp
+
+                      @foreach ($fitem as $v)
+                      <li class="nav-item {{$v->link == 'home' ? 'active' : ''}}">
+                        <a class="nav-link" href="{{route($v->link)}}"><i class="{{$v->icon}}"></i> {{$v->text}} </a>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="{{route('games')}}">بازی ها</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="{{route('tournaments')}}">مسابقات</a>
-                      </li>
+                      @endforeach
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -90,7 +90,6 @@
             @yield('content')
         </main>
 
-
         <br>
         <br>
         <br>
@@ -111,26 +110,20 @@
                   <div class="row">
                     <div class="col-md-6 footer-right">
                       <span> مارا در شبکه ها اجتماعی دنبال کنید: </span>
+                      @php
+                        $social = json_decode($data->social_networks);
+                      @endphp
+                      @foreach ($social as $v)
                       <div class="footer-social-link">
-                        <a href="#" target="_blank">
-                          <img src="/images/instagram-icon.png" with="40" alt="" data-toggle="tooltip" data-placement="top" title="Instagram">
+                        <a href="{{$v->link}}" target="_blank">
+                          <img src="/images/{{$v->icon}}" with="40" alt="" data-toggle="tooltip" data-placement="top" title="{{$v->title}}">
                         </a>
                       </div>
-                      <div class="footer-social-link">
-                        <a href="#" target="_blank">
-                          <img src="/images/telegram-icon.png" with="40" alt="" data-toggle="tooltip" data-placement="top" title="Telegram">
-                        </a>
-                      </div>
-                      <div class="footer-social-link">
-                        <a href="#" target="_blank">
-                          <img src="/images/youtube-icon.png" with="40" alt="" data-toggle="tooltip" data-placement="top" title="YouTube">
-                        </a>
-                      </div>
-
+                      @endforeach
                     </div>
 
                     <div class="col-md-6 footer-left">
-                      info@e-gaming.ir <img src="/images/mail.png" width="40" alt="">
+                      {{$data->email}} <img src="/images/mail.png" width="40" alt="">
                     </div>
                   </div>
 
@@ -144,69 +137,43 @@
                     <div class="footer-links col-md-3">
                       <h5 style="padding-bottom: 10px;"> دوستان </h5>
 
-                      <a href="#" target="_blank">
-                      <li> لینک 1 </li>
+                      @php
+                        $friends = json_decode($data->friends_footer);
+                      @endphp
+                      @foreach ($friends as $v)
+                      <a href="{{$v->link}}" target="_blank">
+                        <li> {{$v->text}} </li>
                       </a>
-
-
-                      <a href="#" target="_blank">
-                      <li> لینک 2 </li>
-                      </a>
-
-
-                      <a href="#" target="_blank">
-                      <li> لینک 3 </li>
-                      </a>
-
-
-                      <a href="#" target="_blank">
-                      <li> لینک 4 </li>
-                      </a>
+                      @endforeach
 
                     </div>
 
                     <div class="footer-links col-md-3">
                       <h5 style="padding-bottom: 10px;"> لینک های مفید </h5>
-                      <a href="#" target="_blank">
-                      <li> لینک 1 </li>
+
+                      @php
+                        $link = json_decode($data->link_footer);
+                      @endphp
+                      @foreach ($link as $v)
+                      <a href="{{$v->link}}" target="_blank">
+                        <li> {{$v->text}} </li>
                       </a>
+                      @endforeach
 
-
-                      <a href="#" target="_blank">
-                      <li> لینک 2 </li>
-                      </a>
-
-
-                      <a href="#" target="_blank">
-                      <li> لینک 3 </li>
-                      </a>
-
-
-                      <a href="#" target="_blank">
-                      <li> لینک 4 </li>
-                      </a>
                     </div>
 
                     <div class="footer-links col-md-3">
                       <h5 style="padding-bottom: 10px;"> مطالب کاربردی </h5>
-                      <a href="#" target="_blank">
-                      <li> لینک 1 </li>
+
+                      @php
+                        $learning = json_decode($data->learning_footer);
+                      @endphp
+                      @foreach ($learning as $v)
+                      <a href="{{$v->link}}" target="_blank">
+                        <li> {{$v->text}} </li>
                       </a>
+                      @endforeach
 
-
-                      <a href="#" target="_blank">
-                      <li> لینک 2 </li>
-                      </a>
-
-
-                      <a href="#" target="_blank">
-                      <li> لینک 3 </li>
-                      </a>
-
-
-                      <a href="#" target="_blank">
-                      <li> لینک 4 </li>
-                      </a>
                     </div>
 
                     <div class="col-md-2 offset-md-1">

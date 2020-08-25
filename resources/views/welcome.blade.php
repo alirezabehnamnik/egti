@@ -10,34 +10,25 @@
                 <!-- Main Slider Section Start -->
                 <div class="row">
                   <div class="col-md-12 nopadding">
+                    @php
+                    $slider = json_decode($setting->slider);
+                    @endphp
                     <div id="carouselSlider" class="carousel slide" data-ride="carousel">
                       <ol class="carousel-indicators">
-                        <li data-target="#carouselSlider" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselSlider" data-slide-to="1"></li>
-                        <li data-target="#carouselSlider" data-slide-to="2"></li>
+                        @for ($i = 0; $i < count($slider); $i++ )
+                        <li data-target="#carouselSlider" data-slide-to="{{$i}}"></li>
+                        @endfor
                       </ol>
                       <div class="carousel-inner">
-                        <div class="carousel-item active">
-                          <img class="d-block w-100" src="/images/slider/slide1.jpg" alt="First slide">
-                          <div class="carousel-caption d-none d-md-block">
-                          <h5>First Slide</h5>
-                          <p>First Slide</p>
-                      </div>
-                        </div>
-                        <div class="carousel-item">
-                          <img class="d-block w-100" src="/images/slider/slide2.jpg" alt="Second slide">
-                          <div class="carousel-caption d-none d-md-block">
-                          <h5>Second Slide</h5>
-                          <p>Second Slide</p>
-                      </div>
-                        </div>
-                        <div class="carousel-item">
-                          <img class="d-block w-100" src="/images/slider/slide3.jpg" alt="Third slide">
-                          <div class="carousel-caption d-none d-md-block">
-                          <h5>Third Slide</h5>
-                          <p>Third Slide</p>
-                      </div>
-                        </div>
+                        @for ($j = 0; $j < count($slider); $j++)
+                          <div class="carousel-item {{$j == 0 ? 'active' : ''}}">
+                            <img class="d-block w-100" src="/images/slider/{{$slider[$j]->image}}" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5>{{$slider[$j]->title}}</h5>
+                              <p>{{$slider[$j]->text}}</p>
+                            </div>
+                          </div>
+                        @endfor
                       </div>
                       <a class="carousel-control-prev" href="#carouselSlider" role="button" data-slide="prev">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -250,6 +241,7 @@
                 <br>
                 <br>
 
+                @if ($setting->showSponsers == 1)
                 <!-- Sponsers Slider Section Start -->
                 <div class="row">
                   <div class="col-md-12">
@@ -275,7 +267,9 @@
                   </div>
                 </div>
                 <!-- Sponsers Slider Section End -->
+                @endif
 
+                @if ($setting->showPartners == 1)
                 <br>
                 <br>
 
@@ -304,7 +298,8 @@
                   </div>
                 </div>
                 <!-- Supporters Slider Section End -->
-
+                @endif
+                
               </div>
 
 

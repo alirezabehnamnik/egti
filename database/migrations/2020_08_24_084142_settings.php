@@ -15,6 +15,8 @@ class Settings extends Migration
     {
       Schema::create('settings', function (Blueprint $table) {
           $table->id();
+          // Navbar
+          $table->string('navbar_item'); // [{"text":"خانه","link":"#","icon":"fas fa-home"}]
           // Slider
           $table->string('slider'); // [{"image":"slide2.jpg","title":"Second Slide","text":"Second Slide"},{"image":"slide1.jpg","title":"First Slide","text":"First Slide"}]
           // Home page
@@ -23,7 +25,7 @@ class Settings extends Migration
           // Footer
           $table->string('social_networks'); // [{"icon":"instagram.png","title":"Instagram","link":"https://instagram.com/egaming_ir"}]
           $table->string('email');
-          $table->string('freinds_footer'); // [{"text":"لینک 1","link":"#"}]
+          $table->string('friends_footer'); // [{"text":"لینک 1","link":"#"}]
           $table->string('link_footer'); // [{"text":"لینک 1","link":"#"}]
           $table->string('learning_footer'); // [{"text":"لینک 1","link":"#"}]
       });

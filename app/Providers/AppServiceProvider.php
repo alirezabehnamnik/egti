@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+use App\Setting;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+      view()->composer('layouts.app', function ($view) {
+        $data = Setting::first();
+        $view->with('data', $data );
+      });
     }
 }
