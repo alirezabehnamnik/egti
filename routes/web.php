@@ -17,6 +17,13 @@ Route::get('/', 'MainController@index')->name('home');
 
 // Admin Route
 Route::group(['prefix' => 'admin'] , function() {
+    Route::get('/', function () {
+      if (Auth::guard('admins')->user()) {
+        return redirect('admin/panel');
+      } else {
+        return redirect('admin/login');
+      }
+    });
     Route::get('/login' , 'AdminController@showLogin')->name('admin_show_login');
     Route::post('/login' , 'AdminController@login')->name('admin_login');
     Route::get('/panel' , 'AdminController@index')->name('admin_panel');

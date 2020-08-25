@@ -27,7 +27,14 @@
           </div>
         </div>
 
-        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white shadow p-3">
+        @if ($auth)
+        <div class="admin-navbar">
+          <a href="{{route('admin_panel')}}" style="color: #FFF;">
+            شما با نام کاربری {{$auth->username}} در پنل مدیریت وارد شده اید. برای مشاهده پنل مدیریت کلیک کنید.
+          </a>
+        </div>
+        @endif
+        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white shadow p-3" {{$auth ? 'style=margin-top:30px' : ''}}>
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

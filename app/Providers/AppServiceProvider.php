@@ -4,6 +4,7 @@ namespace App\Providers;
 use App\Setting;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,7 +27,8 @@ class AppServiceProvider extends ServiceProvider
     {
       view()->composer('layouts.app', function ($view) {
         $data = Setting::first();
-        $view->with('data', $data );
+        $auth = Auth::guard('admins')->user();
+        $view->with('data', $data)->with('auth', $auth);
       });
     }
 }
