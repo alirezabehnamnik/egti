@@ -82,7 +82,7 @@ return [
         'string' => ':attribute نمی تواند بیشتر از :max حرف باشد.',
         'array' => 'The :attribute may not have more than :max items.',
     ],
-    'mimes' => 'The :attribute must be a file of type: :values.',
+    'mimes' => ':attribute فقط می تواند :values باشد.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
         'numeric' => ':attribute باید حداقل :min رقم باشد.',
@@ -113,7 +113,7 @@ return [
     'starts_with' => 'The :attribute must start with one of the following: :values.',
     'string' => 'The :attribute must be a string.',
     'timezone' => 'The :attribute must be a valid zone.',
-    'unique' => 'این :attribute قبلا توسط شخص دیگری استفاده شده است.',
+    'unique' => 'این :attribute قبلا استفاده شده است.',
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'فرمت :attribute صحیح نیست.',
     'uuid' => 'The :attribute must be a valid UUID.',

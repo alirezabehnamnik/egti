@@ -73,7 +73,7 @@
                         <div class="game-text">
                           <span class="game-name"> {{$item->name}} </span>
                           @php
-                          $decode = json_decode($item->platforms);
+                          $decode = $item->platforms;
                           @endphp
                           <span class="game-platforms">
                             @if(in_array("1", $decode))
@@ -299,7 +299,7 @@
                 </div>
                 <!-- Supporters Slider Section End -->
                 @endif
-                
+
               </div>
 
 

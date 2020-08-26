@@ -270,7 +270,79 @@ class AdminController extends Controller
     public function showGames()
     {
       $data = Games::all();
-      return view('admin.games.index')
+      return view('admin.games.index', ['data' => $data]);
+    }
+
+    // Show Game Edit
+    public function showEditGame($id)
+    {
+      $data = Games::where('id', $id)->first();
+      return view('admin.games.edit', ['data' => $data]);
+    }
+
+    // Save Game Edit
+    public function saveEditGame(Request $request, $id)
+    {
+      unset($request['_token']);
+      $validated = $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'tag' => ['required', 'string', 'max:255', 'unique:games'],
+        'avatar' => ['dimensions:min_width=645,min_height=300', 'mimes:jpeg,jpg,png'],
+      ]);
+      if ($request['avatar']) {
+          $extension = $request['avatar']->extension();
+          $name = $request['tag'].".".$extension;
+          $url = $request->file('avatar')->move(public_path('\images\games'), $name);
+          $request->request->add(['image' => $name]);
+          $req = request()->only(['name', 'tag', 'image', 'platforms']);
+          Games::where('id', $id)->update($req);
+      } else {
+          Games::where('id', $id)->update(request()->all());
+      }
+      return redirect()->back()->with('message', 'بازی با موفقیت بروزرسانی شد.');
+    }
+
+    // Toggle Game Status
+    public function toggleGameStatus($id)
+    {
+      $d = Games::select('enabled')->where('id', $id)->first();
+      $d = $d->enabled;
+      if ($d == 1) {
+        $d = 0;
+      } elseif ($d == 0) {
+        $d = 1;
+      }
+      Games::where('id', $id)->update(['enabled' => $d]);
+      return redirect()->back()->with('message', 'وضعیت بازی با موفقیت تغییر کرد.');
+    }
+
+    // Show Game Add
+    public function showAddGame()
+    {
+      return view('admin.games.add');
+    }
+
+    // Save Game Edit
+    public function saveAddGame(Request $request)
+    {
+      unset($request['_token']);
+      $validated = $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'tag' => ['required', 'string', 'max:255', 'unique:games'],
+        'avatar' => ['required', 'dimensions:min_width=645,min_height=300', 'mimes:jpeg,jpg,png'],
+        'platforms' => ['required'],
+      ]);
+      $extension = $request['avatar']->extension();
+      $name = $request['tag'].".".$extension;
+      $url = $request->file('avatar')->move(public_path('\images\games'), $name);
+      Games::create([
+          'name' => $request['name'],
+          'tag' => $request['tag'],
+          'image' => $name,
+          'platforms' => $request['platforms'],
+          'enabled' => 1,
+      ]);
+      return redirect()->back()->with('message', 'بازی جدید با موفقیت افزوده شد.');
     }
 
 }

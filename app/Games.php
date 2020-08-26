@@ -13,6 +13,14 @@ class Games extends Model
    */
   protected $table = 'games';
 
+  protected $fillable = [
+      'name', 'tag', 'image', 'platforms', 'enabled'
+  ];
+
+  protected $casts = [
+      'platforms' => 'array',
+  ];
+
   public function trCount()
   {
     return $this->hasMany(Tournaments::class, 'game_id');

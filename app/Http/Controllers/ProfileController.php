@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    
+
 
     public function edit()
     {
@@ -29,6 +29,7 @@ class ProfileController extends Controller
         'password' => ['confirmed'],
         'name' => ['required', 'string', 'max:255'],
         'family' => ['required', 'string', 'max:255'],
+        'avatar2' => ['dimensions:min_width=256,min_height=256', 'mimes:jpeg,jpg,png'],
       ]);
       if ($request['avatar2']) {
           $extension = $request['avatar2']->extension();

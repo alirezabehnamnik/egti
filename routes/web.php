@@ -41,7 +41,11 @@ Route::group(['prefix' => 'admin'] , function() {
     // Games
     Route::group(['prefix' => 'games'] , function() {
         Route::get('/' , 'AdminController@showGames')->name('admin_games');
-        Route::get('/add' , 'AdminController@addGameShow')->name('admin_game_add');
+        Route::get('/add' , 'AdminController@showAddGame')->name('admin_game_add');
+        Route::post('/add' , 'AdminController@saveAddGame')->name('admin_game_add_save');
+        Route::get('/edit/{id}' , 'AdminController@showEditGame')->name('admin_game_edit');
+        Route::post('/edit/{id}' , 'AdminController@saveEditGame')->name('admin_game_edit_save');
+        Route::get('/toggleStatus/{id}' , 'AdminController@toggleGameStatus')->name('admin_game_toggle_status');
     });
     // Tournaments
     Route::group(['prefix' => 'tournaments'] , function() {
