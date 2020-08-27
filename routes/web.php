@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin'] , function() {
     });
     Route::get('/login' , 'AdminController@showLogin')->name('admin_show_login');
     Route::post('/login' , 'AdminController@login')->name('admin_login');
+    Route::post('/logout' , 'AdminController@logout')->name('admin_logout');
     Route::get('/panel' , 'AdminController@index')->name('admin_panel');
     Route::get('/settings' , 'AdminController@showSetting')->name('admin_settings');
     Route::post('/settings' , 'AdminController@updateSetting')->name('admin_settings_update');
