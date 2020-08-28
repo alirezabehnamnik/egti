@@ -345,19 +345,17 @@
                         <img src="/images/games/{{$item->image}}" width="350" alt="">
                         <div class="game-text">
                           <span class="game-name"> {{$item->name}} </span>
-                          @php
-                          $decode = json_decode($item->platforms);
-                          @endphp
+
                           <span class="game-platforms">
-                            @if(in_array("1", $decode))
+                            @if(in_array("1", $item->platforms))
                             <i class="fas fa-desktop ml-1" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="PC"></i>
                             @endif
 
-                            @if(in_array("2", $decode))
+                            @if(in_array("2", $item->platforms))
                             <i class="fab fa-playstation ml-1" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="PlayStation 4"></i>
                             @endif
 
-                            @if(in_array("3", $decode))
+                            @if(in_array("3", $item->platforms))
                             <i class="fab fa-xbox ml-1" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Xbox One"></i>
                             @endif
                           </span>
