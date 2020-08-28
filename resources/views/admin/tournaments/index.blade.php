@@ -121,19 +121,23 @@
                 @endif
               </td>
               <td class="text-center">
-                <a href="{{route('admin_tournament_edit', ['id' => $v->id])}}" target="_blank">
+                <a href="{{route('admin_tournament_edit', ['id' => $v->id])}}" target="_blank" data-toggle="tooltip" data-placement="top" title="ویرایش">
                   <button type="button" class="btn btn-sm btn-success" name="button">
                     <i class="far fa-edit" aria-hidden="true"></i>
                   </button>
                 </a>
-                <a href="{{route('admin_tournament_toggle_status', ['id' => $v->id])}}">
-                  <button type="button" class="btn btn-sm btn-info" name="button">
-                    <i class="fas {{$v->enabled == 1 ? 'fa-eye-slash' : 'fa-eye'}}" aria-hidden="true"></i>
+                <a href="{{route('admin_tournament_toggle_status', ['id' => $v->id])}}" data-toggle="tooltip" data-placement="top" @if ($v->enabled == 1 || $v->enabled == -1 || $v->enabled == 2) title="غیرفعال" @else title="فعال" @endif>
+                  <button type="button" class="btn btn-sm btn-danger" name="button">
+                    @if ($v->enabled == 1 || $v->enabled == -1 || $v->enabled == 2)
+                    <i class="far fa-trash-alt" aria-hidden="true"></i>
+                    @else
+                    <i class="fas fa-undo" aria-hidden="true"></i>
+                    @endif
                   </button>
                 </a>
                 @if ($v->enabled == 1)
-                <a href="{{route('admin_tournament_end_register', ['id' => $v->id])}}">
-                  <button type="button" class="btn btn-sm btn-warning" name="button">
+                <a href="{{route('admin_tournament_end_register', ['id' => $v->id])}}" data-toggle="tooltip" data-placement="top" title="پایان ثبت نام">
+                  <button type="button" class="btn btn-sm btn-info" name="button">
                     <i class="fas fa-hourglass-end" aria-hidden="true"></i>
                   </button>
                 </a>

@@ -55,14 +55,19 @@
               <td> {{$v->email}} </td>
               <td> {{$v->phone_number}} </td>
               <td class="text-center">
-                <a href="{{route('admin_user_edit', ['id' => $v->id])}}" target="_blank">
+                <a href="{{route('user_profile', ['username' => $v->username])}}" target="_blank" data-toggle="tooltip" data-placement="top" title="نمایش">
+                  <button type="button" class="btn btn-sm btn-info" name="button">
+                    <i class="far fa-eye" aria-hidden="true"></i>
+                  </button>
+                </a>
+                <a href="{{route('admin_user_edit', ['id' => $v->id])}}" target="_blank" data-toggle="tooltip" data-placement="top" title="ویرایش">
                   <button type="button" class="btn btn-sm btn-success" name="button">
                     <i class="far fa-edit" aria-hidden="true"></i>
                   </button>
                 </a>
                 <a href="#">
-                  <button type="button" class="btn btn-sm btn-danger" name="button">
-                    <i class="fas fa-trash" aria-hidden="true"></i>
+                  <button type="button" class="btn btn-sm btn-danger" name="button" data-toggle="tooltip" data-placement="top" title="غیرفعال">
+                    <i class="far fa-trash-alt" aria-hidden="true"></i>
                   </button>
                 </a>
               </td>

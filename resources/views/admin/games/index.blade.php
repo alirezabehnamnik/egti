@@ -36,18 +36,15 @@
                 </a>
               </td>
               <td>
-                @php
-                $decode = $v->platforms;
-                @endphp
-                @if(in_array("1", $decode))
+                @if(in_array("1", $v->platforms))
                 <i class="fas fa-desktop ml-1" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="PC"></i>
                 @endif
 
-                @if(in_array("2", $decode))
+                @if(in_array("2", $v->platforms))
                 <i class="fab fa-playstation ml-1" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="PlayStation 4"></i>
                 @endif
 
-                @if(in_array("3", $decode))
+                @if(in_array("3", $v->platforms))
                 <i class="fab fa-xbox ml-1" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Xbox One"></i>
                 @endif
               </td>
@@ -55,14 +52,23 @@
                 {{$v->enabled == 1 ? 'فعال' : 'غیرفعال'}}
               </td>
               <td class="text-center">
-                <a href="{{route('admin_game_edit', ['id' => $v->id])}}" target="_blank">
+                <a href="{{route('game', ['id' => $v->id])}}" target="_blank" data-toggle="tooltip" data-placement="top" title="نمایش">
+                  <button type="button" class="btn btn-sm btn-info" name="button">
+                    <i class="far fa-eye" aria-hidden="true"></i>
+                  </button>
+                </a>
+                <a href="{{route('admin_game_edit', ['id' => $v->id])}}" target="_blank" data-toggle="tooltip" data-placement="top" title="ویرایش">
                   <button type="button" class="btn btn-sm btn-success" name="button">
                     <i class="far fa-edit" aria-hidden="true"></i>
                   </button>
                 </a>
-                <a href="{{route('admin_game_toggle_status', ['id' => $v->id])}}">
-                  <button type="button" class="btn btn-sm btn-info" name="button">
-                    <i class="fas {{$v->enabled == 1 ? 'fa-eye-slash' : 'fa-eye'}}" aria-hidden="true"></i>
+                <a href="{{route('admin_game_toggle_status', ['id' => $v->id])}}" data-toggle="tooltip" data-placement="top" title="{{$v->enabled == 1 ? 'غیرفعال' : 'فعال'}}">
+                  <button type="button" class="btn btn-sm btn-danger" name="button">
+                    @if ($v->enabled == 1)
+                    <i class="far fa-trash-alt" aria-hidden="true"></i>
+                    @else
+                    <i class="fas fa-undo" aria-hidden="true"></i>
+                    @endif
                   </button>
                 </a>
               </td>

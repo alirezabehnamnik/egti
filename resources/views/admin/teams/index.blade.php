@@ -85,6 +85,11 @@
                 @endif
               </td>
               <td class="text-center">
+                <a href="{{route('team_profile', ['tag' => $v->tag])}}" target="_blank" data-toggle="tooltip" data-placement="top" title="نمایش">
+                  <button type="button" class="btn btn-sm btn-info" name="button">
+                    <i class="far fa-eye" aria-hidden="true"></i>
+                  </button>
+                </a>
                 <a href="{{route('admin_team_edit', ['id' => $v->id])}}" target="_blank" data-toggle="tooltip" data-placement="top" title="ویرایش">
                   <button type="button" class="btn btn-sm btn-success" name="button">
                     <i class="far fa-edit" aria-hidden="true"></i>
