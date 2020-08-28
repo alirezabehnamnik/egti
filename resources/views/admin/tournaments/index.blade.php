@@ -126,6 +126,11 @@
                     <i class="far fa-edit" aria-hidden="true"></i>
                   </button>
                 </a>
+                <a href="{{route('admin_tournament_register', ['id' => $v->id])}}" target="_blank" data-toggle="tooltip" data-placement="top" title="ثبت نام ها">
+                  <button type="button" class="btn btn-sm btn-warning" name="button">
+                    <i class="fas fa-list" aria-hidden="true"></i>
+                  </button>
+                </a>
                 <a href="{{route('admin_tournament_toggle_status', ['id' => $v->id])}}" data-toggle="tooltip" data-placement="top" @if ($v->enabled == 1 || $v->enabled == -1 || $v->enabled == 2) title="غیرفعال" @else title="فعال" @endif>
                   <button type="button" class="btn btn-sm btn-danger" name="button">
                     @if ($v->enabled == 1 || $v->enabled == -1 || $v->enabled == 2)

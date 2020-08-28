@@ -9,6 +9,7 @@ use App\MyGames;
 use App\Games;
 use App\Tournaments;
 use App\Teams;
+use App\TournamentsRegister;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -526,6 +527,25 @@ class AdminController extends Controller
       $data = $query->paginate(40);
       $games = Games::where('enabled', 1)->get();
       return view('admin.tournaments.index', ['data' => $data, 'games' => $games]);
+    }
+
+    // Show Tournament Regsiters
+    public function showRegister($id)
+    {
+      $data = TournamentsRegister::where('tournament_id', $id)->paginate(20);
+      return view('admin.tournaments.register', ['data' => $data, 'id' => $id]);
+    }
+
+    public function searchTournamentRegister(Request $request, $id)
+    {
+      $input = $request->all();
+      $payment_number = $input['payment_number'];
+      $query = TournamentsRegister::where('tournament_id', $id);
+      if ($payment_number) {
+        $query->where('payment_number', 'like', '%'.$payment_number.'%');
+      }
+      $data = $query->paginate(40);
+      return view('admin.tournaments.register', ['data' => $data, 'id' => $id]);
     }
 
     // Show Teams

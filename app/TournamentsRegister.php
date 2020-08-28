@@ -3,7 +3,7 @@
 namespace App;
 use App\Tournaments;
 use App\Teams;
-use App\Users;
+use App\User;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,6 +34,6 @@ class TournamentsRegister extends Model
   }
   public function user()
   {
-    return $this->hasOne(Users::class, 'id', 'user_id');
+    return $this->hasOne(User::class, 'id', 'user_id');
   }
 }
