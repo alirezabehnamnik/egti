@@ -131,6 +131,11 @@ $(".collapse-li").on('click', function (event) {
       language: "fa",
       multiple: true,
     });
+    $('#game_id_admin').select2({
+      theme: 'bootstrap4',
+      placeholder: 'انتخاب کنید',
+      language: "fa",
+    });
     $('#team_id').select2({
       theme: 'bootstrap4',
       placeholder: 'انتخاب کنید',

@@ -21,7 +21,7 @@ class Teams extends Model
    */
   protected $fillable = [
       'name', 'tag', 'logo', 'user_id', 'players_id', 'standin_id', 'game_id', 'enabled'
-    ];
+  ];
 
   /**
    * The attributes that should be cast to native types.

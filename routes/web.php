@@ -51,7 +51,13 @@ Route::group(['prefix' => 'admin'] , function() {
     // Tournaments
     Route::group(['prefix' => 'tournaments'] , function() {
         Route::get('/' , 'AdminController@showTournaments')->name('admin_tournaments');
-        Route::get('/add' , 'AdminController@addTournamentShow')->name('admin_tournament_add');
+        Route::get('/add' , 'AdminController@showAddTournament')->name('admin_tournament_add');
+        Route::post('/add' , 'AdminController@saveAddTournament')->name('admin_tournament_add_save');
+        Route::get('/search' , 'AdminController@searchTournament')->name('admin_tournament_search');
+        Route::get('/edit/{id}' , 'AdminController@showEditTournament')->name('admin_tournament_edit');
+        Route::post('/edit/{id}' , 'AdminController@saveEditTournament')->name('admin_tournament_edit_save');
+        Route::get('/toggleStatus/{id}' , 'AdminController@toggleTournamentStatus')->name('admin_tournament_toggle_status');
+        Route::get('/endregister/{id}' , 'AdminController@endTournamentRegister')->name('admin_tournament_end_register');
     });
     // Teams
     Route::get('/teams' , 'AdminController@showTeams')->name('admin_teams');

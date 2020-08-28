@@ -7,6 +7,7 @@ use App\State;
 use App\City;
 use App\MyGames;
 use App\Games;
+use App\Tournaments;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,6 +43,12 @@ class AdminController extends Controller
           return redirect()->route('admin_show_login')
               ->with('error','نام کاربری و یا رمزعبور اشتباه است.');
       }
+    }
+
+    // Logout form
+    public function logout(Request $request) {
+      Auth::guard('admins')->logout();
+      return redirect('admin/login');
     }
 
     // Settings
@@ -286,7 +293,7 @@ class AdminController extends Controller
       unset($request['_token']);
       $validated = $request->validate([
         'name' => ['required', 'string', 'max:255'],
-        'tag' => ['required', 'string', 'max:255', 'unique:games'],
+        'tag' => ['required', 'string', 'max:255'],
         'avatar' => ['dimensions:min_width=645,min_height=300', 'mimes:jpeg,jpg,png'],
       ]);
       if ($request['avatar']) {
@@ -322,7 +329,7 @@ class AdminController extends Controller
       return view('admin.games.add');
     }
 
-    // Save Game Edit
+    // Save Game
     public function saveAddGame(Request $request)
     {
       unset($request['_token']);
@@ -343,6 +350,144 @@ class AdminController extends Controller
           'enabled' => 1,
       ]);
       return redirect()->back()->with('message', 'بازی جدید با موفقیت افزوده شد.');
+    }
+
+    // Tournaments
+    public function showTournaments()
+    {
+      $games = Games::where('enabled', 1)->get();
+      $data = Tournaments::paginate(40);
+      return view('admin.tournaments.index', ['data' => $data, 'games' => $games]);
+    }
+
+    // Tournament Edit Show
+    public function showEditTournament($id)
+    {
+      $data = Tournaments::where('id', $id)->first();
+      $games = Games::where('enabled', 1)->get();
+      return view('admin.tournaments.edit', ['data' => $data, 'games' => $games]);
+    }
+
+    // Tournament Edit Save
+    public function saveEditTournament(Request $request, $id)
+    {
+      unset($request['_token']);
+      $validated = $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'tag' => ['required', 'string', 'max:255'],
+        'avatar' => ['dimensions:min_width=256,min_height=256', 'mimes:png'],
+        'game_id' => ['required'],
+      ]);
+      if ($request['avatar']) {
+          $extension = $request['avatar']->extension();
+          $name = $request['tag'].".".$extension;
+          $url = $request->file('avatar')->move(public_path('\images\tournaments'), $name);
+          $request->request->add(['image' => $name]);
+          $req = request()->only(['name', 'tag', 'game_id', 'image', 'start_date', 'end_date', 'entry_price', 'max_teams', 'player_per_team', 'prize_pool', 'fplace_reward', 'splace_reward', 'tplace_reward', 'foplace_reward', 'fiplace_reward']);
+          Tournaments::where('id', $id)->update($req);
+      } else {
+          Tournaments::where('id', $id)->update(request()->all());
+      }
+      return redirect()->back()->with('message', 'مسابقه با موفقیت بروزرسانی شد.');
+    }
+
+    // Tournament Add Show
+    public function showAddTournament()
+    {
+      $games = Games::where('enabled', 1)->get();
+      return view('admin.tournaments.add', ['games' => $games]);
+    }
+
+    // Save Tournament
+    public function saveAddTournament(Request $request)
+    {
+      unset($request['_token']);
+      $validated = $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'tag' => ['required', 'string', 'max:255', 'unique:tournaments'],
+        'avatar' => ['required', 'dimensions:min_width=256,min_height=256', 'mimes:png'],
+        'game_id' => ['required'],
+      ]);
+      $extension = $request['avatar']->extension();
+      $name = $request['tag'].".".$extension;
+      $url = $request->file('avatar')->move(public_path('\images\games'), $name);
+      $d = Tournaments::create([
+          'name' => $request['name'],
+          'tag' => $request['tag'],
+          'game_id' => $request['game_id'],
+          'image' => $name,
+          'start_date' => $request['start_date'],
+          'end_date' => $request['end_date'],
+          'entry_price' => $request['entry_price'],
+          'max_teams' => $request['max_teams'],
+          'player_per_team' => $request['player_per_team'],
+          'prize_pool' => $request['prize_pool'],
+          'fplace_reward' => $request['fplace_reward'],
+          'splace_reward' => $request['splace_reward'],
+          'tplace_reward' => $request['tplace_reward'],
+          'foplace_reward' => $request['foplace_reward'],
+          'fiplace_reward' => $request['fiplace_reward'],
+          'enabled' => 1,
+      ]);
+      return redirect()->back()->with('message', 'مسابقه جدید با موفقیت افزوده شد.');
+    }
+
+    // Toggle Tournament Status
+    public function toggleTournamentStatus($id)
+    {
+      $d = Tournaments::select('enabled')->where('id', $id)->first();
+      $d = $d->enabled;
+      if ($d == 1) {
+        $d = 0;
+      } elseif ($d == 0) {
+        $d = 1;
+      }
+      Tournaments::where('id', $id)->update(['enabled' => $d]);
+      return redirect()->back()->with('message', 'وضعیت مسابقه با موفقیت تغییر کرد.');
+    }
+
+    // End Register Tournament
+    public function endTournamentRegister($id)
+    {
+      Tournaments::where('id', $id)->update(['enabled' => -1]);
+      return redirect()->back()->with('message', '.');
+    }
+
+    public function searchTournament(Request $request)
+    {
+      $input = $request->all();
+      $id = $input['id'];
+      $name = $input['name'];
+      $tag = $input['tag'];
+      $game_id = $input['game_id'];
+      $start_date = $input['start_date'];
+      $end_date = $input['end_date'];
+      $enabled = $input['enabled'];
+      $query = Tournaments::select('id', 'name', 'tag', 'game_id', 'start_date', 'end_date', 'enabled');
+      if ($id) {
+        $query->where('id', $id);
+      }
+      if ($name) {
+        $query->where('name', 'like', '%'.$name.'%');
+      }
+      if ($tag) {
+        $query->where('tag', 'like', '%'.$tag.'%');
+      }
+      if ($game_id) {
+        $query->where('game_id', $game_id);
+      }
+      if ($start_date) {
+        $query->where('start_date', 'like', '%'.$start_date.'%');
+      }
+      if ($end_date) {
+        $query->where('end_date', 'like', '%'.$end_date.'%');
+      }
+      if ($enabled) {
+        $query->where('enabled', $enabled);
+      }
+      $data = $query->paginate(40);
+      $games = Games::where('enabled', 1)->get();
+      return view('admin.tournaments.index', ['data' => $data, 'games' => $games]);
     }
 
 }

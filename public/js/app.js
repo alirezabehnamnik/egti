@@ -36843,6 +36843,11 @@ $(document).ready(function () {
     language: "fa",
     multiple: true
   });
+  $('#game_id_admin').select2({
+    theme: 'bootstrap4',
+    placeholder: 'انتخاب کنید',
+    language: "fa"
+  });
   $('#team_id').select2({
     theme: 'bootstrap4',
     placeholder: 'انتخاب کنید',

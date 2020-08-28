@@ -14,6 +14,10 @@ class Tournaments extends Model
    */
   protected $table = 'tournaments';
 
+  protected $fillable = [
+  'name', 'tag', 'game_id', 'image', 'start_date', 'end_date', 'entry_price', 'max_teams', 'player_per_team', 'prize_pool', 'fplace_reward', 'splace_reward', 'tplace_reward', 'foplace_reward', 'fiplace_reward', 'enabled'
+  ];
+
   public function trResult()
   {
       return $this->hasOne(TournamentsResults::class, 'tournaments_id');
