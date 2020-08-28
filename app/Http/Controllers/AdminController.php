@@ -10,6 +10,7 @@ use App\Games;
 use App\Tournaments;
 use App\Teams;
 use App\TournamentsRegister;
+use App\TournamentsResults;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -536,6 +537,7 @@ class AdminController extends Controller
       return view('admin.tournaments.register', ['data' => $data, 'id' => $id]);
     }
 
+    // Tournament Register Search
     public function searchTournamentRegister(Request $request, $id)
     {
       $input = $request->all();
@@ -546,6 +548,35 @@ class AdminController extends Controller
       }
       $data = $query->paginate(40);
       return view('admin.tournaments.register', ['data' => $data, 'id' => $id]);
+    }
+
+    public function tournamentResultShow()
+    {
+      $tournaments = Tournaments::where('enabled', -1)->get();
+      $teams = Teams::where('enabled', 1)->get();
+      return view('admin.tournaments.result', ['tournaments' => $tournaments, 'teams' => $teams]);
+    }
+
+    public function tournamentResultAdd(Request $request)
+    {
+      unset($request['_token']);
+      $validated = $request->validate([
+        'tournaments_id' => ['required'],
+        'fplace_id' => ['required'],
+        'splace_id' => ['required'],
+        'tplace_id' => ['required'],
+      ]);
+      $d = TournamentsResults::create([
+          'tournaments_id' => $request['tournaments_id'],
+          'fplace_id' => $request['fplace_id'],
+          'splace_id' => $request['splace_id'],
+          'tplace_id' => $request['tplace_id'],
+          'foplace_id' => $request['foplace_id'],
+          'fiplace_id' => $request['fiplace_id'],
+          'enabled' => 1,
+      ]);
+      Tournaments::where('id', $request['tournaments_id'])->update(['enabled' => 2]);
+      return redirect()->back()->with('message', 'نتیجه مسابقه با موفقیت افزوده شد.');
     }
 
     // Show Teams

@@ -22,7 +22,7 @@ class TournamentsRegister extends Model
    */
   protected $fillable = [
       'team_id', 'tournament_id', 'user_id', 'enabled'
-    ];
+  ];
 
   public function tournament()
   {

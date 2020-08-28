@@ -13,6 +13,10 @@ class TournamentsResults extends Model
    */
   protected $table = 'tournaments_results';
 
+  protected $fillable = [
+      'tournaments_id', 'fplace_id', 'splace_id', 'tplace_id', 'foplace_id', 'fiplace_id',  'enabled'
+  ];
+
   public function fplace()
   {
     return $this->hasOne(Teams::class, 'id', 'fplace_id');

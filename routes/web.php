@@ -62,6 +62,8 @@ Route::group(['prefix' => 'admin'] , function() {
         Route::get('/endregister/{id}' , 'AdminController@endTournamentRegister')->name('admin_tournament_end_register');
         Route::get('/registers/{id}' , 'AdminController@showRegister')->name('admin_tournament_register');
         Route::get('/registers/{id}/search' , 'AdminController@searchTournamentRegister')->name('admin_tournament_register_search');
+        Route::get('/result' , 'AdminController@tournamentResultShow')->name('admin_tournament_result');
+        Route::post('/result' , 'AdminController@tournamentResultAdd')->name('admin_tournament_result_add');
     });
     // Teams
     Route::group(['prefix' => 'teams'] , function() {

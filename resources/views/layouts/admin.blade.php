@@ -110,6 +110,11 @@
                   <i class="fas fa-plus" aria-hidden="true"></i> افزودن
                 </li>
               </a>
+              <a href="{{route('admin_tournament_result')}}">
+                <li class="nav-list-item">
+                  <i class="fas fa-plus-square" aria-hidden="true"></i> افزودن نتیجه
+                </li>
+              </a>
             </div>
 
             <a href="{{route('admin_teams')}}">
