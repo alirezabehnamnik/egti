@@ -33,6 +33,8 @@ class CreateUsersTable extends Migration
             $table->string('riot')->nullable();
             $table->string('mygames')->nullable();
             $table->string('platforms_id')->nullable();
+            $table->string('reason')->nullable();
+            $table->smallInteger('enabled')->default(1);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

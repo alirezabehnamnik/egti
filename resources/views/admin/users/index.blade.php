@@ -42,6 +42,7 @@
             <th scope="col">نام کاربری</th>
             <th scope="col">ایمیل</th>
             <th scope="col">شماره تلفن</th>
+            <th scope="col">دلیل بن</th>
             <th scope="col">عملیات</th>
           </tr>
         </thead>
@@ -54,6 +55,7 @@
               <td> {{$v->username}} </td>
               <td> {{$v->email}} </td>
               <td> {{$v->phone_number}} </td>
+              <td> {{$v->reason}} </td>
               <td class="text-center">
                 <a href="{{route('user_profile', ['username' => $v->username])}}" target="_blank" data-toggle="tooltip" data-placement="top" title="نمایش">
                   <button type="button" class="btn btn-sm btn-info" name="button">
@@ -65,9 +67,13 @@
                     <i class="far fa-edit" aria-hidden="true"></i>
                   </button>
                 </a>
-                <a href="#">
-                  <button type="button" class="btn btn-sm btn-danger" name="button" data-toggle="tooltip" data-placement="top" title="غیرفعال">
-                    <i class="far fa-trash-alt" aria-hidden="true"></i>
+                <a href="{{route('admin_user_disable', ['id' => $v->id])}}" data-toggle="tooltip" data-placement="top" @if ($v->enabled == 1) title="بن" @else title="آنبن" @endif>
+                  <button type="button" class="btn btn-sm btn-danger" name="button">
+                    @if ($v->enabled == 1)
+                    <i class="fas fa-ban" aria-hidden="true"></i>
+                    @else
+                    <i class="fas fa-undo" aria-hidden="true"></i>
+                    @endif
                   </button>
                 </a>
               </td>

@@ -176,6 +176,7 @@ class AdminController extends Controller
       return view('admin.users.index', ['data' => $data]);
     }
 
+    // Search User
     public function searchUser(Request $request)
     {
       $input = $request->all();
@@ -211,6 +212,7 @@ class AdminController extends Controller
       return view('admin.users.edit', ['data' => $data]);
     }
 
+    // Edit User Save
     public function saveEditUser(Request $request, $id)
     {
       if (!$request['password']) {
@@ -237,6 +239,7 @@ class AdminController extends Controller
       return view('admin.users.add', ['state' => $state, 'games_list' => $games_list]);
     }
 
+    // Add User Save
     public function addUser(Request $request)
     {
       $validated = $request->validate([
@@ -272,6 +275,35 @@ class AdminController extends Controller
     public function getcities($id) {
       $cities = State::find($id)->City;
       return response()->json($cities);
+    }
+
+    // Disable User Show
+    public function disbaleUserShow($id)
+    {
+      $data = User::where('id', $id)->first();
+      if ($data->enabled == 0) {
+        User::where('id', $id)->update([
+          'reason' => "",
+          'enabled' => 1,
+        ]);
+        return redirect('/admin/users');
+      } else {
+        return view('admin.users.disable', ['id' => $id]);
+      }
+    }
+
+    // Disable User Save
+    public function disableUserSave(Request $request, $id)
+    {
+      unset($request['_token']);
+      $validated = $request->validate([
+        'reason' => ['required'],
+      ]);
+      User::where('id', $id)->update([
+        'reason' => $request['reason'],
+        'enabled' => 0,
+      ]);
+      return redirect('/admin/users');
     }
 
     // Games

@@ -4,6 +4,7 @@
 
 <div class="container-fluid">
 
+  @if ($data->enabled == 1)
   <div class="row">
     <div class="col-md-2">
       <div class="sidebar">
@@ -274,6 +275,18 @@
       </div>
     </div>
   </div>
+  @else
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <div class="alert alert-danger">
+        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i> این کاربر توسط مدیریت بن شده است. دلیل: <b> {{$data->reason}} </b>
+      </div>
+    </div>
+  </div>
+
+  @endif
+
 </div>
 
 
