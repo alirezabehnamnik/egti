@@ -53,7 +53,7 @@
             </div>
 
             <div class="form-group row">
-                <label for="game_id_admin" class="col-md-4 col-form-label text-md-right">{{ __('بازی:') }} </label>
+                <label for="game_id" class="col-md-4 col-form-label text-md-right">{{ __('بازی:') }} </label>
 
                 <div class="col-md-6">
                   <select class="form-control @error('game_id') is-invalid @enderror" id="game_id_admin" name="game_id">

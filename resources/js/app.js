@@ -142,5 +142,37 @@ $(".collapse-li").on('click', function (event) {
       language: "fa",
     });
 
+    // Admin Panel
+    $('#tournaments_id').select2({
+      theme: 'bootstrap4',
+      placeholder: 'انتخاب کنید',
+      language: "fa",
+    });
+    $('#fplace_id').select2({
+      theme: 'bootstrap4',
+      placeholder: 'انتخاب کنید',
+      language: "fa",
+    });
+    $('#splace_id').select2({
+      theme: 'bootstrap4',
+      placeholder: 'انتخاب کنید',
+      language: "fa",
+    });
+    $('#tplace_id').select2({
+      theme: 'bootstrap4',
+      placeholder: 'انتخاب کنید',
+      language: "fa",
+    });
+    $('#foplace_id').select2({
+      theme: 'bootstrap4',
+      placeholder: 'انتخاب کنید',
+      language: "fa",
+    });
+    $('#fiplace_id').select2({
+      theme: 'bootstrap4',
+      placeholder: 'انتخاب کنید',
+      language: "fa",
+    });
+
 
 });

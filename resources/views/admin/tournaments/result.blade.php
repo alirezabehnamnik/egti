@@ -20,10 +20,10 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="reason" class="col-md-4 col-form-label text-md-right">{{ __('مسابقه:') }} </label>
+                            <label for="tournaments_id" class="col-md-4 col-form-label text-md-right">{{ __('مسابقه:') }} </label>
 
                             <div class="col-md-6">
-                              <select class="form-control mb-2 mr-sm-2" id="game_id_admin" name="tournaments_id">
+                              <select class="form-control mb-2 mr-sm-2" id="tournaments_id" name="tournaments_id">
                                 <option></option>
                                 @foreach ($tournaments as $v)
                                 <option value="{{$v->id}}">{{$v->name}} - {{$v->tag}}</option>
@@ -42,7 +42,7 @@
                             <label for="fplace_id" class="col-md-4 col-form-label text-md-right">{{ __('تیم اول:') }} </label>
 
                             <div class="col-md-6">
-                              <select class="form-control mb-2 mr-sm-2" id="game_id_admin" name="fplace_id">
+                              <select class="form-control mb-2 mr-sm-2" id="fplace_id" name="fplace_id">
                                 <option></option>
                                 @foreach ($teams as $v)
                                 <option value="{{$v->id}}">{{$v->name}} - {{$v->tag}}</option>
@@ -61,7 +61,7 @@
                             <label for="splace_id" class="col-md-4 col-form-label text-md-right">{{ __('تیم دوم:') }} </label>
 
                             <div class="col-md-6">
-                              <select class="form-control mb-2 mr-sm-2" id="game_id_admin" name="splace_id">
+                              <select class="form-control mb-2 mr-sm-2" id="splace_id" name="splace_id">
                                 <option></option>
                                 @foreach ($teams as $v)
                                 <option value="{{$v->id}}">{{$v->name}} - {{$v->tag}}</option>
@@ -80,7 +80,7 @@
                             <label for="tplace_id" class="col-md-4 col-form-label text-md-right">{{ __('تیم سوم:') }} </label>
 
                             <div class="col-md-6">
-                              <select class="form-control mb-2 mr-sm-2" id="game_id_admin" name="tplace_id">
+                              <select class="form-control mb-2 mr-sm-2" id="tplace_id" name="tplace_id">
                                 <option></option>
                                 @foreach ($teams as $v)
                                 <option value="{{$v->id}}">{{$v->name}} - {{$v->tag}}</option>
@@ -99,7 +99,7 @@
                             <label for="foplace_id" class="col-md-4 col-form-label text-md-right">{{ __('تیم چهارم:') }} </label>
 
                             <div class="col-md-6">
-                              <select class="form-control mb-2 mr-sm-2" id="game_id_admin" name="foplace_id">
+                              <select class="form-control mb-2 mr-sm-2" id="foplace_id" name="foplace_id">
                                 <option></option>
                                 @foreach ($teams as $v)
                                 <option value="{{$v->id}}">{{$v->name}} - {{$v->tag}}</option>
@@ -118,7 +118,7 @@
                             <label for="fiplace_id" class="col-md-4 col-form-label text-md-right">{{ __('تیم پنجم') }} </label>
 
                             <div class="col-md-6">
-                              <select class="form-control mb-2 mr-sm-2" id="game_id_admin" name="fiplace_id">
+                              <select class="form-control mb-2 mr-sm-2" id="fiplace_id" name="fiplace_id">
                                 <option></option>
                                 @foreach ($teams as $v)
                                 <option value="{{$v->id}}">{{$v->name}} - {{$v->tag}}</option>

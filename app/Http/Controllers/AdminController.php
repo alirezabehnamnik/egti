@@ -553,7 +553,7 @@ class AdminController extends Controller
     public function tournamentResultShow()
     {
       $tournaments = Tournaments::where('enabled', -1)->get();
-      $teams = Teams::where('enabled', 1)->get();
+      $teams = Teams::where('enabled', '!=', 0)->get();
       return view('admin.tournaments.result', ['tournaments' => $tournaments, 'teams' => $teams]);
     }
 
