@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'name', 'email', 'password', 'family', 'state_id', 'city_id', 'address', 'phone_number', 'steam', 'uplay', 'epicgames', 'riot', 'mygames', 'platforms_id', 'avatar'
+        'username', 'name', 'email', 'password', 'family', 'state_id', 'city_id', 'address', 'phone_number', 'steam', 'uplay', 'epicgames', 'riot', 'mygames', 'platforms_id', 'avatar', 'enabled'
     ];
 
     /**

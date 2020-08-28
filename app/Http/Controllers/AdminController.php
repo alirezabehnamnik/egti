@@ -185,7 +185,8 @@ class AdminController extends Controller
       $email = $input['email'];
       $family = $input['family'];
       $phone_number = $input['phone_number'];
-      $query = User::select('id', 'username', 'email', 'family', 'phone_number');
+      $enabled = $input['enabled'];
+      $query = User::select('id', 'username', 'email', 'family', 'phone_number', 'enabled');
       if ($id) {
         $query->where('id', $id);
       }
@@ -200,6 +201,9 @@ class AdminController extends Controller
       }
       if ($phone_number) {
         $query->where('phone_number', 'like', '%'.$phone_number.'%');
+      }
+      if ($enabled >= 0) {
+        $query->where('enabled', $enabled);
       }
       $data = $query->paginate(100);
       return view('admin.users.index', ['data' => $data]);
@@ -516,7 +520,7 @@ class AdminController extends Controller
       if ($end_date) {
         $query->where('end_date', 'like', '%'.$end_date.'%');
       }
-      if ($enabled) {
+      if ($enabled >= 0) {
         $query->where('enabled', $enabled);
       }
       $data = $query->paginate(40);
@@ -578,7 +582,7 @@ class AdminController extends Controller
       if ($user_id) {
         $query->where('user_id', $user_id);
       }
-      if ($enabled) {
+      if ($enabled >= 0) {
         $query->where('enabled', $enabled);
       }
       $data = $query->paginate(40);

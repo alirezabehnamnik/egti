@@ -23,7 +23,10 @@
             <input type="text" class="form-control mb-2 mr-sm-2" name="email" placeholder="ایمیل">
             <input type="text" class="form-control mb-2 mr-sm-2" name="family" placeholder="نام خانوادگی">
             <input type="text" class="form-control mb-2 mr-sm-2" name="phone_number" placeholder="شماره تلفن">
-
+            <select class="form-control mb-2 mr-sm-2" name="enabled">
+              <option value="0"> بن شده </option>
+              <option value="1"> فعال </option>
+            </select>
             <button type="submit" class="btn btn-primary mb-2">جستجو</button>
           </form>
         </div>
