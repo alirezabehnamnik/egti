@@ -60,7 +60,13 @@ Route::group(['prefix' => 'admin'] , function() {
         Route::get('/endregister/{id}' , 'AdminController@endTournamentRegister')->name('admin_tournament_end_register');
     });
     // Teams
-    Route::get('/teams' , 'AdminController@showTeams')->name('admin_teams');
+    Route::group(['prefix' => 'teams'] , function() {
+        Route::get('/' , 'AdminController@showTeams')->name('admin_teams');
+        Route::get('/search' , 'AdminController@searchTeam')->name('admin_team_search');
+        Route::get('/edit/{id}' , 'AdminController@showEditTeam')->name('admin_team_edit');
+        Route::post('/edit/{id}' , 'AdminController@saveEditTeam')->name('admin_team_edit_save');
+        Route::get('/toggleStatus/{id}' , 'AdminController@toggleTeamStatus')->name('admin_team_toggle_status');
+    });
 });
 
 // Games Routes

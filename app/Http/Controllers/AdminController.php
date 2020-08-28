@@ -8,6 +8,7 @@ use App\City;
 use App\MyGames;
 use App\Games;
 use App\Tournaments;
+use App\Teams;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -450,9 +451,10 @@ class AdminController extends Controller
     public function endTournamentRegister($id)
     {
       Tournaments::where('id', $id)->update(['enabled' => -1]);
-      return redirect()->back()->with('message', '.');
+      return redirect()->back()->with('message', 'وضعیت مسابقه با موفقیت تغییر کرد.');
     }
 
+    // Search Tournamnet
     public function searchTournament(Request $request)
     {
       $input = $request->all();
@@ -488,6 +490,82 @@ class AdminController extends Controller
       $data = $query->paginate(40);
       $games = Games::where('enabled', 1)->get();
       return view('admin.tournaments.index', ['data' => $data, 'games' => $games]);
+    }
+
+    // Show Teams
+    public function showTeams()
+    {
+      $data = Teams::paginate(40);
+      $users = User::all();
+      return view('admin.teams.index', ['data' => $data, 'users' => $users]);
+    }
+
+    // Team Edit Show
+    public function showEditTeam($id)
+    {
+      $data = Teams::where('id', $id)->first();
+      $games = Games::where('enabled', 1)->get();
+      return view('admin.teams.edit', ['data' => $data, 'games' => $games]);
+    }
+
+    // Team Edit Save
+    public function saveEditTeam(Request $request, $id)
+    {
+      unset($request['_token']);
+      $validated = $request->validate([
+        'name' => ['required'],
+        'tag' => ['required'],
+      ]);
+      if ($request['resetAvatar'] == 1) {
+        $request->request->add(['logo' => 'default.png']);
+        unset($request['resetAvatar']);
+      }
+      Teams::where('id', $id)->update(request()->all());
+      return redirect()->back()->with('message', 'اطلاعات تیم با موفقیت ویرایش شد.');
+    }
+
+    // Search Tournamnet
+    public function searchTeam(Request $request)
+    {
+      $input = $request->all();
+      $id = $input['id'];
+      $name = $input['name'];
+      $tag = $input['tag'];
+      $user_id = $input['user_id'];
+      $enabled = $input['enabled'];
+      $query = Teams::select('id', 'name', 'tag', 'user_id', 'enabled');
+      if ($id) {
+        $query->where('id', $id);
+      }
+      if ($name) {
+        $query->where('name', 'like', '%'.$name.'%');
+      }
+      if ($tag) {
+        $query->where('tag', 'like', '%'.$tag.'%');
+      }
+      if ($user_id) {
+        $query->where('user_id', $user_id);
+      }
+      if ($enabled) {
+        $query->where('enabled', $enabled);
+      }
+      $data = $query->paginate(40);
+      $users = User::all();
+      return view('admin.teams.index', ['data' => $data, 'users' => $users]);
+    }
+
+    // End Register Tournament
+    public function toggleTeamStatus($id)
+    {
+      $d = Teams::select('enabled')->where('id', $id)->first();
+      $d = $d->enabled;
+      if ($d == 1 || $d == 2) {
+        $d = 0;
+      } elseif ($d == 0) {
+        $d = 1;
+      }
+      Teams::where('id', $id)->update(['enabled' => $d]);
+      return redirect()->back()->with('message', 'وضعیت تیم با موفقیت تغییر کرد.');
     }
 
 }
