@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'MainController@index')->name('home');
+Route::get('404', 'MainController@notFound')->name('notFound');
 
 // Admin Route
 Route::group(['prefix' => 'admin'] , function() {

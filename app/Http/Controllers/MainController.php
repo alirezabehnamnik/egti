@@ -21,4 +21,9 @@ class MainController extends Controller
       $partners = Partners::where('enabled', 1)->get();
       return view('welcome',  ['setting' => $setting, 'games_list' => $games_list, 'tournaments' => $tournaments, 'sponsers' => $sponsers, 'partners' => $partners]);
     }
+
+    public function notFound()
+    {
+      return view('404');
+    }
 }

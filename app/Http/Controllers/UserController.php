@@ -15,6 +15,9 @@ class UserController extends Controller
     public function index($username)
     {
       $data = User::where('username', $username)->first();
+      if (!$data) {
+        return redirect('/404');
+      }
       $games = null;
       if ($data->mygames) {
         $games = MyGames::select('name')->whereIn('id', $data->mygames)->get();

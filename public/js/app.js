@@ -39058,6 +39058,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 /***/ }),
 
+/***/ "./resources/sass/404.scss":
+/*!*********************************!*\
+  !*** ./resources/sass/404.scss ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -39070,15 +39081,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 /***/ }),
 
 /***/ 0:
-/*!***********************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./node_modules/select2/dist/js/select2.min.js ./resources/sass/app.scss ***!
-  \***********************************************************************************************************/
+/*!*************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./node_modules/select2/dist/js/select2.min.js ./resources/sass/app.scss ./resources/sass/404.scss ***!
+  \*************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\xampp_new\htdocs\egaming\v3\resources\js\app.js */"./resources/js/app.js");
 __webpack_require__(/*! C:\xampp_new\htdocs\egaming\v3\node_modules\select2\dist\js\select2.min.js */"./node_modules/select2/dist/js/select2.min.js");
-module.exports = __webpack_require__(/*! C:\xampp_new\htdocs\egaming\v3\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp_new\htdocs\egaming\v3\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\xampp_new\htdocs\egaming\v3\resources\sass\404.scss */"./resources/sass/404.scss");
 
 
 /***/ })
