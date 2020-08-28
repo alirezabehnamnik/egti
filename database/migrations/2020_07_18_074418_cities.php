@@ -19,7 +19,7 @@ class Cities extends Migration
           $table->string('tag')->unique();
           $table->unsignedBigInteger('state_id');
           $table->foreign('state_id')->references('id')->on('states');
-          $table->string('enabled');
+          $table->smallInteger('enabled')->default(1);
           $table->timestamps();
       });
     }

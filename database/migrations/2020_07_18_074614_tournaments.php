@@ -32,7 +32,7 @@ class Tournaments extends Migration
           $table->Integer('tplace_reward')->nullable();
           $table->Integer('foplace_reward')->nullable();
           $table->Integer('fiplace_reward')->nullable();
-          $table->string('enabled');
+          $table->smallInteger('enabled')->default(1);
           $table->timestamps();
       });
     }

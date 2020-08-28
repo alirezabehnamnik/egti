@@ -18,7 +18,7 @@ class Sponsers extends Migration
           $table->string('name');
           $table->string('image');
           $table->string('url')->nullable();
-          $table->string('enabled');
+          $table->smallInteger('enabled')->default(1);
           $table->timestamps();
       });
     }

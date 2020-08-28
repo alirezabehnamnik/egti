@@ -17,7 +17,7 @@ class States extends Migration
           $table->id();
           $table->string('name');
           $table->string('tag')->unique();
-          $table->string('enabled');
+          $table->smallInteger('enabled')->default(1);
           $table->timestamps();
       });
     }

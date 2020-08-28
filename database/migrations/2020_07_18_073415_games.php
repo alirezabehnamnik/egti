@@ -19,7 +19,7 @@ class Games extends Migration
           $table->string('tag')->unique();
           $table->string('image');
           $table->string('platforms');
-          $table->string('enabled');
+          $table->smallInteger('enabled')->default(1);
           $table->timestamps();
       });
     }

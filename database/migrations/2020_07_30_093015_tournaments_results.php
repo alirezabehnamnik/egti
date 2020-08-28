@@ -27,7 +27,7 @@ class TournamentsResults extends Migration
           $table->foreign('foplace_id')->references('id')->on('teams');
           $table->unsignedBigInteger('fiplace_id')->nullable();
           $table->foreign('fiplace_id')->references('id')->on('teams');
-          $table->unsignedBigInteger('enabled');
+          $table->smallInteger('enabled')->default(1);
           $table->timestamps();
       });
     }
