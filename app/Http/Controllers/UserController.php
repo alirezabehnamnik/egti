@@ -16,7 +16,7 @@ class UserController extends Controller
     {
       $data = User::where('username', $username)->first();
       if (!$data) {
-        return redirect('/404');
+        abort(404);
       }
       $games = null;
       if ($data->mygames) {

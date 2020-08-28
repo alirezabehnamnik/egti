@@ -17,6 +17,9 @@ class TeamsController extends Controller
   public function index($tag)
   {
     $data = Teams::where('tag', $tag)->first();
+    if (!$data) {
+      abort(404);
+    }
     $captain = User::where('id', $data->user_id)->first();
     $players = User::whereIn('id', $data->players_id)->get();
     $standin = User::where('id', $data->standin_id)->first();
@@ -133,7 +136,7 @@ class TeamsController extends Controller
     if ($verifyUser) {
       return redirect()->back()->with('message', 'تیم باموفقیت غیر فعال شد!');
     } else {
-      abort(403, 'Access Denied!');
+      abort(401);
     }
   }
 
@@ -157,7 +160,7 @@ class TeamsController extends Controller
       Teams::where('id', $id)->where('user_id', $user_id)->update(['enabled' => 1]);
       return redirect()->back()->with('message', 'تیم باموفقیت فعال شد!');
     } else {
-      abort(403, 'Access Denied!');
+      abort(401);
     }
   }
 
