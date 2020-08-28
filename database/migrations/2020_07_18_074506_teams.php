@@ -24,6 +24,7 @@ class Teams extends Migration
           $table->unsignedBigInteger('standin_id');
           $table->foreign('standin_id')->references('id')->on('users');
           $table->string('game_id');
+          $table->string('reason')->nullable();
           $table->string('enabled');
           $table->timestamps();
       });

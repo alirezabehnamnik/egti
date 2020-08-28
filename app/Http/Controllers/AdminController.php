@@ -554,18 +554,32 @@ class AdminController extends Controller
       return view('admin.teams.index', ['data' => $data, 'users' => $users]);
     }
 
-    // End Register Tournament
-    public function toggleTeamStatus($id)
+    // Disable Team Show
+    public function disbaleTeamShow($id)
     {
-      $d = Teams::select('enabled')->where('id', $id)->first();
-      $d = $d->enabled;
-      if ($d == 1 || $d == 2) {
-        $d = 0;
-      } elseif ($d == 0) {
-        $d = 1;
+      $data = Teams::where('id', $id)->first();
+      if ($data->enabled == 0) {
+        Teams::where('id', $id)->update([
+          'enabled' => 1,
+        ]);
+        return redirect('/admin/teams');
+      } else {
+        return view('admin.teams.disable', ['id' => $id]);
       }
-      Teams::where('id', $id)->update(['enabled' => $d]);
-      return redirect()->back()->with('message', 'وضعیت تیم با موفقیت تغییر کرد.');
+    }
+
+    // Disable Team Save
+    public function disableTeamSave(Request $request, $id)
+    {
+      unset($request['_token']);
+      $validated = $request->validate([
+        'reason' => ['required'],
+      ]);
+      Teams::where('id', $id)->update([
+        'reason' => $request['reason'],
+        'enabled' => 0,
+      ]);
+      return redirect('/admin/teams');
     }
 
 }

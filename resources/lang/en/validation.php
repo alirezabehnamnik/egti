@@ -171,7 +171,8 @@ return [
       //  User edit profile
       'avatar' => 'آواتار',
 
-      //
+      // Admin panel ban
+      'reason' => 'دلیل',
     ],
 
 ];

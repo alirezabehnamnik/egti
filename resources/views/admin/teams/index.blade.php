@@ -95,7 +95,7 @@
                     <i class="far fa-edit" aria-hidden="true"></i>
                   </button>
                 </a>
-                <a href="{{route('admin_team_toggle_status', ['id' => $v->id])}}" data-toggle="tooltip" data-placement="top" @if ($v->enabled == 1 || $v->enabled == 2) title="غیرفعال" @else title="فعال" @endif>
+                <a href="{{route('admin_team_disable', ['id' => $v->id])}}" data-toggle="tooltip" data-placement="top" @if ($v->enabled == 1 || $v->enabled == 2) title="غیرفعال" @else title="فعال" @endif>
                   <button type="button" class="btn btn-sm btn-danger" name="button">
                     @if ($v->enabled == 1 || $v->enabled == 2)
                     <i class="far fa-trash-alt" aria-hidden="true"></i>

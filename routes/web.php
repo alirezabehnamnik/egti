@@ -65,7 +65,8 @@ Route::group(['prefix' => 'admin'] , function() {
         Route::get('/search' , 'AdminController@searchTeam')->name('admin_team_search');
         Route::get('/edit/{id}' , 'AdminController@showEditTeam')->name('admin_team_edit');
         Route::post('/edit/{id}' , 'AdminController@saveEditTeam')->name('admin_team_edit_save');
-        Route::get('/toggleStatus/{id}' , 'AdminController@toggleTeamStatus')->name('admin_team_toggle_status');
+        Route::get('/disable/{id}' , 'AdminController@disbaleTeamShow')->name('admin_team_disable');
+        Route::post('/disable/{id}' , 'AdminController@disableTeamSave')->name('admin_team_disable_save');
     });
 });
 

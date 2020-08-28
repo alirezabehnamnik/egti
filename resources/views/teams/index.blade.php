@@ -374,10 +374,16 @@
       </div>
     </div>
 
+    @elseif ($data->enabled == 0)
+    <div class="col-12 text-center">
+      <div class="alert alert-danger">
+        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>  این تیم توسط مدیریت غیرفعال شده است. دلیل: <b> {{$data->reason}} </b>
+      </div>
+    </div>
     @else
     <div class="col-12 text-center">
       <div class="alert alert-danger">
-        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>  درحال حاضر این تیم غیرفعال می باشد
+        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i> این تیم توسط کاپیتان غیرفعال شده است.
       </div>
     </div>
     @endif
