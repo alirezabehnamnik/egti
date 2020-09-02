@@ -239,6 +239,69 @@
           </div>
           <!-- End Email -->
           <br>
+          <!-- Star About  -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="m-title">
+                <div class="row">
+                  <div class="col-md-3">
+                    تنظیمات درباره ما
+                  </div>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+          <div class="row">
+            <label for="about">متن:</label>
+            <div class="col-sm-6">
+              <textarea name="about" class="form-control" aria-label="With textarea"> {{$data->about}} </textarea>
+            </div>
+          </div>
+          <!-- End About -->
+          <br>
+          <!-- Star Work Time  -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="m-title">
+                <div class="row">
+                  <div class="col-md-3">
+                    تنظیمات ساعات کاری
+                  </div>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+          <div class="row">
+            <label for="about">متن:</label>
+            <div class="col-sm-6">
+              <textarea name="work_time" class="form-control" aria-label="With textarea"> {{$data->work_time}} </textarea>
+            </div>
+          </div>
+          <!-- End Work Time -->
+          <br>
+          <!-- Star Phone  -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="m-title">
+                <div class="row">
+                  <div class="col-md-3">
+                    تنظیمات تلفن تماس
+                  </div>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+          <div class="row">
+            <label for="phone">شماره:</label>
+            <div class="col-sm-6">
+              <textarea name="phone" dir="ltr" class="form-control" aria-label="With textarea"> {{$data->phone}} </textarea>
+            </div>
+          </div>
+          <!-- End Phone -->
+          <br>
           <!-- Start Friends Footer -->
           <div class="row">
             <div class="col-md-12">

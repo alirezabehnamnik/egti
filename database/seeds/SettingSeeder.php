@@ -19,6 +19,9 @@ class SettingSeeder extends Seeder
          'showPartners' => 1,
          'social_networks' => '[{"icon":"instagram-icon.png","title":"Instagram","link":"#"},{"icon":"telegram-icon.png","title":"Telegram","link":"#"},{"icon":"youtube-icon.png","title":"YouTube","link":"#"}]',
          'email' => 'info@e-gaming.ir',
+         'about' => 'درباره ما',
+         'work_time' => 'شنبه تا پنج شنبه: شبانه روزی',
+         'phone' => '09370827288',
          'friends_footer' => '[{"text":"لینک 1","link":"#"},{"text":"لینک 2","link":"#"},{"text":"لینک 3","link":"#"},{"text":"لینک 4","link":"#"}]',
          'link_footer' => '[{"text":"لینک 1","link":"#"},{"text":"لینک 2","link":"#"},{"text":"لینک 3","link":"#"},{"text":"لینک 4","link":"#"}]',
          'learning_footer' => '[{"text":"لینک 1","link":"#"},{"text":"لینک 2","link":"#"},{"text":"لینک 3","link":"#"},{"text":"لینک 4","link":"#"}]'
