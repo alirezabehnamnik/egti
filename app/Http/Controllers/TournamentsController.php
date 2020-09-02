@@ -51,17 +51,13 @@ class TournamentsController extends Controller
 
     public function showRegister($id)
     {
-      if (Auth::check()) {
-        $data = Tournaments::where('id', $id)->first();
-        if (!$data) {
-          abort(404);
-        }
-        $d = $data->game_id;
-        $teams = Teams::where('user_id', Auth::user()->id)->where('game_id', $d)->where('enabled', 1)->get();
-        return view('tournaments.register', ['data' => $data, 'teams' => $teams]);
-      } else {
-        return redirect()->route('login');
+      $data = Tournaments::where('id', $id)->first();
+      if (!$data) {
+        abort(404);
       }
+      $d = $data->game_id;
+      $teams = Teams::where('user_id', Auth::user()->id)->where('game_id', $d)->where('enabled', 1)->get();
+      return view('tournaments.register', ['data' => $data, 'teams' => $teams]);
     }
 
     public function register(Request $request)

@@ -3,6 +3,7 @@
 namespace App;
 use App\State;
 use App\City;
+use Cache;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -48,5 +49,10 @@ class User extends Authenticatable
     public function city()
     {
       return $this->hasOne(City::class, 'id', 'city_id');
+    }
+
+    public function isOnline()
+    {
+      return Cache::has('user-is-online-'.$this->id);
     }
 }

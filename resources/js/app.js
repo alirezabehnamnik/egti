@@ -29,6 +29,26 @@ $('#state_id').change(function(){
    });
    }
 });
+// Load Cities based on selected State in register form
+$('#state_id_all').change(function(){
+   var sid = $(this).val();
+   if(sid){
+   $.ajax({
+      type:"get",
+      url:"/cities/"+sid,
+      success:function(res)
+      {
+           if(res)
+           {
+               $.each(res,function(key,value){
+                   $("#city_id").append('<option value="'+value.id+'">'+value.name+'</option>');
+               });
+           }
+      }
+
+   });
+   }
+});
 
 // Carousel swipe with mouse move
 $(".carousel").swipe({
@@ -142,6 +162,13 @@ $(".collapse-li").on('click', function (event) {
       language: "fa",
     });
 
+    $('#mygames_id').select2({
+      theme: 'bootstrap4',
+      placeholder: 'انتخاب کنید',
+      language: "fa",
+      allowClear: true,
+    });
+
     // Admin Panel
     $('#tournaments_id').select2({
       theme: 'bootstrap4',
@@ -173,6 +200,5 @@ $(".collapse-li").on('click', function (event) {
       placeholder: 'انتخاب کنید',
       language: "fa",
     });
-
 
 });

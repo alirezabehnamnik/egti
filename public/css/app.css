@@ -6235,6 +6235,10 @@ a:hover {
   color: #d90000 !important;
 }
 
+.bg-red {
+  background: #d90000 !important;
+}
+
 .purple {
   color: #9561e2 !important;
 }
@@ -16164,5 +16168,39 @@ main {
 
 .clps-icon.down {
   transform: rotate(-180deg);
+}
+
+.user-list-avatar {
+  float: right;
+  width: 48px;
+}
+
+.users-list-name {
+  float: right;
+}
+
+.user-status {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+}
+
+.user-name {
+  border: 2px solid #ffffff;
+  margin: 0px 2px;
+  padding: 2px 5px;
+  border-radius: 100px;
+  font-size: 17px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.user-name:hover {
+  background: #FFF;
+  color: #4e4e4e;
 }
 

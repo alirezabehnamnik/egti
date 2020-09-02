@@ -11,16 +11,6 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
@@ -45,5 +35,10 @@ class HomeController extends Controller
 
         $tournaments = TournamentsRegister::where('user_id', Auth::user()->id)->limit(4)->get();
         return view('profile.index', ['teams' => $teams, 'tournaments' => $tournaments, 'data' => $array]);
+    }
+
+    public function errorPage($code)
+    {
+      return abort($code);
     }
 }
