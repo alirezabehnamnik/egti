@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'MainController@index')->name('home');
+Route::get('/errorPage/{code}', 'HomeController@errorPage')->name('errorPage');
 
 // Admin Route
 Route::group(['prefix' => 'admin'] , function() {
@@ -27,11 +28,11 @@ Route::group(['prefix' => 'admin'] , function() {
     Route::get('/login' , 'AdminController@showLogin')->name('admin_show_login');
     Route::post('/login' , 'AdminController@login')->name('admin_login');
     Route::post('/logout' , 'AdminController@logout')->name('admin_logout');
-    Route::get('/panel' , 'AdminController@index')->name('admin_panel');
-    Route::get('/settings' , 'AdminController@showSetting')->name('admin_settings');
-    Route::post('/settings' , 'AdminController@updateSetting')->name('admin_settings_update');
+    Route::get('/panel' , 'AdminController@index')->name('admin_panel')->middleware('admin');
+    Route::get('/settings' , 'AdminController@showSetting')->name('admin_settings')->middleware('admin');
+    Route::post('/settings' , 'AdminController@updateSetting')->name('admin_settings_update')->middleware('admin');
     // Users
-    Route::group(['prefix' => 'users'] , function() {
+    Route::group(['prefix' => 'users', 'middleware' => 'admin'] , function() {
         Route::get('/' , 'AdminController@showUsers')->name('admin_users');
         Route::get('/add' , 'AdminController@showAddUser')->name('admin_user_add');
         Route::post('/add' , 'AdminController@addUser')->name('admin_user_save');
@@ -42,7 +43,7 @@ Route::group(['prefix' => 'admin'] , function() {
         Route::post('/disable/{id}' , 'AdminController@disableUserSave')->name('admin_user_disable_save');
     });
     // Games
-    Route::group(['prefix' => 'games'] , function() {
+    Route::group(['prefix' => 'games', 'middleware' => 'admin'] , function() {
         Route::get('/' , 'AdminController@showGames')->name('admin_games');
         Route::get('/add' , 'AdminController@showAddGame')->name('admin_game_add');
         Route::post('/add' , 'AdminController@saveAddGame')->name('admin_game_add_save');
@@ -51,7 +52,7 @@ Route::group(['prefix' => 'admin'] , function() {
         Route::get('/toggleStatus/{id}' , 'AdminController@toggleGameStatus')->name('admin_game_toggle_status');
     });
     // Tournaments
-    Route::group(['prefix' => 'tournaments'] , function() {
+    Route::group(['prefix' => 'tournaments', 'middleware' => 'admin'] , function() {
         Route::get('/' , 'AdminController@showTournaments')->name('admin_tournaments');
         Route::get('/add' , 'AdminController@showAddTournament')->name('admin_tournament_add');
         Route::post('/add' , 'AdminController@saveAddTournament')->name('admin_tournament_add_save');
@@ -66,7 +67,7 @@ Route::group(['prefix' => 'admin'] , function() {
         Route::post('/result' , 'AdminController@tournamentResultAdd')->name('admin_tournament_result_add');
     });
     // Teams
-    Route::group(['prefix' => 'teams'] , function() {
+    Route::group(['prefix' => 'teams', 'middleware' => 'admin'] , function() {
         Route::get('/' , 'AdminController@showTeams')->name('admin_teams');
         Route::get('/search' , 'AdminController@searchTeam')->name('admin_team_search');
         Route::get('/edit/{id}' , 'AdminController@showEditTeam')->name('admin_team_edit');
@@ -84,14 +85,15 @@ Route::get('/game/{id}', 'GamesController@game')->name('game');
 Route::group(['prefix' => 'tournament'] , function() {
     Route::get('/', 'TournamentsController@index')->name('tournaments');
     Route::get('/result/{id}', 'TournamentsController@result')->name('tournament_results');
-    Route::get('/register/{id}', 'TournamentsController@showRegister')->name('show_tr_register');
-    Route::post('/register', 'TournamentsController@register')->name('tr_register');
+    Route::get('/register/{id}', 'TournamentsController@showRegister')->name('show_tr_register')->middleware('auth');
+    Route::post('/register', 'TournamentsController@register')->name('tr_register')->middleware('auth');
 });
 
 // User Route
 Route::get('/user/show/{username}', 'UserController@index')->name('user_profile');
+Route::get('/users', 'UserController@showAll')->name('users_list');
   // Profile Route
-  Route::group(['prefix' => 'profile'] , function() {
+  Route::group(['prefix' => 'profile', 'middleware' => 'auth'] , function() {
       Route::get('/', 'HomeController@index')->name('profile');
       Route::get('/edit', 'ProfileController@edit')->name('edit_profile');
       Route::post('/edit', 'ProfileController@save')->name('save_edit');
@@ -100,15 +102,15 @@ Route::get('/user/show/{username}', 'UserController@index')->name('user_profile'
   // Team Route
   Route::group(['prefix' => 'team'] , function() {
       Route::get('/show/{tag}', 'TeamsController@index')->name('team_profile');
-      Route::get('/create', 'TeamsController@showCreate')->name('create_team');
-      Route::post('/create', 'TeamsController@create')->name('add_team');
-      Route::get('/manage', 'TeamsController@showManage')->name('manage_team');
-      Route::get('/manage/disbale/{id}', 'TeamsController@disableTeam')->name('delete_team');
-      Route::get('/manage/enable/{id}', 'TeamsController@enableTeam')->name('undelete_team');
-      Route::get('/manage/edit/{id}', 'TeamsController@showEdit')->name('edit_team');
+      Route::get('/create', 'TeamsController@showCreate')->name('create_team')->middleware('auth');
+      Route::post('/create', 'TeamsController@create')->name('add_team')->middleware('auth');
+      Route::get('/manage', 'TeamsController@showManage')->name('manage_team')->middleware('auth');
+      Route::get('/manage/disbale/{id}', 'TeamsController@disableTeam')->name('delete_team')->middleware('auth');
+      Route::get('/manage/enable/{id}', 'TeamsController@enableTeam')->name('undelete_team')->middleware('auth');
+      Route::get('/manage/edit/{id}', 'TeamsController@showEdit')->name('edit_team')->middleware('auth');
   });
   // Profile tournaments Route
-  Route::get('/mytournaments', 'TournamentsController@myTournaments')->name('my_tournaments');
+  Route::get('/mytournaments', 'TournamentsController@myTournaments')->name('my_tournaments')->middleware('auth');
 
 
 // Authentication Routes...
@@ -122,6 +124,7 @@ Route::post('register', 'Auth\RegisterController@register');
 
 // Filter Cities base on selected State
 Route::get('/city/{id}','Auth\RegisterController@getcities');
+Route::get('/cities/{id}','UserController@getcities');
 
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
