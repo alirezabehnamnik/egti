@@ -53,8 +53,20 @@
             <td width="64px;" style="padding: 0px;position:relative;"> <img src="/images/avatars/{{$v->avatar}}" width="100%" alt=""> <div class="user-status {{$v->isOnline() ? 'bg-green' : 'bg-red'}}" data-toggle="tooltip" data-placement="top" title="{{$v->isOnline() ? 'آنلاین' : 'آفلاین'}}"></div> </td>
             <td> {{$v->username}} </td>
             <td> {{$v->name}} {{$v->family}} </td>
-            <td> {{$v->state->name}} </td>
-            <td> {{$v->city->name}} </td>
+            <td>
+              @if ($v->privacy_location == 1)
+                {{$v->state->name}}
+              @else
+                مخفی شده توسط کاربر
+              @endif
+            </td>
+            <td>
+              @if ($v->privacy_location == 1)
+                {{$v->city->name}}
+              @else
+                مخفی شده توسط کاربر
+              @endif
+            </td>
             <td>
               @if ($v->mygames)
                 @foreach ($games[$v->username] as $f)

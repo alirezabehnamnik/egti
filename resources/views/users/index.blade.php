@@ -53,16 +53,32 @@
                     <span> نام خانوادگی: <b> {{$data->family}} </b> </span>
                   </div>
                 </div>
+                @if ($data->privacy_location == 1)
+                  <div class="col-md-3">
+                    <div class="user-info">
+                      <span> استان: <b> {{$data->state->name}} </b> </span>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="user-info">
+                      <span> شهر: <b> {{$data->city->name}} </b> </span>
+                    </div>
+                  </div>
+                @endif
+                @if ($data->privacy_email == 1)
+                  <div class="col-md-3">
+                    <div class="user-info">
+                      <span> ایمیل: <b> {{$data->email}} </b> </span>
+                    </div>
+                  </div>
+                @endif
+                @if ($data->privacy_phone == 1)
                 <div class="col-md-3">
                   <div class="user-info">
-                    <span> استان: <b> {{$data->state->name}} </b> </span>
+                    <span> تلفن همراه: <b> {{$data->phone_number}} </b> </span>
                   </div>
                 </div>
-                <div class="col-md-3">
-                  <div class="user-info">
-                    <span> شهر: <b> {{$data->city->name}} </b> </span>
-                  </div>
-                </div>
+                @endif
               </div>
 
               <br>

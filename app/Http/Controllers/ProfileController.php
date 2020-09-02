@@ -36,7 +36,20 @@ class ProfileController extends Controller
           $name = Auth::user()->username.".".$extension;
           $url = $request->file('avatar2')->move(public_path('\images\avatars'), $name);
           $request->request->add(['avatar' => $name]);
-          $req = request()->only(['name', 'family', 'steam', 'uplay', 'epicgames', 'riot', 'mygames', 'platforms_id', 'avatar']);
+          $req = request()->only([
+            'name',
+            'family',
+            'steam',
+            'uplay',
+            'epicgames',
+            'riot',
+            'mygames',
+            'platforms_id',
+            'avatar',
+            'privacy_location',
+            'privacy_email',
+            'privacy_phone',
+          ]);
           User::where('id', Auth::user()->id)->update($req);
       } else {
           User::where('id', Auth::user()->id)->update(request()->all());

@@ -75,6 +75,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if (!request()->only('mygames')) {
+          $data['mygames'] = null;
+        }
+        if (!request()->only('platforms_id')) {
+          $data['platforms_id'] = null;
+        }
         return User::create([
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
@@ -90,6 +96,9 @@ class RegisterController extends Controller
             'epicgames' => $data['epicgames'],
             'riot' => $data['riot'],
             'mygames' => $data['mygames'],
+            'privacy_location' => $data['privacy_location'],
+            'privacy_email' => $data['privacy_email'],
+            'privacy_phone' => $data['privacy_phone'],
             'platforms_id' => $data['platforms_id'],
         ]);
     }

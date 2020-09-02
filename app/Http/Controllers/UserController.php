@@ -43,15 +43,15 @@ class UserController extends Controller
     public function showAll(Request $request)
     {
       if ($request['username'] || $request['state_id'] || $request['city_id'] || $request['mygames']) {
-        $query = User::select('avatar', 'username', 'name', 'family', 'state_id', 'city_id', 'mygames');
+        $query = User::select('avatar', 'username', 'name', 'family', 'state_id', 'city_id', 'mygames', 'privacy_location', 'privacy_email', 'privacy_phone');
         if ($request['username']) {
           $query->where('username', 'like', '%'.$request['username'].'%');
         }
         if ($request['state_id']) {
-          $query->where('state_id', $request['state_id']);
+          $query->where('state_id', $request['state_id'])->where('privacy_location', 1);
         }
         if ($request['city_id']) {
-          $query->where('city_id', $request['city_id']);
+          $query->where('city_id', $request['city_id'])->where('privacy_location', 1);
         }
         if ($v = $request['mygames']) {
           // $query->whereIn('mygames',  $games_input);

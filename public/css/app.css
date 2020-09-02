@@ -6258,6 +6258,11 @@ a:hover {
   padding: 3px 50px;
 }
 
+.fix-radio-btn {
+  margin-right: 0 !important;
+  margin-left: -1.25rem;
+}
+
 .dropdown-item.active,
 .dropdown-item:active {
   background-color: #ff5400 !important;
