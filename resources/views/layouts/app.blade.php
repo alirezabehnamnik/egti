@@ -108,7 +108,7 @@
           <div class="row">
             <div class="footer-top"></div>
 
-            <div class="footer col-md-12">
+            <div class="footer fill col-md-12">
 
               <div class="container">
 
@@ -116,7 +116,7 @@
 
                   <div class="row">
                     <div class="col-md-6 footer-right">
-                      <span> مارا در شبکه ها اجتماعی دنبال کنید: </span>
+                      <span> <i class="far fa-bell" aria-hidden="true"></i> مارا در شبکه ها اجتماعی دنبال کنید: </span>
                       @php
                         $social = json_decode($data->social_networks);
                       @endphp
@@ -137,54 +137,78 @@
                 </div>
 
                 <hr>
-
+                <div class="footer-info">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <i class="fas fa-clipboard-list" aria-hidden="true"></i> درباره ما
+                        <hr>
+                        درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما
+                        درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما درباره ما
+                      </div>
+                      <div class="col-md-3 text-center">
+                        <i class="fas fa-clock" aria-hidden="true"></i>  ساعت کاری پشتیبانی
+                        <hr>
+                        شنبه تا پنج شنبه: شبانه روزی
+                        <br>
+                        <br>
+                        جمعه ها: 15:00 الی 21:00
+                      </div>
+                      <div class="col-md-3 text-center">
+                        <i class="fas fa-phone" aria-hidden="true"></i> تلفن تماس
+                        <hr>
+                        09370827288
+                      </div>
+                    </div>
+                </div>
+                <hr>
                 <div class="footer-info">
                   <div class="row">
 
-                    <div class="footer-links col-md-3">
-                      <h5 style="padding-bottom: 10px;"> دوستان </h5>
-
+                    <div class="footer-links col-md-3 text-center">
+                      <span> <i class="fas fa-users" aria-hidden="true"></i> دوستان </span>
+                      <hr>
                       @php
                         $friends = json_decode($data->friends_footer);
                       @endphp
                       @foreach ($friends as $v)
-                      <a href="{{$v->link}}" target="_blank">
+                      <a class="text-left" href="{{$v->link}}" target="_blank">
                         <li> {{$v->text}} </li>
                       </a>
                       @endforeach
 
                     </div>
 
-                    <div class="footer-links col-md-3">
-                      <h5 style="padding-bottom: 10px;"> لینک های مفید </h5>
-
+                    <div class="footer-links col-md-3 text-center">
+                      <span> <i class="fas fa-link" aria-hidden="true"></i> لینک های مفید </span>
+                      <hr>
                       @php
                         $link = json_decode($data->link_footer);
                       @endphp
                       @foreach ($link as $v)
-                      <a href="{{$v->link}}" target="_blank">
+                      <a class="text-left" href="{{$v->link}}" target="_blank">
                         <li> {{$v->text}} </li>
                       </a>
                       @endforeach
 
                     </div>
 
-                    <div class="footer-links col-md-3">
-                      <h5 style="padding-bottom: 10px;"> مطالب کاربردی </h5>
-
+                    <div class="footer-links col-md-3 text-center">
+                      <span> <i class="fas fa-scroll" aria-hidden="true"></i> مطالب کاربردی </span>
+                      <hr>
                       @php
                         $learning = json_decode($data->learning_footer);
                       @endphp
                       @foreach ($learning as $v)
-                      <a href="{{$v->link}}" target="_blank">
+                      <a class="text-left" href="{{$v->link}}" target="_blank">
                         <li> {{$v->text}} </li>
                       </a>
                       @endforeach
 
                     </div>
 
-                    <div class="col-md-2 offset-md-1">
-                      <h5 style="padding-bottom: 10px;"> نماد ها </h5>
+                    <div class="col-md-2 offset-md-1 text-center">
+                      <span> <i class="fas fa-certificate" aria-hidden="true"></i> نماد ها </span>
+                      <hr>
                       <div class="owl-carousel owl-certs owl-theme text-center">
                         <div class="item">
                             <a href="#" target="_blank">
@@ -213,6 +237,7 @@
 
               <div class="row">
                 <div class="copyright">
+                  <i class="far fa-copyright" aria-hidden="true"></i>
                   تمامی حقوق برای
                   <span> EG Team </span>
                   محفوظ می باشد.
