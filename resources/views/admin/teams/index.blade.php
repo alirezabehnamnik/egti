@@ -18,21 +18,22 @@
       <div class="collapse" id="search">
         <div class="card card-body">
           <form method="GET" action="{{ route('admin_team_search') }}" class="form-inline">
-            <input type="text" class="form-control mb-2 mr-sm-2" name="id" placeholder="آی دی">
-            <input type="text" class="form-control mb-2 mr-sm-2" name="name" placeholder="نام">
-            <input type="text" class="form-control mb-2 mr-sm-2" name="tag" placeholder="تگ">
+            <input type="text" value="{{request()->id}}" class="form-control mb-2 mr-sm-2" name="id" placeholder="آی دی">
+            <input type="text" value="{{request()->name}}" class="form-control mb-2 mr-sm-2" name="name" placeholder="نام">
+            <input type="text" value="{{request()->tag}}" class="form-control mb-2 mr-sm-2" name="tag" placeholder="تگ">
             <div class="col-md-2">
               <select class="form-control" id="standin_id" name="user_id">
                 <option></option>
                 @foreach ($users as $v)
-                <option value="{{$v->id}}">{{$v->username}}</option>
+                <option {{request()->user_id == $v->id ? 'selected' : ''}} value="{{$v->id}}">{{$v->username}}</option>
                 @endforeach
               </select>
             </div>
             <select class="form-control mb-2 mr-sm-2" name="enabled">
-              <option value="0"> غیرفعال توسط مدیر </option>
-              <option value="1"> فعال </option>
-              <option value="2"> غیرفعال توسط کاپیتان </option>
+              <option value=""> وضعیت </option>
+              <option {{request()->enabled == 1 ? 'selected' : ''}} value="1"> فعال </option>
+              <option {{request()->enabled == 2 ? 'selected' : ''}} value="2"> غیرفعال توسط کاپیتان </option>
+              <option {{request()->enabled == 3 ? 'selected' : ''}} value="3"> غیرفعال توسط مدیر </option>
             </select>
 
             <button type="submit" class="btn btn-primary mb-2">جستجو</button>

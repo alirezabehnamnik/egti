@@ -18,24 +18,25 @@
       <div class="collapse" id="search">
         <div class="card card-body">
           <form method="GET" action="{{ route('admin_tournament_search') }}" class="form-inline">
-            <input type="text" class="form-control mb-2 mr-sm-2" name="id" placeholder="آی دی">
-            <input type="text" class="form-control mb-2 mr-sm-2" name="name" placeholder="نام">
-            <input type="text" class="form-control mb-2 mr-sm-2" name="tag" placeholder="تگ">
+            <input type="text" value="{{request()->id}}" class="form-control mb-2 mr-sm-2" name="id" placeholder="آی دی">
+            <input type="text" value="{{request()->name}}" class="form-control mb-2 mr-sm-2" name="name" placeholder="نام">
+            <input type="text" value="{{request()->tag}}" class="form-control mb-2 mr-sm-2" name="tag" placeholder="تگ">
             <div class="col-md-2">
               <select class="form-control mb-2 mr-sm-2" id="game_id_admin" name="game_id">
                 <option></option>
                 @foreach ($games as $v)
-                <option value="{{$v->id}}">{{$v->name}}</option>
+                <option {{request()->game_id == $v->id ? 'selected' : ''}} value="{{$v->id}}">{{$v->name}}</option>
                 @endforeach
               </select>
             </div>
-            <input type="text" class="form-control mb-2 mr-sm-2" name="start_date" placeholder="تاریخ شروع">
-            <input type="text" class="form-control mb-2 mr-sm-2" name="end_date" placeholder="تاریخ پایان">
+            <input type="text" value="{{request()->start_date}}" class="form-control mb-2 mr-sm-2" name="start_date" placeholder="تاریخ شروع">
+            <input type="text" value="{{request()->end_date}}" class="form-control mb-2 mr-sm-2" name="end_date" placeholder="تاریخ پایان">
             <select class="form-control mb-2 mr-sm-2" name="enabled">
-              <option value="0"> غیرفعال </option>
-              <option value="1"> فعال </option>
-              <option value="-1"> پایان ثبت نام </option>
-              <option value="2"> خاتمه یافته </option>
+              <option value=""> وضعیت </option>
+              <option {{request()->enabled == 1 ? 'selected' : ''}} value="1"> فعال </option>
+              <option {{request()->enabled == -1 ? 'selected' : ''}} value="-1"> پایان ثبت نام </option>
+              <option {{request()->enabled == 2 ? 'selected' : ''}} value="2"> خاتمه یافته </option>
+              <option {{request()->enabled == 3 ? 'selected' : ''}} value="3"> غیرفعال </option>
             </select>
 
             <button type="submit" class="btn btn-primary mb-2">جستجو</button>

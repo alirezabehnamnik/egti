@@ -9,7 +9,7 @@
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#search" aria-expanded="false" aria-controls="search">
           <i class="fas fa-search" aria-hidden="true"></i> جستجو
         </button>
-        <a href="{{route('admin_tournaments')}}">
+        <a href="{{route('admin_tournament_register', ['id' => $id])}}">
           <button class="btn btn-danger" type="button">
             <i class="fas fa-sync-alt" aria-hidden="true"></i> بارگذاری مجدد
           </button>
@@ -18,7 +18,7 @@
       <div class="collapse show" id="search">
         <div class="card card-body">
           <form method="GET" action="{{ route('admin_tournament_register_search', ['id' => $id]) }}" class="form-inline">
-            <input type="text" class="form-control mb-2 mr-sm-2" name="payment_number" placeholder="شماره سفارش">
+            <input type="text" value="{{request()->payment_number}}" class="form-control mb-2 mr-sm-2" name="payment_number" placeholder="شماره سفارش">
             <button type="submit" class="btn btn-primary mb-2">جستجو</button>
           </form>
         </div>

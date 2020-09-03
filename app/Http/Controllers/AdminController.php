@@ -177,41 +177,40 @@ class AdminController extends Controller
     // Users
     public function showUsers()
     {
-      $data = User::paginate(100);
+      $data = User::paginate(50);
       return view('admin.users.index', ['data' => $data]);
     }
 
     // Search User
     public function searchUser(Request $request)
     {
-      $input = $request->all();
-      $id = $input['id'];
-      $username = $input['username'];
-      $email = $input['email'];
-      $family = $input['family'];
-      $phone_number = $input['phone_number'];
-      $enabled = $input['enabled'];
+      $enabled = null;
+      if ($request['enabled'] == 2) {
+        $enabled = 0;
+      } elseif ($request['enabled'] == 1) {
+        $enabled = 1;
+      }
       $query = User::select('id', 'username', 'email', 'family', 'phone_number', 'enabled');
-      if ($id) {
-        $query->where('id', $id);
+      if ($request['id']) {
+        $query->where('id', $request['id']);
       }
-      if ($username) {
-        $query->where('username', 'like', '%'.$username.'%');
+      if ($request['username']) {
+        $query->where('username', 'like', '%'.$request['username'].'%');
       }
-      if ($email) {
-        $query->where('email', 'like', '%'.$email.'%');
+      if ($request['email']) {
+        $query->where('email', 'like', '%'.$request['email'].'%');
       }
-      if ($family) {
-        $query->where('family', 'like', '%'.$family.'%');
+      if ($request['family']) {
+        $query->where('family', 'like', '%'.$request['family'].'%');
       }
-      if ($phone_number) {
-        $query->where('phone_number', 'like', '%'.$phone_number.'%');
+      if ($request['phone_number']) {
+        $query->where('phone_number', 'like', '%'.$request['phone_number'].'%');
       }
-      if ($enabled >= 0) {
+      if ($request['enabled']) {
         $query->where('enabled', $enabled);
       }
-      $data = $query->paginate(100);
-      return view('admin.users.index', ['data' => $data]);
+      $data = $query->paginate(50);
+      return view('admin.users.index', ['data' => $data->withQueryString()]);
     }
 
     // Edit User
@@ -498,39 +497,41 @@ class AdminController extends Controller
     // Search Tournamnet
     public function searchTournament(Request $request)
     {
-      $input = $request->all();
-      $id = $input['id'];
-      $name = $input['name'];
-      $tag = $input['tag'];
-      $game_id = $input['game_id'];
-      $start_date = $input['start_date'];
-      $end_date = $input['end_date'];
-      $enabled = $input['enabled'];
+      $enabled = null;
+      if ($request['enabled'] == 3) {
+        $enabled = 0;
+      } elseif ($request['enabled'] == 1) {
+        $enabled = 1;
+      } elseif ($request['enabled'] == -1) {
+        $enabled = -1;
+      } elseif ($request['enabled'] == 2) {
+        $enabled = 2;
+      }
       $query = Tournaments::select('id', 'name', 'tag', 'game_id', 'start_date', 'end_date', 'enabled');
-      if ($id) {
-        $query->where('id', $id);
+      if ($request['id']) {
+        $query->where('id', $request['id']);
       }
-      if ($name) {
-        $query->where('name', 'like', '%'.$name.'%');
+      if ($request['name']) {
+        $query->where('name', 'like', '%'.$request['name'].'%');
       }
-      if ($tag) {
-        $query->where('tag', 'like', '%'.$tag.'%');
+      if ($request['tag']) {
+        $query->where('tag', 'like', '%'.$request['tag'].'%');
       }
-      if ($game_id) {
-        $query->where('game_id', $game_id);
+      if ($request['game_id']) {
+        $query->where('game_id', $request['game_id']);
       }
-      if ($start_date) {
-        $query->where('start_date', 'like', '%'.$start_date.'%');
+      if ($request['start_date']) {
+        $query->where('start_date', 'like', '%'.$request['start_date'].'%');
       }
-      if ($end_date) {
-        $query->where('end_date', 'like', '%'.$end_date.'%');
+      if ($request['end_date']) {
+        $query->where('end_date', 'like', '%'.$request['end_date'].'%');
       }
-      if ($enabled >= 0) {
+      if ($request['enabled']) {
         $query->where('enabled', $enabled);
       }
       $data = $query->paginate(40);
       $games = Games::where('enabled', 1)->get();
-      return view('admin.tournaments.index', ['data' => $data, 'games' => $games]);
+      return view('admin.tournaments.index', ['data' => $data->withQueryString(), 'games' => $games]);
     }
 
     // Show Tournament Regsiters
@@ -543,14 +544,12 @@ class AdminController extends Controller
     // Tournament Register Search
     public function searchTournamentRegister(Request $request, $id)
     {
-      $input = $request->all();
-      $payment_number = $input['payment_number'];
       $query = TournamentsRegister::where('tournament_id', $id);
-      if ($payment_number) {
-        $query->where('payment_number', 'like', '%'.$payment_number.'%');
+      if ($request['payment_number']) {
+        $query->where('payment_number', 'like', '%'.$request['payment_number'].'%');
       }
       $data = $query->paginate(40);
-      return view('admin.tournaments.register', ['data' => $data, 'id' => $id]);
+      return view('admin.tournaments.register', ['data' => $data->withQueryString(), 'id' => $id]);
     }
 
     public function tournamentResultShow()
@@ -617,31 +616,33 @@ class AdminController extends Controller
     // Search Tournamnet
     public function searchTeam(Request $request)
     {
-      $input = $request->all();
-      $id = $input['id'];
-      $name = $input['name'];
-      $tag = $input['tag'];
-      $user_id = $input['user_id'];
-      $enabled = $input['enabled'];
+      $enabled = null;
+      if ($request['enabled'] == 3) {
+        $enabled = 0;
+      } elseif ($request['enabled'] == 1) {
+        $enabled = 1;
+      } elseif ($request['enabled'] == 2) {
+        $enabled = 2;
+      }
       $query = Teams::select('id', 'name', 'tag', 'user_id', 'enabled');
-      if ($id) {
-        $query->where('id', $id);
+      if ($request['id']) {
+        $query->where('id', $request['id']);
       }
-      if ($name) {
-        $query->where('name', 'like', '%'.$name.'%');
+      if ($request['name']) {
+        $query->where('name', 'like', '%'.$request['name'].'%');
       }
-      if ($tag) {
-        $query->where('tag', 'like', '%'.$tag.'%');
+      if ($request['tag']) {
+        $query->where('tag', 'like', '%'.$request['tag'].'%');
       }
-      if ($user_id) {
-        $query->where('user_id', $user_id);
+      if ($request['user_id']) {
+        $query->where('user_id', $request['user_id']);
       }
-      if ($enabled >= 0) {
+      if ($request['enabled']) {
         $query->where('enabled', $enabled);
       }
       $data = $query->paginate(40);
       $users = User::all();
-      return view('admin.teams.index', ['data' => $data, 'users' => $users]);
+      return view('admin.teams.index', ['data' => $data->withQueryString(), 'users' => $users]);
     }
 
     // Disable Team Show

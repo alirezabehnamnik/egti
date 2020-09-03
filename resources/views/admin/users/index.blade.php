@@ -18,14 +18,15 @@
       <div class="collapse" id="search">
         <div class="card card-body">
           <form method="GET" action="{{ route('admin_users_search') }}" class="form-inline">
-            <input type="text" class="form-control mb-2 mr-sm-2" name="id" placeholder="آی دی">
-            <input type="text" class="form-control mb-2 mr-sm-2" name="username" placeholder="نام کاربری">
-            <input type="text" class="form-control mb-2 mr-sm-2" name="email" placeholder="ایمیل">
-            <input type="text" class="form-control mb-2 mr-sm-2" name="family" placeholder="نام خانوادگی">
-            <input type="text" class="form-control mb-2 mr-sm-2" name="phone_number" placeholder="شماره تلفن">
+            <input type="text" value="{{request()->id}}" class="form-control mb-2 mr-sm-2" name="id" placeholder="آی دی">
+            <input type="text" value="{{request()->username}}" class="form-control mb-2 mr-sm-2" name="username" placeholder="نام کاربری">
+            <input type="text" value="{{request()->email}}" class="form-control mb-2 mr-sm-2" name="email" placeholder="ایمیل">
+            <input type="text" value="{{request()->family}}" class="form-control mb-2 mr-sm-2" name="family" placeholder="نام خانوادگی">
+            <input type="text" value="{{request()->phone_number}}" class="form-control mb-2 mr-sm-2" name="phone_number" placeholder="شماره تلفن">
             <select class="form-control mb-2 mr-sm-2" name="enabled">
-              <option value="0"> بن شده </option>
-              <option value="1"> فعال </option>
+              <option value=""> وضعیت </option>
+              <option {{request()->enabled == 1 ? 'selected' : ''}} value="1"> فعال </option>
+              <option {{request()->enabled == 2 ? 'selected' : ''}} value="2"> بن شده </option>
             </select>
             <button type="submit" class="btn btn-primary mb-2">جستجو</button>
           </form>
