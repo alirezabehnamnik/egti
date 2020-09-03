@@ -754,3 +754,50 @@ left: 0;
     background: #FFF;
     color: #4e4e4e;
 }
+
+.add-friend {
+    background: $dorange;
+    padding: 5px 10px;
+    border-radius: 100px;
+    -webkit-box-shadow: 2px 2px 10px -5px #000000;
+    box-shadow: 2px 2px 10px -5px #000000;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    position: relative;
+    bottom: 0px;
+}
+
+.add-friend:hover {
+  -webkit-box-shadow: 0px 0px 0px 0px #000000;
+  box-shadow: 0px 0px 0px 0px #000000;
+  bottom: -3px;
+}
+
+.request-sent {
+  background: $indigo !important;
+}
+
+.friendsCount {
+    position: absolute;
+    left: 5px;
+    font-size: 13px;
+    background: $dorange;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 100%;
+}
+
+.fr-item {
+    background: #FFF;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.fr-controlls {
+    float: left;
+}

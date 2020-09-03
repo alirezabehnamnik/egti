@@ -6243,6 +6243,15 @@ a:hover {
   color: #9561e2 !important;
 }
 
+.indigo {
+  color: #6574cd !important;
+}
+
+.bg-indigo {
+  background: #6574cd !important;
+  color: #FFF;
+}
+
 .btn-dorange {
   background: #ff5400;
   color: #FFF;
@@ -16214,5 +16223,46 @@ main {
 .user-name:hover {
   background: #FFF;
   color: #4e4e4e;
+}
+
+.add-friend {
+  background: #ff5400;
+  padding: 5px 10px;
+  border-radius: 100px;
+  box-shadow: 2px 2px 10px -5px #000000;
+  transition: all 0.1s ease-in-out;
+  position: relative;
+  bottom: 0px;
+}
+
+.add-friend:hover {
+  box-shadow: 0px 0px 0px 0px #000000;
+  bottom: -3px;
+}
+
+.request-sent {
+  background: #6574cd !important;
+}
+
+.friendsCount {
+  position: absolute;
+  left: 5px;
+  font-size: 13px;
+  background: #ff5400;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 100%;
+}
+
+.fr-item {
+  background: #FFF;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.fr-controlls {
+  float: left;
 }
 

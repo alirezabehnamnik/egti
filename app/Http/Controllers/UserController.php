@@ -7,6 +7,7 @@ use App\TournamentsRegister;
 use App\Teams;
 use App\Games;
 use App\State;
+use App\FriendRequests;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,16 @@ class UserController extends Controller
 {
     public function index($username)
     {
+      $hasRequest = null;
       $data = User::where('username', $username)->first();
+      if (Auth::check()) {
+        $frRequest = FriendRequests::where('sender_id', Auth::user()->id)->where('receiver_id', $data->id)->first();
+        if ($frRequest) {
+          $hasRequest = true;
+        } else {
+          $hasRequest = false;
+        }
+      }
       if (!$data) {
         abort(404);
       }
@@ -37,7 +47,7 @@ class UserController extends Controller
           array_push($array[$v->id]['games'], $k->name);
         }
       }
-      return view('users.index', ['data' => $data, 'games' => $games, 'teams' => $teams, 'gar' => $array]);
+      return view('users.index', ['data' => $data, 'games' => $games, 'teams' => $teams, 'gar' => $array, 'hasRequest' => $hasRequest]);
     }
 
     public function showAll(Request $request)
@@ -76,9 +86,28 @@ class UserController extends Controller
       return view('users.all', ['data' => $data->withQueryString(), 'games' => $array, 'state' => $state, 'mygames' => $mygames]);
     }
 
-
     public function getcities($id) {
       $cities = State::find($id)->City;
       return response()->json($cities);
+    }
+
+    public function addFriend($id)
+    {
+      $data = FriendRequests::create([
+          'sender_id' => Auth::user()->id,
+          'receiver_id' => $id,
+          'enabled' => 1,
+      ]);
+      if ($data) {
+        return redirect()->back()->with('message', 'درخواست دوستی باموفقیت ارسال شد.');
+      } else {
+        return redirect()->back()->with('error', 'خطایی رخ داده است! لطفا مجددا امتحان کنید و درصورت وجود مشکل با پشتیبان سایت تماس بگیرید!');
+      }
+    }
+
+    public function removeAddFriend($sender, $receiver)
+    {
+        FriendRequests::where('sender_id', $sender)->where('receiver_id', $receiver)->delete();
+        return redirect()->back();
     }
 }

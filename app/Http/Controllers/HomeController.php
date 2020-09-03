@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Teams;
 use App\Games;
 use App\TournamentsRegister;
+use App\FriendRequests;
+use App\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +37,53 @@ class HomeController extends Controller
 
         $tournaments = TournamentsRegister::where('user_id', Auth::user()->id)->limit(4)->get();
         return view('profile.index', ['teams' => $teams, 'tournaments' => $tournaments, 'data' => $array]);
+    }
+
+    public function friendRequests()
+    {
+      $data = FriendRequests::where('receiver_id', Auth::user()->id)->get();
+      return view('profile.friendRequests', ['data' => $data]);
+    }
+
+    public function friendResult($result, $sender, $receiver)
+    {
+      if ($result == "accept") {
+        $data = User::select('friends_id')->where('id', $receiver)->first();
+        $array = [];
+        if ($data->friends_id) {
+          $array = json_decode($data->friends_id);
+        }
+        array_push($array, $sender);
+        $update = User::where('id', $receiver)->update(['friends_id' => $array]);
+        if ($update) {
+          $delete = FriendRequests::where('sender_id', $sender)->where('receiver_id', $receiver)->delete();
+          return redirect()->back()->with('message', 'درخواست دوستی با موفقیت قبول شد.');
+        }
+      } elseif ($result == "reject") {
+        $delete = FriendRequests::where('sender_id', $sender)->where('receiver_id', $receiver)->delete();
+        return redirect()->back()->with('message', 'درخواست دوستی با موفقیت رد شد.');
+      }
+    }
+
+    public function myFriends()
+    {
+      $user = User::select('friends_id')->where('id', Auth::user()->id)->first();
+      $data = User::whereIn('id', json_decode($user->friends_id))->get();
+      return view('profile.friends', ['data' => $data]);
+    }
+
+    public function removeFriend($id)
+    {
+      $user = User::select('friends_id')->where('id', Auth::user()->id)->first();
+      $array = array();
+      $array = json_decode($user->friends_id);
+      for ($i=0; $i < count($array) ; $i++) {
+        if ($array[$i] == $id) {
+          unset($array[$i]);
+        }
+      }
+      $update = User::where('id', Auth::user()->id)->update(['friends_id' => $array]);
+      return redirect()->back()->with('message', 'کاربر مورد نظر با موفقیت از لیست دوستان شما حذف شد.');
     }
 
     public function errorPage($code)

@@ -91,10 +91,16 @@ Route::group(['prefix' => 'tournament'] , function() {
 
 // User Route
 Route::get('/user/show/{username}', 'UserController@index')->name('user_profile');
+Route::get('/user/addfriend/{id}', 'UserController@addFriend')->name('user_add_friend');
+Route::get('/user/rfriendRequest/{sender}-{receiver}', 'UserController@removeAddFriend')->name('user_remove_add_friend');
 Route::get('/users', 'UserController@showAll')->name('users_list');
   // Profile Route
   Route::group(['prefix' => 'profile', 'middleware' => 'auth'] , function() {
       Route::get('/', 'HomeController@index')->name('profile');
+      Route::get('/friend_requests', 'HomeController@friendRequests')->name('friend_requests');
+      Route::get('/friend_requests/{result}/{sender}-{receiver}', 'HomeController@friendResult')->name('friend_requests_result');
+      Route::get('/myfriends', 'HomeController@myFriends')->name('my_friends');
+      Route::get('/removefriend/{id}', 'HomeController@removeFriend')->name('remove_friend');
       Route::get('/edit', 'ProfileController@edit')->name('edit_profile');
       Route::post('/edit', 'ProfileController@save')->name('save_edit');
   });

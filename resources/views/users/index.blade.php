@@ -6,6 +6,21 @@
 
   @if ($data->enabled == 1)
   <div class="row">
+    @if(session()->has('error'))
+      <div class="col-md-12">
+        <div class="alert alert-danger">
+          <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>  {{ session()->get('error') }}
+        </div>
+      </div>
+    @endif
+
+    @if(session()->has('message'))
+    <div class="col-md-12">
+      <div class="alert alert-success">
+          <i class="far fa-check-circle" aria-hidden="true"></i> {{ session()->get('message') }}
+      </div>
+    </div>
+    @endif
     <div class="col-md-2">
       <div class="sidebar">
         <div class="sidenav-profile text-center">
@@ -13,6 +28,22 @@
           <br>
           <br>
           <span> {{$data->username}} </span>
+          @if (Auth::check() && Auth::user()->id != $data->id)
+          <hr>
+            @if ($hasRequest)
+              <a href="{{route('user_remove_add_friend', ['sender' => Auth::user()->id, 'receiver' => $data->id])}}" style="color:#FFF;">
+                <span class="add-friend request-sent">
+                  <i class="far fa-clock" aria-hidden="true"></i> درانتظار قبول کردن
+                </span>
+              </a>
+            @else
+              <a href="{{route('user_add_friend', ['id' => $data->id])}}" style="color:#FFF;">
+                <span class="add-friend">
+                  <i class="fas fa-plus" aria-hidden="true"></i> افزودن به دوستان
+                </span>
+              </a>
+            @endif
+          @endif
         </div>
         <br>
         <div class="sidenav-link">

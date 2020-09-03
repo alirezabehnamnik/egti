@@ -59,6 +59,22 @@
               <a href="{{route('profile')}}">
                 <li> <i class="fas fa-user" aria-hidden="true"></i> پروفایل </li>
               </a>
+              <li class="collapse-li" data-toggle="collapse" data-target="#friends">
+                 <i class="fas fa-users" aria-hidden="true"></i> دوستان
+                 <div class="clps-icon"> <i class="fas fa-angle-down" aria-hidden="true"></i> </div>
+               </li>
+              <div class="nav-list collapse" id="friends">
+                <a href="{{route('my_friends')}}">
+                  <li style="margin-right: 10px;">
+                    <i class="fas fa-user-friends" aria-hidden="true"></i> دوستان من
+                  </li>
+                </a>
+                <a href="{{route('friend_requests')}}">
+                  <li style="margin-right: 10px;">
+                    <i class="fas fa-user-plus" aria-hidden="true"></i> درخواست های دوستی <span class="friendsCount"> {{count($data)}} </span>
+                  </li>
+                </a>
+              </div>
               <a href="{{route('edit_profile')}}">
                 <li> <i class="fas fa-user-edit" aria-hidden="true"></i> ویرایش اطلاعات </li>
               </a>
