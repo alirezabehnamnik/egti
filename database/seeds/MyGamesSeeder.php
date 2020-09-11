@@ -131,7 +131,7 @@ class MyGamesSeeder extends Seeder
                      'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
                    ]);
 
-      DB::table('my_games')->insert(
+                  DB::table('my_games')->insert(
                     [
                      'name' => 'Clash Royale',
                      'tag' => 'cr',
