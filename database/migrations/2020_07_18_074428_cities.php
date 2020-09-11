@@ -16,7 +16,7 @@ class Cities extends Migration
       Schema::create('cities', function (Blueprint $table) {
           $table->id();
           $table->string('name');
-          $table->string('tag')->unique();
+          $table->string('tag')->nullable();
           $table->unsignedBigInteger('state_id');
           $table->foreign('state_id')->references('id')->on('states');
           $table->smallInteger('enabled')->default(1);
