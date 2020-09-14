@@ -68,7 +68,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} , خوش آمدید <span class="caret"></span>
                                 </a>
 
@@ -207,17 +207,17 @@
                       <hr>
                       <div class="owl-carousel owl-certs owl-theme text-center">
                         <div class="item">
-                            <a href="#" target="_blank">
+                            <a href="" target="_blank">
                               <img src="/images/etemad.png" alt="">
                             </a>
                         </div>
                         <div class="item">
-                            <a href="#" target="_blank">
+                            <a href="" target="_blank">
                               <img src="/images/samandehi.png" alt="">
                             </a>
                         </div>
                         <div class="item">
-                            <a href="#" target="_blank">
+                            <a href="" target="_blank">
                               <img src="/images/bonyad.png" alt="">
                             </a>
                         </div>
