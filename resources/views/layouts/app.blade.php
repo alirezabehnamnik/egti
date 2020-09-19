@@ -49,7 +49,11 @@
 
                       @foreach ($fitem as $v)
                       <li class="nav-item {{$v->link == 'home' ? 'active' : ''}}">
+                        @if ($v->link != '#' && Route::has($v->link))
                         <a class="nav-link" href="{{route($v->link)}}"><i class="{{$v->icon}}"></i> {{$v->text}} </a>
+                        @else
+                        <a class="nav-link" href="#"><i class="{{$v->icon}}"></i> {{$v->text}} </a>
+                        @endif
                       </li>
                       @endforeach
                     </ul>
