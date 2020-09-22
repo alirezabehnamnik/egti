@@ -90,7 +90,7 @@
                 <label for="start_date" class="col-md-4 col-form-label text-md-right">{{ __('تاریخ شروع:') }}</label>
 
                 <div class="col-md-6">
-                    <input id="start_date" type="text" class="form-control @error('start_date') is-invalid @enderror" name="start_date" autocomplete="start_date">
+                    <input id="start_date" type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" autocomplete="start_date">
 
                     @error('start_date')
                         <span class="invalid-feedback" role="alert">
@@ -104,7 +104,7 @@
                 <label for="end_date" class="col-md-4 col-form-label text-md-right">{{ __('تاریخ پایان:') }}</label>
 
                 <div class="col-md-6">
-                    <input id="end_date" type="text" class="form-control @error('end_date') is-invalid @enderror" name="end_date" autocomplete="end_date">
+                    <input id="end_date" type="date" class="form-control @error('end_date') is-invalid @enderror" name="end_date" autocomplete="end_date">
 
                     @error('end_date')
                         <span class="invalid-feedback" role="alert">

@@ -6,7 +6,6 @@
 <br>
 <div class="container-fluid">
   <div class="row">
-
     @if ($teams->isEmpty())
     <div class="col-md-6 offset-md-3">
       <div class="alert alert-danger">

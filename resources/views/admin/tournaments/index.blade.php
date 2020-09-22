@@ -29,13 +29,13 @@
                 @endforeach
               </select>
             </div>
-            <input type="text" value="{{request()->start_date}}" class="form-control mb-2 mr-sm-2" name="start_date" placeholder="تاریخ شروع">
-            <input type="text" value="{{request()->end_date}}" class="form-control mb-2 mr-sm-2" name="end_date" placeholder="تاریخ پایان">
+            <input type="date" value="{{request()->start_date}}" class="form-control mb-2 mr-sm-2" name="start_date" placeholder="تاریخ شروع">
+            <input type="date" value="{{request()->end_date}}" class="form-control mb-2 mr-sm-2" name="end_date" placeholder="تاریخ پایان">
             <select class="form-control mb-2 mr-sm-2" name="enabled">
               <option value=""> وضعیت </option>
               <option {{request()->enabled == 1 ? 'selected' : ''}} value="1"> فعال </option>
-              <option {{request()->enabled == -1 ? 'selected' : ''}} value="-1"> پایان ثبت نام </option>
-              <option {{request()->enabled == 2 ? 'selected' : ''}} value="2"> خاتمه یافته </option>
+              <option {{request()->enabled == 2 ? 'selected' : ''}} value="2"> پایان ثبت نام </option>
+              <option {{request()->enabled == -1 ? 'selected' : ''}} value="-1"> خاتمه یافته </option>
               <option {{request()->enabled == 3 ? 'selected' : ''}} value="3"> غیرفعال </option>
             </select>
 
@@ -99,8 +99,8 @@
                   نمایش
                 </a>
               </td>
-              <td> {{$v->start_date}} </td>
-              <td> {{$v->end_date}} </td>
+              <td> {{jdate($v->start_date)->format('Y-m-d')}} </td>
+              <td> {{jdate($v->end_date)->format('Y-m-d')}} </td>
               <td> {{$entry_price}} </td>
               <td> {{$v->teams_count}} </td>
               <td> {{$v->max_teams}} </td>
@@ -113,9 +113,9 @@
               <td>
                 @if ($v->enabled == 1)
                   فعال
-                @elseif ($v->enabled == -1)
-                  پایان ثبت نام
                 @elseif ($v->enabled == 2)
+                  پایان ثبت نام
+                @elseif ($v->enabled == -1)
                   خاتمه یافته
                 @else
                   غیر فعال

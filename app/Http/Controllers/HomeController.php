@@ -68,7 +68,11 @@ class HomeController extends Controller
     public function myFriends()
     {
       $user = User::select('friends_id')->where('id', Auth::user()->id)->first();
-      $data = User::whereIn('id', json_decode($user->friends_id))->get();
+      if ($user->friends_id) {
+        $data = User::whereIn('id', json_decode($user->friends_id))->get();
+      } else {
+        $data = null;
+      }
       return view('profile.friends', ['data' => $data]);
     }
 
@@ -77,10 +81,14 @@ class HomeController extends Controller
       $user = User::select('friends_id')->where('id', Auth::user()->id)->first();
       $array = array();
       $array = json_decode($user->friends_id);
-      for ($i=0; $i < count($array) ; $i++) {
-        if ($array[$i] == $id) {
-          unset($array[$i]);
-        }
+      if (($key = array_search($id, $array)) !== false) {
+        unset($array[$key]);
+        $array = array_values($array);
+      } else {
+        return abort(403);
+      }
+      if ($array == null) {
+        $array = null;
       }
       $update = User::where('id', Auth::user()->id)->update(['friends_id' => $array]);
       return redirect()->back()->with('message', 'کاربر مورد نظر با موفقیت از لیست دوستان شما حذف شد.');

@@ -490,7 +490,7 @@ class AdminController extends Controller
     // End Register Tournament
     public function endTournamentRegister($id)
     {
-      Tournaments::where('id', $id)->update(['enabled' => -1]);
+      Tournaments::where('id', $id)->update(['enabled' => 2]);
       return redirect()->back()->with('message', 'وضعیت مسابقه با موفقیت تغییر کرد.');
     }
 
@@ -554,7 +554,7 @@ class AdminController extends Controller
 
     public function tournamentResultShow()
     {
-      $tournaments = Tournaments::where('enabled', -1)->get();
+      $tournaments = Tournaments::where('enabled', 2)->get();
       $teams = Teams::where('enabled', '!=', 0)->get();
       return view('admin.tournaments.result', ['tournaments' => $tournaments, 'teams' => $teams]);
     }
@@ -577,7 +577,7 @@ class AdminController extends Controller
           'fiplace_id' => $request['fiplace_id'],
           'enabled' => 1,
       ]);
-      Tournaments::where('id', $request['tournaments_id'])->update(['enabled' => 2]);
+      Tournaments::where('id', $request['tournaments_id'])->update(['enabled' => -1]);
       return redirect()->back()->with('message', 'نتیجه مسابقه با موفقیت افزوده شد.');
     }
 

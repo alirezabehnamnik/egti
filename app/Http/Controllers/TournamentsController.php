@@ -55,8 +55,7 @@ class TournamentsController extends Controller
       if (!$data) {
         abort(404);
       }
-      $d = $data->game_id;
-      $teams = Teams::where('user_id', Auth::user()->id)->where('game_id', $d)->where('enabled', 1)->get();
+      $teams = Teams::where('user_id', Auth::user()->id)->whereRaw("JSON_CONTAINS(game_id, '[\"$data->game_id\"]' )")->where('enabled', 1)->get();
       return view('tournaments.register', ['data' => $data, 'teams' => $teams]);
     }
 
