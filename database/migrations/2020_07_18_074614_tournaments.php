@@ -20,8 +20,8 @@ class Tournaments extends Migration
           $table->unsignedBigInteger('game_id');
           $table->foreign('game_id')->references('id')->on('games');
           $table->string('image');
-          $table->timestamp('start_date')->nullable();
-          $table->timestamp('end_date')->nullable();
+          $table->date('start_date')->nullable();
+          $table->date('end_date')->nullable();
           $table->Integer('entry_price')->nullable();
           $table->smallInteger('teams_count')->default(0);
           $table->smallInteger('max_teams');
