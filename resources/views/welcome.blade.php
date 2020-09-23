@@ -132,12 +132,12 @@
 
                         <li>
                           تاریخ شروع:
-                          <span class="tournament-text"> {{$item->start_date}} </span>
+                          <span class="tournament-text"> {{jdate($item->start_date)->format('Y-m-d')}} </span>
                         </li>
 
                         <li>
                           تاریخ پایان:
-                          <span class="tournament-text"> {{$item->end_date}} </span>
+                          <span class="tournament-text"> {{jdate($item->end_date)->format('Y-m-d')}} </span>
                         </li>
 
                         <li>
