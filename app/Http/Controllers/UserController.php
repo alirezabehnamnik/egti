@@ -40,6 +40,7 @@ class UserController extends Controller
       }
       $id = "$data->id";
       $teams = Teams::where('user_id', $data->id)->orWhere('standin_id', $data->id)->orWhereJsonContains('players_id', $id)->where('enabled', 1)->get();
+      $friends = User::whereIn('id', json_decode($data->friends_id))->get();
       $array = array();
       foreach ($teams as $v) {
         $gid = $v->game_id;
@@ -52,7 +53,7 @@ class UserController extends Controller
           array_push($array[$v->id]['games'], $k->name);
         }
       }
-      return view('users.index', ['data' => $data, 'games' => $games, 'teams' => $teams, 'gar' => $array, 'hasRequest' => $hasRequest, 'isFriend' => $isFriend]);
+      return view('users.index', ['data' => $data, 'games' => $games, 'teams' => $teams, 'gar' => $array, 'hasRequest' => $hasRequest, 'isFriend' => $isFriend, 'friends' => $friends]);
     }
 
     public function showAll(Request $request)

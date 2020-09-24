@@ -54,6 +54,9 @@
           <li data-toggle="collapse" data-target="#teams" aria-expanded="false" aria-controls="teams">
             <i class="fas fa-users" aria-hidden="true"></i>  تیم ها
           </li>
+          <li data-toggle="collapse" data-target="#friends" aria-expanded="false" aria-controls="friends">
+            <i class="fas fa-user-friends" aria-hidden="true"></i>  دوستان
+          </li>
         </div>
         @endif
 
@@ -309,6 +312,38 @@
                         <a href="{{route('team_profile', ['tag' => $item->tag])}}" target="_blank">
                           <span class="show-btn bg-dorange">
                             نمایش تیم
+                          </span>
+                        </a>
+                      </div>
+                  </div>
+                  @endforeach
+                </div>
+              @else
+                <h5 class="text-muted"> تیمی برای نمایش وجود ندارد! </h5>
+              @endif
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div id="friends" class="collapse" data-parent="#accordion">
+            <div class="card-body">
+              @if (!($friends->isEmpty()))
+                <div class="row">
+                  @foreach ($friends as $v)
+                  <div class="col-10 col-md-2 text-center">
+                      <div class="team-item">
+                        <div class="user-image">
+                          <img src="/images/avatars/{{$v->avatar}}" alt="{{$v->name}}">
+                        </div>
+                        <div class="team-text">
+                          {{$v->username}}
+                        </div>
+                        <br>
+                        <span> {{$v->name}} {{$v->family}} </span>
+                        <hr>
+                        <a href="{{route('user_profile', ['username' => $v->username])}}" target="_blank">
+                          <span class="show-btn bg-dorange">
+                            <i class="fas fa-eye" aria-hidden="true"></i> نمایش کاربر
                           </span>
                         </a>
                       </div>
