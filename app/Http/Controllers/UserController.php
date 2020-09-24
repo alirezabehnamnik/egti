@@ -17,6 +17,7 @@ class UserController extends Controller
     public function index($username)
     {
       $hasRequest = null;
+      $friends = null;
       $data = User::where('username', $username)->first();
       if (!$data) {
         abort(404);
@@ -40,7 +41,9 @@ class UserController extends Controller
       }
       $id = "$data->id";
       $teams = Teams::where('user_id', $data->id)->orWhere('standin_id', $data->id)->orWhereJsonContains('players_id', $id)->where('enabled', 1)->get();
-      $friends = User::whereIn('id', json_decode($data->friends_id))->get();
+      if ($data->friends_id) {
+        $friends = User::whereIn('id', json_decode($data->friends_id))->get();
+      }
       $array = array();
       foreach ($teams as $v) {
         $gid = $v->game_id;

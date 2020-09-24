@@ -327,7 +327,7 @@
         <div class="card">
           <div id="friends" class="collapse" data-parent="#accordion">
             <div class="card-body">
-              @if (!($friends->isEmpty()))
+              @if ($friends)
                 <div class="row">
                   @foreach ($friends as $v)
                   <div class="col-10 col-md-2 text-center">
@@ -351,7 +351,7 @@
                   @endforeach
                 </div>
               @else
-                <h5 class="text-muted"> تیمی برای نمایش وجود ندارد! </h5>
+                <h5 class="text-muted"> این کاربر هنوز دوستی در وبسایت ندارد! </h5>
               @endif
             </div>
           </div>
