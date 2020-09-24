@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Test 2 -->
 
         <div class="flex-center position-ref full-height">
 
