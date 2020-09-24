@@ -14,21 +14,33 @@
     <br>
     @endif
     @foreach ($data as $v)
-      <div class="col-3">
-        <div class="fr-item">
-          <a href="{{route('user_profile', ['username' => $v->user->username])}}">
-            <span style="color: #282f39"> {{$v->user->username}} </span>
-          </a>
-          <div class="fr-controlls">
-            <a href="{{route('friend_requests_result', ['result' => 'accept', 'sender' => $v->user->id, 'receiver' => Auth::user()->id])}}" data-toggle="tooltip" data-placement="top" title="قبول" style="color: #FFF;">
-              <i class="fas fa-check green" aria-hidden="true"></i>
-            </a>
-            <a href="{{route('friend_requests_result', ['result' => 'reject', 'sender' => $v->user->id, 'receiver' => Auth::user()->id])}}" data-toggle="tooltip" data-placement="top" title="رد" style="color: #FFF;">
-              <i class="fas fa-times red" aria-hidden="true"></i>
+    <div class="col-10 col-md-2 text-center">
+        <div class="team-item">
+          <div class="user-image">
+            <img src="/images/avatars/{{$v->user->avatar}}" alt="{{$v->user->name}}">
+          </div>
+          <div class="team-text">
+            <a href="{{route('user_profile', ['username' => $v->user->username])}}" style="color:#FFF;">
+              {{$v->user->username}}
             </a>
           </div>
+          <br>
+          <span> {{$v->user->name}} {{$v->user->family}} </span>
+          <hr>
+          <a href="{{route('friend_requests_result', ['result' => 'accept', 'sender' => $v->user->id, 'receiver' => Auth::user()->id])}}" data-toggle="tooltip" data-placement="top" title="قبول" style="color: #FFF;">
+            <span class="show-btn bg-dorange">
+              <i class="fas fa-check" aria-hidden="true"></i> قبول درخواست
+            </span>
+          </a>
+          <br>
+          <br>
+          <a href="{{route('friend_requests_result', ['result' => 'reject', 'sender' => $v->user->id, 'receiver' => Auth::user()->id])}}" data-toggle="tooltip" data-placement="top" title="رد" style="color: #FFF;">
+            <span class="show-btn bg-indigo">
+              <i class="fas fa-times" aria-hidden="true"></i> رد درخواست
+            </span>
+          </a>
         </div>
-      </div>
+    </div>
     @endforeach
   </div>
 
