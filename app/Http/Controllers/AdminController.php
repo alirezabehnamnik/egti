@@ -416,19 +416,13 @@ class AdminController extends Controller
       $validated = $request->validate([
         'name' => ['required', 'string', 'max:255'],
         'tag' => ['required', 'string', 'max:255'],
-        'avatar' => ['dimensions:min_width=256,min_height=256', 'mimes:png'],
         'game_id' => ['required'],
       ]);
-      if ($request['avatar']) {
-          $extension = $request['avatar']->extension();
-          $name = $request['tag'].".".$extension;
-          $url = $request->file('avatar')->move(public_path('\images\tournaments'), $name);
-          $request->request->add(['image' => $name]);
-          $req = request()->only(['name', 'tag', 'game_id', 'image', 'start_date', 'end_date', 'entry_price', 'max_teams', 'player_per_team', 'prize_pool', 'fplace_reward', 'splace_reward', 'tplace_reward', 'foplace_reward', 'fiplace_reward']);
-          Tournaments::where('id', $id)->update($req);
-      } else {
-          Tournaments::where('id', $id)->update(request()->all());
-      }
+      $tag = Games::select('tag')->where('id', $request['game_id'])->first();
+      $image = $tag->tag."-logo.png";
+      $request->request->add(['image' => $image]);
+      $req = request()->only(['name', 'tag', 'game_id', 'image', 'start_date', 'end_date', 'entry_price', 'max_teams', 'player_per_team', 'prize_pool', 'fplace_reward', 'splace_reward', 'tplace_reward', 'foplace_reward', 'fiplace_reward']);
+      Tournaments::where('id', $id)->update($req);
       return redirect()->back()->with('message', 'مسابقه با موفقیت بروزرسانی شد.');
     }
 
@@ -446,17 +440,15 @@ class AdminController extends Controller
       $validated = $request->validate([
         'name' => ['required', 'string', 'max:255'],
         'tag' => ['required', 'string', 'max:255', 'unique:tournaments'],
-        'avatar' => ['required', 'dimensions:min_width=256,min_height=256', 'mimes:png'],
         'game_id' => ['required'],
       ]);
-      $extension = $request['avatar']->extension();
-      $name = $request['tag'].".".$extension;
-      $url = $request->file('avatar')->move(public_path('\images\games'), $name);
+      $tag = Games::select('tag')->where('id', $request['game_id'])->first();
+      $image = $tag->tag."-logo.png";
       $d = Tournaments::create([
           'name' => $request['name'],
           'tag' => $request['tag'],
           'game_id' => $request['game_id'],
-          'image' => $name,
+          'image' => $image,
           'start_date' => $request['start_date'],
           'end_date' => $request['end_date'],
           'entry_price' => $request['entry_price'],
