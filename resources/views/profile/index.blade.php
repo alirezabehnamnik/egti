@@ -77,7 +77,7 @@
           <div class="tournament-image">
             <img src="/images/tournaments/{{$item->tournament->image}}" width="124" alt="{{$item->tournament->tag}}">
             <br>
-            {{$item->tournament->g_name}}
+            {{$item->tournament->game->name}}
           </div>
           <li>
             نام مسابقه:

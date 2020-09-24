@@ -25,7 +25,7 @@
         <div class="tournament-image">
           <img src="/images/tournaments/{{$item->image}}" width="124" alt="{{$item->tag}}">
           <br>
-          {{$item->g_name}}
+          {{$item->game->name}}
         </div>
         <li>
           نام مسابقه:
@@ -168,7 +168,7 @@
         <div class="tournament-image">
           <img src="/images/tournaments/{{$item->image}}" width="124" alt="{{$item->tag}}">
           <br>
-          {{$item->g_name}}
+          {{$item->game->name}}
         </div>
         <li>
           نام مسابقه:
