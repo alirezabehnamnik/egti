@@ -227,8 +227,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'jDate' => 'Morilog\Jalali\Facades\jDate',
-        'jDateTime' => 'Morilog\Jalali\Facades\jDateTime',
+        'jDate' => Morilog\Jalali\Facades\jDate::class,
+        'jDateTime' => Morilog\Jalali\Facades\jDateTime::class,
     ],
 
 ];
