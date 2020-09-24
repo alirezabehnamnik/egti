@@ -212,17 +212,20 @@
                       <div class="owl-carousel owl-certs owl-theme text-center">
                         <div class="item">
                             <a href="" target="_blank">
-                              <img src="/images/etemad.png" alt="">
+                              <img src="/images/namad.png" alt="">
+                              <!-- <img src="/images/etemad.png" alt=""> -->
                             </a>
                         </div>
                         <div class="item">
                             <a href="" target="_blank">
-                              <img src="/images/samandehi.png" alt="">
+                              <img src="/images/namad.png" alt="">
+                              <!-- <img src="/images/samandehi.png" alt=""> -->
                             </a>
                         </div>
                         <div class="item">
                             <a href="" target="_blank">
-                              <img src="/images/bonyad.png" alt="">
+                              <img src="/images/namad.png" alt="">
+                              <!-- <img src="/images/bonyad.png" alt=""> -->
                             </a>
                         </div>
                       </div>
