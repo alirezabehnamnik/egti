@@ -34,7 +34,7 @@ class ProfileController extends Controller
       if ($request['avatar2']) {
           $extension = $request['avatar2']->extension();
           $name = Auth::user()->username.".".$extension;
-          $url = $request->file('avatar2')->move(public_path('\images\avatars'), $name);
+          $url = $request->file('avatar2')->move(public_path('/images/avatars'), $name);
           $request->request->add(['avatar' => $name]);
           $req = request()->only([
             'name',
