@@ -18,6 +18,11 @@ class UserController extends Controller
     {
       $hasRequest = null;
       $data = User::where('username', $username)->first();
+      if (!$data) {
+        abort(404);
+      }
+      $user_id = Auth::user()->id;
+      $isFriend = User::where('username', $username)->whereRaw("JSON_CONTAINS(friends_id, '[\"$user_id\"]' )")->first();
       if (Auth::check()) {
         $frRequest = FriendRequests::where('sender_id', Auth::user()->id)->where('receiver_id', $data->id)->first();
         if ($frRequest) {
@@ -47,7 +52,7 @@ class UserController extends Controller
           array_push($array[$v->id]['games'], $k->name);
         }
       }
-      return view('users.index', ['data' => $data, 'games' => $games, 'teams' => $teams, 'gar' => $array, 'hasRequest' => $hasRequest]);
+      return view('users.index', ['data' => $data, 'games' => $games, 'teams' => $teams, 'gar' => $array, 'hasRequest' => $hasRequest, 'isFriend' => $isFriend]);
     }
 
     public function showAll(Request $request)

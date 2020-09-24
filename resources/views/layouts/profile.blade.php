@@ -59,6 +59,12 @@
               <a href="{{route('profile')}}">
                 <li> <i class="fas fa-user" aria-hidden="true"></i> پروفایل </li>
               </a>
+              <a href="{{route('edit_profile')}}">
+                <li> <i class="fas fa-user-edit" aria-hidden="true"></i> ویرایش اطلاعات </li>
+              </a>
+              <a href="{{route('show_privacy')}}">
+                <li> <i class="fas fa-user-shield" aria-hidden="true"></i> تنظیمات حریم شخصی </li>
+              </a>
               <li class="collapse-li" data-toggle="collapse" data-target="#friends">
                  <i class="fas fa-users" aria-hidden="true"></i> دوستان
                  <div class="clps-icon"> <i class="fas fa-angle-down" aria-hidden="true"></i> </div>
@@ -75,9 +81,6 @@
                   </li>
                 </a>
               </div>
-              <a href="{{route('edit_profile')}}">
-                <li> <i class="fas fa-user-edit" aria-hidden="true"></i> ویرایش اطلاعات </li>
-              </a>
               <li class="collapse-li" data-toggle="collapse" data-target="#team">
                  <i class="fas fa-users-cog" aria-hidden="true"></i> مدیریت تیم
                  <div class="clps-icon"> <i class="fas fa-angle-down" aria-hidden="true"></i> </div>

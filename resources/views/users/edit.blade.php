@@ -155,89 +155,46 @@
                   </label>
                 </div>
                 @endforeach
+              </div>
+            </div>
+
+            <hr>
+
+            <h4 class="text-center"> <i class="fab fa-playstation red-icon" aria-hidden="true"></i> پلتفرم های من </h4>
+            <br>
+            <div class="form-group row">
+              <div class="col-md-12 text-center">
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input id="platforms_id" name="platforms_id[]" type="checkbox" class="form-check-input"
+                    @if ($user->platforms_id)
+                      {{ in_array(1,$user->platforms_id) ? 'checked' : '' }}
+                    @endif
+                    value="1"> <i class="fas fa-desktop" aria-hidden="true"></i> PC
+                  </label>
+                </div>
+
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input id="platforms_id" name="platforms_id[]" type="checkbox" class="form-check-input"
+                    @if ($user->platforms_id)
+                      {{ in_array(2,$user->platforms_id) ? 'checked' : '' }}
+                    @endif
+                    value="2"> <i class="fab fa-playstation" aria-hidden="true"></i> PlayStation
+                  </label>
+                </div>
+
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input id="platforms_id" name="platforms_id[]" type="checkbox" class="form-check-input"
+                    @if ($user->platforms_id)
+                      {{ in_array(3,$user->platforms_id) ? 'checked' : '' }}
+                    @endif
+                    value="3"> <i class="fab fa-xbox" aria-hidden="true"></i> Xbox
+                  </label>
                 </div>
               </div>
-
-              <hr>
-
-              <h4 class="text-center"> <i class="fab fa-playstation red-icon" aria-hidden="true"></i> پلتفرم های من </h4>
-              <br>
-              <div class="form-group row">
-
-                <div class="col-md-12 text-center">
-
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input id="platforms_id" name="platforms_id[]" type="checkbox" class="form-check-input"
-                      @if ($user->platforms_id)
-                        {{ in_array(1,$user->platforms_id) ? 'checked' : '' }}
-                      @endif
-                      value="1"> <i class="fas fa-desktop" aria-hidden="true"></i> PC
-                    </label>
-                  </div>
-
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input id="platforms_id" name="platforms_id[]" type="checkbox" class="form-check-input"
-                      @if ($user->platforms_id)
-                        {{ in_array(2,$user->platforms_id) ? 'checked' : '' }}
-                      @endif
-                      value="2"> <i class="fab fa-playstation" aria-hidden="true"></i> PlayStation
-                    </label>
-                  </div>
-
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input id="platforms_id" name="platforms_id[]" type="checkbox" class="form-check-input"
-                      @if ($user->platforms_id)
-                        {{ in_array(3,$user->platforms_id) ? 'checked' : '' }}
-                      @endif
-                      value="3"> <i class="fab fa-xbox" aria-hidden="true"></i> Xbox
-                    </label>
-                  </div>
-                  </div>
-                </div>
-
-                <hr>
-
-                <h4 class="text-center"> <i class="fas fa-user-shield red-icon" aria-hidden="true"></i> تنظیمات حریم شخصی </h4>
-                <br>
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <span> کاربران بتوانند استان و شهر شما را مشاهده کنند؟ </span>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input fix-radio-btn" type="radio" name="privacy_location" id="privacy_location1" value="1" {{$user->privacy_location == 1 ? 'checked' : ''}} >
-                      <label class="form-check-label" for="privacy_location1">بله</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input fix-radio-btn" type="radio" name="privacy_location" id="privacy_location2" value="0" {{$user->privacy_location == 0 ? 'checked' : ''}}>
-                      <label class="form-check-label" for="privacy_location2">خیر</label>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <span> کاربران بتوانند ایمیل شما را مشاهده کنند؟ </span>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input fix-radio-btn" type="radio" name="privacy_email" id="privacy_email1" value="1" {{$user->privacy_email == 1 ? 'checked' : ''}} >
-                      <label class="form-check-label" for="privacy_email1">بله</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input fix-radio-btn" type="radio" name="privacy_email" id="privacy_email2" value="0" {{$user->privacy_email == 0 ? 'checked' : ''}}>
-                      <label class="form-check-label" for="privacy_email2">خیر</label>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <span> کاربران بتوانند شماره همراه شما را مشاهده کنند؟ </span>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input fix-radio-btn" type="radio" name="privacy_phone" id="privacy_phone1" value="1" {{$user->privacy_phone == 1 ? 'checked' : ''}} >
-                      <label class="form-check-label" for="privacy_phone1">بله</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input fix-radio-btn" type="radio" name="privacy_phone" id="privacy_phone2" value="0" {{$user->privacy_phone == 0 ? 'checked' : ''}}>
-                      <label class="form-check-label" for="privacy_phone2">خیر</label>
-                    </div>
-                  </div>
-                </div>
-
+            </div>
 
             <br>
             <div class="form-group row mb-0">

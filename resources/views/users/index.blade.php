@@ -46,6 +46,7 @@
           @endif
         </div>
         <br>
+        @if ($data->privacy_profile == 0 || $data->id == auth()->user()->id || $isFriend)
         <div class="sidenav-link">
           <li data-toggle="collapse" href="#info" aria-expanded="false" aria-controls="info">
             <i class="fas fa-user-alt" aria-hidden="true"></i> مشخصات
@@ -54,12 +55,13 @@
             <i class="fas fa-users" aria-hidden="true"></i>  تیم ها
           </li>
         </div>
+        @endif
 
       </div>
     </div>
     <div class="col-md-10">
       <div id="accordion">
-
+        @if ($data->privacy_profile == 0 || $data->id == auth()->user()->id || $isFriend)
         <div class="card">
           <div id="info" class="collapse show" data-parent="#accordion">
             <div class="card-body">
@@ -319,6 +321,13 @@
             </div>
           </div>
         </div>
+        @else
+          <div class="col-md-12">
+            <div class="alert alert-warning">
+              <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>  پروفایل توسط کاربر مخفی شده است. برای مشاهده پروفایل, {{$data->username}} باید شما را به دوستان خود اضافه کند.
+            </div>
+          </div>
+        @endif
       </div>
     </div>
   </div>

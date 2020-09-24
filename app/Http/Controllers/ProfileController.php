@@ -46,15 +46,25 @@ class ProfileController extends Controller
             'mygames',
             'platforms_id',
             'avatar',
-            'privacy_location',
-            'privacy_email',
-            'privacy_phone',
           ]);
           User::where('id', Auth::user()->id)->update($req);
       } else {
           User::where('id', Auth::user()->id)->update(request()->all());
       }
 
+      return redirect()->back()->with('message', 'اطلاعات شما با موفقیت ویرایش شد.');
+    }
+
+    public function privacyShow()
+    {
+      $data = User::where('id', Auth::user()->id)->first();
+      return view('profile.privacy', ['data' => $data]);
+    }
+
+    public function privacySave(Request $request)
+    {
+      unset($request['_token']);
+      User::where('id', Auth::user()->id)->update(request()->all());
       return redirect()->back()->with('message', 'اطلاعات شما با موفقیت ویرایش شد.');
     }
 }

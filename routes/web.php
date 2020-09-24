@@ -94,6 +94,8 @@ Route::get('/user/show/{username}', 'UserController@index')->name('user_profile'
 Route::get('/user/addfriend/{id}', 'UserController@addFriend')->name('user_add_friend');
 Route::get('/user/rfriendRequest/{sender}-{receiver}', 'UserController@removeAddFriend')->name('user_remove_add_friend');
 Route::get('/users', 'UserController@showAll')->name('users_list');
+
+
   // Profile Route
   Route::group(['prefix' => 'profile', 'middleware' => 'auth'] , function() {
       Route::get('/', 'HomeController@index')->name('profile');
@@ -103,20 +105,25 @@ Route::get('/users', 'UserController@showAll')->name('users_list');
       Route::get('/removefriend/{id}', 'HomeController@removeFriend')->name('remove_friend');
       Route::get('/edit', 'ProfileController@edit')->name('edit_profile');
       Route::post('/edit', 'ProfileController@save')->name('save_edit');
+      Route::get('/privacy', 'ProfileController@privacyShow')->name('show_privacy');
+      Route::post('/privacy', 'ProfileController@privacySave')->name('save_privacy');
+
+      // Team Route
+      Route::group(['prefix' => 'team'] , function() {
+          Route::get('/show/{tag}', 'TeamsController@index')->name('team_profile');
+          Route::get('/create', 'TeamsController@showCreate')->name('create_team')->middleware('auth');
+          Route::post('/create', 'TeamsController@create')->name('add_team')->middleware('auth');
+          Route::get('/manage', 'TeamsController@showManage')->name('manage_team')->middleware('auth');
+          Route::get('/manage/disbale/{id}', 'TeamsController@disableTeam')->name('delete_team')->middleware('auth');
+          Route::get('/manage/enable/{id}', 'TeamsController@enableTeam')->name('undelete_team')->middleware('auth');
+          Route::get('/manage/edit/{id}', 'TeamsController@showEdit')->name('edit_team')->middleware('auth');
+      });
+
+      // Profile tournaments Route
+      Route::get('/mytournaments', 'TournamentsController@myTournaments')->name('my_tournaments')->middleware('auth');
   });
 
-  // Team Route
-  Route::group(['prefix' => 'team'] , function() {
-      Route::get('/show/{tag}', 'TeamsController@index')->name('team_profile');
-      Route::get('/create', 'TeamsController@showCreate')->name('create_team')->middleware('auth');
-      Route::post('/create', 'TeamsController@create')->name('add_team')->middleware('auth');
-      Route::get('/manage', 'TeamsController@showManage')->name('manage_team')->middleware('auth');
-      Route::get('/manage/disbale/{id}', 'TeamsController@disableTeam')->name('delete_team')->middleware('auth');
-      Route::get('/manage/enable/{id}', 'TeamsController@enableTeam')->name('undelete_team')->middleware('auth');
-      Route::get('/manage/edit/{id}', 'TeamsController@showEdit')->name('edit_team')->middleware('auth');
-  });
-  // Profile tournaments Route
-  Route::get('/mytournaments', 'TournamentsController@myTournaments')->name('my_tournaments')->middleware('auth');
+
 
 
 // Authentication Routes...
