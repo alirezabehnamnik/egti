@@ -97,7 +97,7 @@ class TeamsController extends Controller
     }
     $extension = $request['logo']->extension();
     $name = $request['tag'].".".$extension;
-    $url = $request->file('logo')->move(public_path('\images\teams\logo'), $name);
+    $url = $request->file('logo')->move(public_path('/images/teams\logo'), $name);
     $sql = Teams::create([
         'name' => $request['name'],
         'tag' => $request['tag'],

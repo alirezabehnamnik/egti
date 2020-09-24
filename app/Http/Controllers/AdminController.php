@@ -340,7 +340,7 @@ class AdminController extends Controller
       if ($request['avatar']) {
           $extension = $request['avatar']->extension();
           $name = $request['tag'].".".$extension;
-          $url = $request->file('avatar')->move(public_path('\images\games'), $name);
+          $url = $request->file('avatar')->move(public_path('/images/games'), $name);
           $request->request->add(['image' => $name]);
           $req = request()->only(['name', 'tag', 'image', 'platforms']);
           Games::where('id', $id)->update($req);
@@ -382,7 +382,7 @@ class AdminController extends Controller
       ]);
       $extension = $request['avatar']->extension();
       $name = $request['tag'].".".$extension;
-      $url = $request->file('avatar')->move(public_path('\images\games'), $name);
+      $url = $request->file('avatar')->move(public_path('/images/games'), $name);
       Games::create([
           'name' => $request['name'],
           'tag' => $request['tag'],
