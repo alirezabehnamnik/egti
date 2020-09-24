@@ -76,19 +76,19 @@
 
                 <div class="form-check-inline">
                   <label class="form-check-label">
-                    <input id="platforms" name="platforms[]" type="checkbox" class="form-check-input" {{ in_array(1,json_decode($data->platforms)) ? 'checked' : '' }} value="1"> <i class="fas fa-desktop" aria-hidden="true"></i> PC
+                    <input id="platforms" name="platforms[]" type="checkbox" class="form-check-input" {{ in_array(1,$data->platforms) ? 'checked' : '' }} value="1"> <i class="fas fa-desktop" aria-hidden="true"></i> PC
                   </label>
                 </div>
 
                 <div class="form-check-inline">
                   <label class="form-check-label">
-                    <input id="platforms" name="platforms[]" type="checkbox" class="form-check-input" {{ in_array(2,json_decode($data->platforms)) ? 'checked' : '' }} value="2"> <i class="fab fa-playstation" aria-hidden="true"></i> PlayStation
+                    <input id="platforms" name="platforms[]" type="checkbox" class="form-check-input" {{ in_array(2,$data->platforms) ? 'checked' : '' }} value="2"> <i class="fab fa-playstation" aria-hidden="true"></i> PlayStation
                   </label>
                 </div>
 
                 <div class="form-check-inline">
                   <label class="form-check-label">
-                    <input id="platforms" name="platforms[]" type="checkbox" class="form-check-input" {{ in_array(3,json_decode($data->platforms)) ? 'checked' : '' }} value="3"> <i class="fab fa-xbox" aria-hidden="true"></i> Xbox
+                    <input id="platforms" name="platforms[]" type="checkbox" class="form-check-input" {{ in_array(3,$data->platforms) ? 'checked' : '' }} value="3"> <i class="fab fa-xbox" aria-hidden="true"></i> Xbox
                   </label>
                 </div>
                 </div>
