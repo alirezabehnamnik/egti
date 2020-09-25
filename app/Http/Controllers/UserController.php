@@ -18,13 +18,14 @@ class UserController extends Controller
     {
       $hasRequest = null;
       $friends = null;
+      $isFriend = false;
       $data = User::where('username', $username)->first();
       if (!$data) {
         abort(404);
       }
-      $user_id = Auth::user()->id;
-      $isFriend = User::where('username', $username)->whereRaw("JSON_CONTAINS(friends_id, '[\"$user_id\"]' )")->first();
       if (Auth::check()) {
+        $user_id = Auth::user()->id;
+        $isFriend = User::where('username', $username)->whereRaw("JSON_CONTAINS(friends_id, '[\"$user_id\"]' )")->first();
         $frRequest = FriendRequests::where('sender_id', Auth::user()->id)->where('receiver_id', $data->id)->first();
         if ($frRequest) {
           $hasRequest = true;

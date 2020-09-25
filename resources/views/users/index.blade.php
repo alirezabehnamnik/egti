@@ -28,7 +28,7 @@
           <br>
           <br>
           <span> {{$data->username}} </span>
-          @if (Auth::check() && Auth::user()->id != $data->id)
+          @if (Auth::check() && Auth::user()->id != $data->id && !$isFriend)
           <hr>
             @if ($hasRequest)
               <a href="{{route('user_remove_add_friend', ['sender' => Auth::user()->id, 'receiver' => $data->id])}}" style="color:#FFF;">
@@ -46,7 +46,7 @@
           @endif
         </div>
         <br>
-        @if ($data->privacy_profile == 0 || $data->id == auth()->user()->id || $isFriend)
+        @if ($data->privacy_profile == 0 || $isFriend || Auth::check() && $data->id == Auth::user()->id)
         <div class="sidenav-link">
           <li data-toggle="collapse" href="#info" aria-expanded="false" aria-controls="info">
             <i class="fas fa-user-alt" aria-hidden="true"></i> مشخصات
@@ -64,7 +64,7 @@
     </div>
     <div class="col-md-10">
       <div id="accordion">
-        @if ($data->privacy_profile == 0 || $data->id == auth()->user()->id || $isFriend)
+        @if ($data->privacy_profile == 0 || $isFriend || Auth::check() && $data->id == Auth::user()->id)
         <div class="card">
           <div id="info" class="collapse show" data-parent="#accordion">
             <div class="card-body">
