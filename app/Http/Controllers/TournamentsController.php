@@ -66,18 +66,42 @@ class TournamentsController extends Controller
         'team_id' => ['required', 'numeric'],
         'rules' => ['accepted'],
       ]);
+
       $checkDup = TournamentsRegister::where('user_id', $user_id)->where('tournament_id', $request['tournament_id'])->get();
+
       if (!$checkDup->isEmpty()) {
         return back()->with('error', 'شما قبلا در این مسابقه ثبت نام کرده اید و مجاز به ثبت نام مجدد نمی باشید!');
-      } else {
-         $sql = TournamentsRegister::create([
-            'tournament_id' => $request['tournament_id'],
-            'team_id' => $request['team_id'],
-            'user_id' => $user_id,
-            'enabled' => 1,
-        ]);
-        return redirect()->back()->with('message', 'شما با موفقیت در مسابقه '. $request['tournament_name'] .' ثبت نام کردید!');
       }
+      
+      $a = Teams::where('id', $request['team_id'])->first();
+      $b = Tournaments::where('id', $request['tournament_id'])->first();
+
+      if ($b->teams_count == $b->max_teams) {
+        return back()->with('error', 'ظرفیت ثبت نام در این مسابقه تکمیل شده است!');
+      }
+
+      if ($b->player_per_team != count($a->players_id)) {
+        return back()->with('error', 'حداقل بازیکن تیم برای این مسابقه باید '. $b->player_per_team.' نفر باشد!');
+      }
+
+       $sql = TournamentsRegister::create([
+          'tournament_id' => $request['tournament_id'],
+          'team_id' => $request['team_id'],
+          'user_id' => $user_id,
+          'enabled' => 1,
+      ]);
+
+      if ($sql) {
+         $summ = $b->teams_count + 1;
+         Tournaments::where('id', $request['tournament_id'])->update(['teams_count' => $summ]);
+
+         if ($summ == $b->max_teams) {
+           Tournaments::where('id', $request['tournament_id'])->update(['enabled' => 2]);
+         }
+
+      }
+
+      return redirect()->back()->with('message', 'شما با موفقیت در مسابقه '. $request['tournament_name'] .' ثبت نام کردید!');
     }
 
     public function myTournaments()
