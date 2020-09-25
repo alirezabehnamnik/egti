@@ -60,7 +60,7 @@
         @endforeach
         <hr>
         <div class="team-panel">
-          <a href="#" class="tmi edit-b green">
+          <a href="{{route('edit_team', ['id' => $item->id])}}" class="tmi edit-b green">
             <span> <i class="fas fa-edit" aria-hidden="true"></i> ویرایش </span>
           </a>
           @if ($item->enabled == 2)

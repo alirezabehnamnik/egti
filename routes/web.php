@@ -117,6 +117,7 @@ Route::get('/users', 'UserController@showAll')->name('users_list');
           Route::get('/manage/disbale/{id}', 'TeamsController@disableTeam')->name('delete_team')->middleware('auth');
           Route::get('/manage/enable/{id}', 'TeamsController@enableTeam')->name('undelete_team')->middleware('auth');
           Route::get('/manage/edit/{id}', 'TeamsController@showEdit')->name('edit_team')->middleware('auth');
+          Route::post('/manage/edit', 'TeamsController@saveEdit')->name('save_team')->middleware('auth');
       });
 
       // Profile tournaments Route
