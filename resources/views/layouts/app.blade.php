@@ -26,7 +26,6 @@
               <img src="/images/loading.gif" width="140" alt='loading'>
           </div>
         </div>
-
         @if ($auth)
         <div class="admin-navbar">
           <a href="{{route('admin_panel')}}" style="color: #FFF;">
@@ -98,7 +97,18 @@
         </nav>
 
         <main class="mt-7">
-            @yield('content')
+          @if (Auth::check())
+            @if (Auth::user()->reason)
+            <div class="col-md-12">
+              <div class="alert alert-danger">
+                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>  حساب کاربری شما به دلیل {{Auth::user()->reason}} توسط مدیریت محدود شده است!
+              </div>
+            </div>
+            @else
+              @yield('content')
+
+            @endif
+          @endif
         </main>
 
         <br>

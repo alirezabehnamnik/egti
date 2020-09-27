@@ -110,7 +110,19 @@
           </div>
           <div class="col-md-2 col-2"></div>
           <main class="col-md-10">
-              @yield('content')
+            @if (Auth::check())
+              @if (Auth::user()->reason)
+              <br>
+              <div class="col-md-12">
+                <div class="alert alert-danger">
+                  <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>  حساب کاربری شما به دلیل {{Auth::user()->reason}} توسط مدیریت محدود شده است!
+                </div>
+              </div>
+              @else
+                @yield('content')
+
+              @endif
+            @endif
           </main>
         </div>
 

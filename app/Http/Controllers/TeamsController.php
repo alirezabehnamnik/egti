@@ -188,6 +188,7 @@ class TeamsController extends Controller
           ]);
           Teams::where('id', Auth::user()->id)->update($req);
       } else {
+        dd(request()->all());
           Teams::where('id', Auth::user()->id)->update(request()->all());
       }
       return redirect()->back()->with('message', 'اطلاعات شما با موفقیت ویرایش شد.');
