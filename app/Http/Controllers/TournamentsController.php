@@ -72,7 +72,7 @@ class TournamentsController extends Controller
       if (!$checkDup->isEmpty()) {
         return back()->with('error', 'شما قبلا در این مسابقه ثبت نام کرده اید و مجاز به ثبت نام مجدد نمی باشید!');
       }
-      
+
       $a = Teams::where('id', $request['team_id'])->first();
       $b = Tournaments::where('id', $request['tournament_id'])->first();
 
@@ -80,7 +80,7 @@ class TournamentsController extends Controller
         return back()->with('error', 'ظرفیت ثبت نام در این مسابقه تکمیل شده است!');
       }
 
-      if ($b->player_per_team != count($a->players_id)) {
+      if ($b->player_per_team != count($a->players_id + 1)) {
         return back()->with('error', 'حداقل بازیکن تیم برای این مسابقه باید '. $b->player_per_team.' نفر باشد!');
       }
 
