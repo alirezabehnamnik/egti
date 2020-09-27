@@ -170,7 +170,7 @@ class TeamsController extends Controller
       }
     }
 
-    public function saveEdit(Request $request, $id)
+    public function saveEdit(Request $request)
     {
       unset($request['_token']);
       $validated = $request->validate([
