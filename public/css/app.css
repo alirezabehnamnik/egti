@@ -6811,7 +6811,7 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: right;
-  background-color: #f8fafc;
+  background-color: #343a40;
 }
 
 [tabindex="-1"]:focus {
@@ -7262,7 +7262,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #f8fafc;
+  background-color: #343a40;
   border: 1px solid #ddd;
   border-radius: 0.25rem;
   transition: all 0.2s ease-in-out;
@@ -8363,7 +8363,7 @@ pre code {
 }
 
 .table .table {
-  background-color: #f8fafc;
+  background-color: #343a40;
 }
 
 .table-sm th,
@@ -8529,7 +8529,7 @@ pre code {
 }
 
 .table .thead-dark th {
-  color: #f8fafc;
+  color: #343a40;
   background-color: #212529;
   border-color: #32383e;
 }
@@ -8541,7 +8541,7 @@ pre code {
 }
 
 .table-dark {
-  color: #f8fafc;
+  color: #343a40;
   background-color: #212529;
 }
 
@@ -10173,7 +10173,7 @@ tbody.collapse.show {
 }
 
 .custom-control-input:focus ~ .custom-control-indicator {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #343a40, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-control-input:active ~ .custom-control-indicator {
@@ -10403,8 +10403,8 @@ tbody.collapse.show {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #f8fafc;
-  border-color: #ddd #ddd #f8fafc;
+  background-color: #343a40;
+  border-color: #ddd #ddd #343a40;
 }
 
 .nav-tabs .dropdown-menu {
@@ -15525,6 +15525,10 @@ a.text-dark:hover {
   display: none;
 }
 
+body {
+  color: #FFF;
+}
+
 main {
   min-height: 46vh;
 }
@@ -15552,6 +15556,10 @@ main {
   left: 0;
 }
 
+nav {
+  padding: 0px 30px !important;
+}
+
 .admin-navbar {
   position: fixed;
   z-index: 1031;
@@ -15573,15 +15581,14 @@ main {
 }
 
 .m-title a {
-  color: #212529;
+  color: #FFF;
 }
 
 .show-more {
-  border: 10px solid;
+  border: 10px solid #fb702b;
   border-image-slice: 1;
   border-width: 2px;
-  border-image-source: linear-gradient(to left, #FA697C, #FA9F6F);
-  padding: 3px;
+  padding: 7px 10px;
   border-radius: 10px;
   left: 20px;
   position: absolute;
@@ -15650,10 +15657,10 @@ main {
 }
 
 .tournament-details {
-  background: #ffffff;
-  color: #545454;
+  background: #1c2125;
+  color: #b9b9b9;
   border-radius: 35px;
-  border: 1px solid #e6e6e6;
+  border: 1px solid #131619;
 }
 
 .tournament-details li {
@@ -15667,7 +15674,7 @@ main {
 .tournament-text {
   float: left;
   position: relative;
-  background: #ececec;
+  background: #343a40;
   padding: 3px 10px;
   border-radius: 100px;
 }
@@ -15719,8 +15726,8 @@ main {
 }
 
 .footer {
-  background: url(https://fortnitefa.ir/wp-content/uploads/2020/04/989981.svg);
-  background-color: #2a2a2a;
+  background: url("/images/footer-bg.png");
+  background-color: #1c2125;
   color: #dddddd;
   padding-bottom: 50px;
   background-size: cover !important;
@@ -15731,7 +15738,6 @@ main {
 .footer-top {
   width: 100%;
   background-color: #292929;
-  border-bottom: 1px solid #141414;
 }
 
 .footer-social {
@@ -16013,7 +16019,7 @@ main {
 }
 
 .card-register {
-  background: #fff;
+  background: #1c2125;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50px;
   padding: 10px;

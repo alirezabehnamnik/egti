@@ -33,7 +33,8 @@
           </a>
         </div>
         @endif
-        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white shadow p-3" {{$auth ? 'style=margin-top:30px' : ''}}>
+        <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark shadow" {{$auth ? 'style=margin-top:30px' : ''}}>
+            <img class="navbar-brand" src="/images/logo.png" width="64px" >
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
