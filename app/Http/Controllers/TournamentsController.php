@@ -80,9 +80,9 @@ class TournamentsController extends Controller
         return back()->with('error', 'ظرفیت ثبت نام در این مسابقه تکمیل شده است!');
       }
 
-      if ($b->player_per_team != count($a->players_id + 1)) {
-        return back()->with('error', 'حداقل بازیکن تیم برای این مسابقه باید '. $b->player_per_team.' نفر باشد!');
-      }
+      // if ($b->player_per_team != count($a->players_id + 1)) {
+      //   return back()->with('error', 'حداقل بازیکن تیم برای این مسابقه باید '. $b->player_per_team.' نفر باشد!');
+      // }
 
        $sql = TournamentsRegister::create([
           'tournament_id' => $request['tournament_id'],
