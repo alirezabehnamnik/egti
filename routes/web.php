@@ -148,5 +148,5 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 // Route::get('', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
 Route::group(['prefix' => 'help'] , function() {
-    Route::get('/{drm}' , 'HelpController@drm');
+    Route::get('/{drm}' , 'HelpController@index');
 });

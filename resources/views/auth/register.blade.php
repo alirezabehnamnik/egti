@@ -169,7 +169,7 @@
 
                             <div class="col-md-6">
                                 <input id="uplay" type="text" class="form-control" name="uplay" value="{{ old('uplay') }}" autocomplete="uplay">
-                                <small> <a href="/help/uplay" target="_blank"> راهنما </a> </small>
+                                <small> <a href="/help/ubisoft" target="_blank"> راهنما </a> </small>
                             </div>
                           </div>
 
@@ -275,7 +275,7 @@
                               </div>
                             </div>
                             <hr>
-                            
+
                             <div class="form-group row">
 
                                 <div class="form-check-inline col-md-12">

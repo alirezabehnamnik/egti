@@ -802,3 +802,101 @@ left: 0;
 .fr-controlls {
     float: left;
 }
+
+// Drm's Help
+.drm-steam {
+    background: #07172b; /* Old browsers */
+    background: -moz-linear-gradient(top, #07172b 0%, #0b87b8 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #07172b 0%,#0b87b8 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #07172b 0%,#0b87b8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#07172b', endColorstr='#0b87b8',GradientType=0 ); /* IE6-9 */
+}
+
+.drm-top-bar {
+    background: rgba(0,0,0,0.5);
+    padding: 15px;
+    -webkit-box-shadow: 0 5px 20px 0 #000000;
+    box-shadow: 0 5px 20px 0 #000000;
+    text-align: center;
+    font-size: 30px;
+}
+
+.line {
+    width: 2px;
+    height: auto;
+    background: #FFF;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+    top: 0;
+}
+
+.line::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid;
+    left: 0;
+    right: -4px;
+    margin: auto;
+    border-radius: 100%;
+}
+
+.line-left {
+    width: 160px;
+    height: 2px;
+    background: #FFF;
+    position: relative;
+    right: -85px;
+    top: 2px;
+    margin: auto;
+}
+
+.circle {
+    width: 10px;
+    height: 10px;
+    border: 2px solid;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -156px;
+    background: #FFF;
+    margin: auto;
+}
+
+.drm-text {
+    width: 42%;
+    border: 2px solid;
+    padding: 8px;
+    position: relative;
+    border-radius: 5px;
+}
+
+.drm-text-left::before {
+    content: "";
+    width: 146px;
+    height: 2px;
+    background: #FFF;
+    position: absolute;
+    left: -146px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.drm-text-right::before {
+    content: "";
+    width: 146px;
+    height: 2px;
+    background: #FFF;
+    position: absolute;
+    left: -146px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
