@@ -170,7 +170,7 @@ class TeamsController extends Controller
       }
     }
 
-    public function saveEdit(Request $request)
+    public function saveEdit(Request $request, $id)
     {
       unset($request['_token']);
       $validated = $request->validate([
@@ -186,9 +186,9 @@ class TeamsController extends Controller
             'players_id' => $request['players_id'],
             'standin_id' => $request['standin_id'],
           ]);
-          Teams::where('user_id', Auth::user()->id)->update($req);
+          Teams::where('tag', $request['tag'])->update($req);
       } else {
-          Teams::where('user_id', Auth::user()->id)->update(request()->all());
+          Teams::where('tag', $request['tag'])->update(request()->all());
       }
       return redirect()->back()->with('message', 'اطلاعات شما با موفقیت ویرایش شد.');
     }
