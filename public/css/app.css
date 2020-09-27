@@ -15733,6 +15733,7 @@ nav {
   background-size: cover !important;
   background-repeat: no-repeat;
   position: relative;
+  box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 .footer-top {
