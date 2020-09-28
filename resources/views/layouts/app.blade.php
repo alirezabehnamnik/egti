@@ -98,8 +98,7 @@
         </nav>
 
         <main class="mt-7">
-          @if (Auth::check())
-            @if (Auth::user()->reason)
+            @if (Auth::check() && Auth::user()->reason)
             <div class="col-md-12">
               <div class="alert alert-danger">
                 <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>  حساب کاربری شما به دلیل {{Auth::user()->reason}} توسط مدیریت محدود شده است!
@@ -109,7 +108,6 @@
               @yield('content')
 
             @endif
-          @endif
         </main>
 
         <br>
