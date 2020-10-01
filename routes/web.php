@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'MainController@index')->name('home');
 Route::get('/errorPage/{code}', 'HomeController@errorPage')->name('errorPage');
 
+// Email Verification
+Auth::routes(['verify' => true]);
 // Admin Route
 Route::group(['prefix' => 'admin'] , function() {
     Route::get('/', function () {
@@ -85,7 +87,7 @@ Route::get('/game/{id}', 'GamesController@game')->name('game');
 Route::group(['prefix' => 'tournament'] , function() {
     Route::get('/', 'TournamentsController@index')->name('tournaments');
     Route::get('/result/{id}', 'TournamentsController@result')->name('tournament_results');
-    Route::get('/register/{id}', 'TournamentsController@showRegister')->name('show_tr_register')->middleware('auth');
+    Route::get('/register/{id}', 'TournamentsController@showRegister')->name('show_tr_register')->middleware('auth')->middleware('verified');
     Route::post('/register', 'TournamentsController@register')->name('tr_register')->middleware('auth');
 });
 
