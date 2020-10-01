@@ -144,7 +144,7 @@
                       @endphp
                       @foreach ($social as $v)
                       <div class="footer-social-link">
-                        <a href="" target="_blank">
+                        <a href="{{$v->link}}" target="_blank">
                           <img src="/images/{{$v->icon}}" with="40" alt="" data-toggle="tooltip" data-placement="top" title="{{$v->title}}">
                         </a>
                       </div>
@@ -189,7 +189,7 @@
                         $friends = json_decode($data->friends_footer);
                       @endphp
                       @foreach ($friends as $v)
-                      <a class="text-left" href="" target="_blank">
+                      <a class="text-left" href="{{$v->link}}" target="_blank">
                         <li> {{$v->text}} </li>
                       </a>
                       @endforeach
@@ -203,7 +203,7 @@
                         $link = json_decode($data->link_footer);
                       @endphp
                       @foreach ($link as $v)
-                      <a class="text-left" href="" target="_blank">
+                      <a class="text-left" href="{{$v->link}}" target="_blank">
                         <li> {{$v->text}} </li>
                       </a>
                       @endforeach
@@ -217,7 +217,7 @@
                         $learning = json_decode($data->learning_footer);
                       @endphp
                       @foreach ($learning as $v)
-                      <a class="text-left" href="" target="_blank">
+                      <a class="text-left" href="{{$v->link}}" target="_blank">
                         <li> {{$v->text}} </li>
                       </a>
                       @endforeach

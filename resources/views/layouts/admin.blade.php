@@ -138,9 +138,7 @@
           <i class="fas fa-sliders-h" aria-hidden="true"></i>
         </div>
         <main class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 offset-xl-2 mobile-margin mt-2">
-          <div style="margin-right: 16%;">
             @yield('content')
-          </div>
         </main>
 
     </div>
