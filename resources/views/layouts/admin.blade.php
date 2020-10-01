@@ -31,11 +31,14 @@
           <div class="sidenav-profile text-center">
             <div class="logout-profile" data-toggle="tooltip" data-placement="bottom" title="خروج">
               <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                 <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                 خروج
               </a>
               <form id="logout-form" action="{{ route('admin_logout') }}" method="POST" style="display: none;">
                   @csrf
               </form>
+            </div>
+            <div class="collapse-sidenav in-nav">
+              <i class="fas fa-sliders-h" aria-hidden="true"></i>
             </div>
             <a href="{{route('user_profile', ['username' => Auth::guard('admins')->user()->username])}}" target="_blank" style="color:#FFF;">
               <span> {{Auth::guard('admins')->user()->username}} </span>
@@ -124,8 +127,10 @@
 
         </div>
 
-
-        <main class="mt-2">
+        <div class="collapse-sidenav out-nav">
+          <i class="fas fa-sliders-h" aria-hidden="true"></i>
+        </div>
+        <main class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 offset-xl-2 mobile-margin mt-2">
           <div style="margin-right: 16%;">
             @yield('content')
           </div>

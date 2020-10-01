@@ -21,7 +21,7 @@
       <hr>
     </div>
     @foreach ($teams as $item)
-    <div class="col-md-2 text-center">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2 text-center">
         <div class="team-item">
           @if ($item->user_id == Auth::user()->id)
           <div class="team-captain" data-toggle="tooltip" data-placement="top" title="کاربر در این تیم کاپیتان است"> <i class="fas fa-star" aria-hidden="true"></i> </div>
@@ -71,7 +71,7 @@
       <hr>
     </div>
       @foreach ($tournaments as $item)
-      <div class="col-md-3 tournament-item text-center">
+      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 tournament-item text-center">
 
         <div class="tournament-details">
           <div class="tournament-image">

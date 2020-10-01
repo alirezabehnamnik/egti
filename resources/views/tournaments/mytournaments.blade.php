@@ -16,7 +16,7 @@
   </div>
   <div class="row">
     @foreach ($data as $item)
-    <div class="col-md-3 tournament-item text-center">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 tournament-item text-center">
 
       <div class="tournament-details">
         <div class="tournament-image">

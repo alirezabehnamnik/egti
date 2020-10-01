@@ -36908,6 +36908,9 @@ $(document).ready(function () {
     placeholder: 'انتخاب کنید',
     language: "fa"
   });
+  $(".collapse-sidenav").click(function () {
+    $(".sidenav").toggleClass("showSideNav");
+  });
 });
 
 /***/ }),

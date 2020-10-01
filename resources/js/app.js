@@ -201,4 +201,8 @@ $(".collapse-li").on('click', function (event) {
       language: "fa",
     });
 
+    $(".collapse-sidenav").click(function(){
+      $(".sidenav").toggleClass("showSideNav");
+    });
+
 });

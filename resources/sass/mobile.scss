@@ -1,0 +1,21 @@
+@media only screen and (max-width: 1024px) {
+  .sidenav {
+    right: -350px !important;
+  }
+  .mobile-margin {
+    margin-top: 50px;
+  }
+  .collapse-sidenav {
+    display: block !important;
+  }
+}
+
+
+@media only screen and (min-width: 1025px) {
+  .sidenav {
+    right: 0px !important;
+  }
+  .mobile-margin {
+    margin-top: 0;
+  }
+}

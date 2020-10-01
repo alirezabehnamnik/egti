@@ -14,7 +14,7 @@
     <br>
     @endif
     @foreach ($data as $v)
-    <div class="col-10 col-md-2 text-center">
+    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 text-center">
         <div class="team-item">
           <div class="user-image">
             <img src="/images/avatars/{{$v->user->avatar}}" alt="{{$v->user->name}}">

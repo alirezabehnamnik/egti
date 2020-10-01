@@ -28,15 +28,18 @@
         </div>
 
         <div class="row">
-          <div class="col-md-2 col-2 sidenav">
+          <div class="sidenav">
             <div class="sidenav-profile text-center">
               <div class="logout-profile" data-toggle="tooltip" data-placement="bottom" title="خروج">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                   <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                   خروج
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
+              </div>
+              <div class="collapse-sidenav in-nav">
+                <i class="fas fa-sliders-h" aria-hidden="true"></i>
               </div>
               <img src="/images/avatars/{{Auth::user()->avatar}}" width="128px" height="128px" alt="{{Auth::user()->username}}">
               <br>
@@ -101,15 +104,11 @@
                 <li> <i class="fas fa-clipboard-list" aria-hidden="true"></i> مسابقات من </li>
               </a>
             </div>
-
-            <div class="sidenav-footer">
-              تمامی حقوق برای
-              <span> EG Team </span>
-              محفوظ می باشد.
-            </div>
           </div>
-          <div class="col-md-2 col-2"></div>
-          <main class="col-md-10">
+          <div class="collapse-sidenav out-nav">
+            <i class="fas fa-sliders-h" aria-hidden="true"></i>
+          </div>
+          <main class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 offset-xl-2 mobile-margin">
             @if (Auth::check())
               @if (Auth::user()->reason)
               <br>
