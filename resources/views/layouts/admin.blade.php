@@ -23,7 +23,14 @@
 
         <div id="mask">
           <div class="loader">
-              <img src="/images/loading.gif" width="140" alt='loading'>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="text">
+              درحال بارگذاری
+            </div>
           </div>
         </div>
 
