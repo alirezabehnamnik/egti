@@ -122,6 +122,10 @@
         <a href="{{route('tournament_results', ['id' => $item->tournament->id])}}" target="_blank" class="tr-result">
           نمایش نتایج
         </a>
+        @elseif ($item->tournament->enabled == 4)
+        <a href="#" class="tr-result">
+          مشاهده جدول
+        </a>
         @endif
       </div>
     </div>

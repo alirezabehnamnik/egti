@@ -121,15 +121,6 @@
         </li>
         @endif
 
-        @if ($item->enabled == 1)
-          <a href="{{route('show_tr_register', ['id' => $item->id])}}" class="tr-register">
-            ثبت نام
-          </a>
-        @elseif ($item->enabled == 2)
-          <a class="tr-register disabled-register" data-toggle="tooltip" data-placement="top" title="مهلت ثبت نام در این مسابقه به پایان رسیده است">
-            ثبت نام
-          </a>
-        @endif
       </div>
     </div>
     @endforeach

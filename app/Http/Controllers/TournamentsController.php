@@ -132,7 +132,13 @@ class TournamentsController extends Controller
 
     public function myTournaments()
     {
-      $data = TournamentsRegister::where('user_id', Auth::user()->id)->paginate(4);
+      $user_id = Auth::user()->id;
+      $team_ids = array();
+      $teams = Teams::select('id')->whereRaw("JSON_CONTAINS(players_id, '[\"$user_id\"]' )")->orWhere('standin_id', $user_id)->get();
+      foreach ($teams as $v) {
+        array_push($team_ids, $v->id);
+      }
+      $data = TournamentsRegister::where('user_id', $user_id)->orWhereIn('team_id', $team_ids)->paginate(8);
       return view('tournaments.mytournaments', ['data' => $data]);
     }
 }

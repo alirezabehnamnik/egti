@@ -35,7 +35,13 @@ class HomeController extends Controller
           }
         }
 
-        $tournaments = TournamentsRegister::where('user_id', Auth::user()->id)->limit(4)->get();
+        $user_id = Auth::user()->id;
+        $team_ids = array();
+        $teams_list = Teams::select('id')->whereRaw("JSON_CONTAINS(players_id, '[\"$user_id\"]' )")->orWhere('standin_id', $user_id)->get();
+        foreach ($teams_list as $v) {
+          array_push($team_ids, $v->id);
+        }
+        $tournaments = TournamentsRegister::where('user_id', Auth::user()->id)->orWhereIn('team_id', $team_ids)->get()->random(4);
         return view('profile.index', ['teams' => $teams, 'tournaments' => $tournaments, 'data' => $array]);
     }
 
