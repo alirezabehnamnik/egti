@@ -67,6 +67,7 @@ Route::group(['prefix' => 'admin'] , function() {
         Route::get('/registers/{id}/search' , 'AdminController@searchTournamentRegister')->name('admin_tournament_register_search');
         Route::get('/result' , 'AdminController@tournamentResultShow')->name('admin_tournament_result');
         Route::post('/result' , 'AdminController@tournamentResultAdd')->name('admin_tournament_result_add');
+        Route::get('/start/{id}' , 'AdminController@startTournament')->name('admin_tournament_start');
     });
     // Teams
     Route::group(['prefix' => 'teams', 'middleware' => 'admin'] , function() {
@@ -86,6 +87,10 @@ Route::get('/game/{id}', 'GamesController@game')->name('game');
 // Tournaments Route
 Route::group(['prefix' => 'tournament'] , function() {
     Route::get('/', 'TournamentsController@index')->name('tournaments');
+    Route::get('/active', 'TournamentsController@showActive')->name('tournaments_active');
+    Route::get('/end', 'TournamentsController@showEnd')->name('tournaments_end');
+    Route::get('/soon', 'TournamentsController@showSoon')->name('tournaments_soon');
+    Route::get('/progress', 'TournamentsController@showProg')->name('tournaments_progress');
     Route::get('/result/{id}', 'TournamentsController@result')->name('tournament_results');
     Route::get('/register/{id}', 'TournamentsController@showRegister')->name('show_tr_register')->middleware('auth')->middleware('verified');
     Route::post('/register', 'TournamentsController@register')->name('tr_register')->middleware('auth');

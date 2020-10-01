@@ -16,9 +16,35 @@ class TournamentsController extends Controller
 {
     public function index()
     {
-      $data = Tournaments::where('enabled', '>', 0)->orderBy('start_date', 'ASC')->paginate(6);
-      $etour = Tournaments::where('enabled', '-1')->orderBy('start_date', 'ASC')->paginate(6);
-      return view('tournaments.index', ['data' => $data, 'etour' => $etour]);
+      $data = Tournaments::where('enabled', 1)->orderBy('start_date', 'ASC')->limit(3)->get();
+      $etour = Tournaments::where('enabled', -1)->orderBy('start_date', 'ASC')->limit(3)->get();
+      $soon = Tournaments::where('enabled', 2)->orderBy('start_date', 'ASC')->limit(3)->get();
+      $inprogress = Tournaments::where('enabled', 4)->orderBy('start_date', 'DESC')->limit(3)->get();
+      return view('tournaments.index', ['data' => $data, 'etour' => $etour, 'soon' => $soon, 'inprogress' => $inprogress]);
+    }
+
+    public function showActive()
+    {
+      $data = Tournaments::where('enabled', 1)->orderBy('start_date', 'ASC')->paginate(12);
+      return view('tournaments.active', ['data' => $data]);
+    }
+
+    public function showEnd()
+    {
+      $data = Tournaments::where('enabled', -1)->orderBy('start_date', 'ASC')->paginate(12);
+      return view('tournaments.end', ['data' => $data]);
+    }
+
+    public function showSoon()
+    {
+      $data = Tournaments::where('enabled', 2)->orderBy('start_date', 'ASC')->paginate(12);
+      return view('tournaments.soon', ['data' => $data]);
+    }
+
+    public function showProg()
+    {
+      $data = Tournaments::where('enabled', 4)->orderBy('start_date', 'DESC')->paginate(12);
+      return view('tournaments.progress', ['data' => $data]);
     }
 
     public function result($id)

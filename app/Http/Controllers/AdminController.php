@@ -412,6 +412,12 @@ class AdminController extends Controller
     // Tournament Edit Save
     public function saveEditTournament(Request $request, $id)
     {
+      if ($request['register_date'] > $request['start_date']) {
+        return redirect()->back()->with('error', 'تاریخ پایان ثبت نام نمی تواند بعد از تاریخ شروع مسابقه باشد!');
+      }
+      if ($request['end_date'] < $request['start_date']) {
+        return redirect()->back()->with('error', 'تاریخ پایان مسابقه نمی تواند قبل از تاریخ شروع مسابقه باشد!');
+      }
       unset($request['_token']);
       $validated = $request->validate([
         'name' => ['required', 'string', 'max:255'],
@@ -421,7 +427,7 @@ class AdminController extends Controller
       $tag = Games::select('tag')->where('id', $request['game_id'])->first();
       $image = $tag->tag."-logo.png";
       $request->request->add(['image' => $image]);
-      $req = request()->only(['name', 'tag', 'game_id', 'image', 'start_date', 'end_date', 'entry_price', 'max_teams', 'player_per_team', 'prize_pool', 'fplace_reward', 'splace_reward', 'tplace_reward', 'foplace_reward', 'fiplace_reward']);
+      $req = request()->only(['name', 'tag', 'game_id', 'image', 'start_date', 'end_date', 'register_date', 'entry_price', 'max_teams', 'player_per_team', 'prize_pool', 'fplace_reward', 'splace_reward', 'tplace_reward', 'foplace_reward', 'fiplace_reward']);
       Tournaments::where('id', $id)->update($req);
       return redirect()->back()->with('message', 'مسابقه با موفقیت بروزرسانی شد.');
     }
@@ -436,6 +442,12 @@ class AdminController extends Controller
     // Save Tournament
     public function saveAddTournament(Request $request)
     {
+      if ($request['register_date'] > $request['start_date']) {
+        return redirect()->back()->with('error', 'تاریخ پایان ثبت نام نمی تواند بعد از تاریخ شروع مسابقه باشد!');
+      }
+      if ($request['end_date'] < $request['start_date']) {
+        return redirect()->back()->with('error', 'تاریخ پایان مسابقه نمی تواند قبل از تاریخ شروع مسابقه باشد!');
+      }
       unset($request['_token']);
       $validated = $request->validate([
         'name' => ['required', 'string', 'max:255'],
@@ -451,6 +463,7 @@ class AdminController extends Controller
           'image' => $image,
           'start_date' => $request['start_date'],
           'end_date' => $request['end_date'],
+          'register_date' => $request['register_date'],
           'entry_price' => $request['entry_price'],
           'max_teams' => $request['max_teams'],
           'player_per_team' => $request['player_per_team'],
@@ -498,6 +511,8 @@ class AdminController extends Controller
         $enabled = -1;
       } elseif ($request['enabled'] == 2) {
         $enabled = 2;
+      } elseif ($request['enabled'] == 4) {
+        $enabled = 4;
       }
       $query = Tournaments::select('id', 'name', 'tag', 'game_id', 'start_date', 'end_date', 'enabled');
       if ($request['id']) {
@@ -524,6 +539,12 @@ class AdminController extends Controller
       $data = $query->paginate(40);
       $games = Games::where('enabled', 1)->get();
       return view('admin.tournaments.index', ['data' => $data->withQueryString(), 'games' => $games]);
+    }
+
+    public function startTournament($id)
+    {
+      Tournaments::where('id', $id)->update(['enabled' => 4]);
+      return redirect()->back()->with('message', 'وضعیت مسابقه با موفقیت تغییر کرد.');
     }
 
     // Show Tournament Regsiters

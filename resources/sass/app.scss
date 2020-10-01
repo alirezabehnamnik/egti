@@ -944,6 +944,15 @@ nav {
 .dropdown-menu {
     background-color: #1c2125;
 }
+
 .table-dark {
   color: #FFF !important;
+}
+
+.select2-results__option {
+    color: #000;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    color: #000;
 }

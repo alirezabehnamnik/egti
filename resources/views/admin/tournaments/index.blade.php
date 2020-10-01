@@ -35,6 +35,7 @@
               <option value=""> وضعیت </option>
               <option {{request()->enabled == 1 ? 'selected' : ''}} value="1"> فعال </option>
               <option {{request()->enabled == 2 ? 'selected' : ''}} value="2"> پایان ثبت نام </option>
+              <option {{request()->enabled == 4 ? 'selected' : ''}} value="4"> درحال برگذاری </option>
               <option {{request()->enabled == -1 ? 'selected' : ''}} value="-1"> خاتمه یافته </option>
               <option {{request()->enabled == 3 ? 'selected' : ''}} value="3"> غیرفعال </option>
             </select>
@@ -55,8 +56,8 @@
     </div>
     @endif
     <div class="col-md-12">
-      <table class="table table-hover table-bordered">
-        <thead class="thead-dark">
+      <table class="table table-hover table-bordered table-dark">
+        <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">نام</th>
@@ -65,15 +66,11 @@
             <th scope="col"> عکس </th>
             <th scope="col"> تاریخ شروع </th>
             <th scope="col"> تاریخ پایان </th>
+            <th scope="col"> تاریخ پایان ثبت نام </th>
             <th scope="col"> هزینه ورود </th>
             <th scope="col"> تیم های ثبت شده </th>
             <th scope="col"> حداکثر تیم ها </th>
             <th scope="col"> کل جایزه </th>
-            <th scope="col"> جایزه نفر اول </th>
-            <th scope="col"> جایزه نفر دوم </th>
-            <th scope="col"> جایزه نفر سوم </th>
-            <th scope="col"> جایزه نفر چهارم </th>
-            <th scope="col"> جایزه نفر پنجم </th>
             <th scope="col"> وضعیت </th>
             <th scope="col">عملیات</th>
           </tr>
@@ -101,15 +98,11 @@
               </td>
               <td> {{jdate($v->start_date)->format('Y-m-d')}} </td>
               <td> {{jdate($v->end_date)->format('Y-m-d')}} </td>
+              <td> {{jdate($v->register_date)->format('Y-m-d')}} </td>
               <td> {{$entry_price}} </td>
               <td> {{$v->teams_count}} </td>
               <td> {{$v->max_teams}} </td>
               <td> {{$prize_pool}} </td>
-              <td> {{$fprize}} </td>
-              <td> {{$sprize}} </td>
-              <td> {{$tprize}} </td>
-              <td> {{$foprize}} </td>
-              <td> {{$fiprize}} </td>
               <td>
                 @if ($v->enabled == 1)
                   فعال
@@ -145,6 +138,13 @@
                 <a href="{{route('admin_tournament_end_register', ['id' => $v->id])}}" data-toggle="tooltip" data-placement="top" title="پایان ثبت نام">
                   <button type="button" class="btn btn-sm btn-info" name="button">
                     <i class="fas fa-hourglass-end" aria-hidden="true"></i>
+                  </button>
+                </a>
+                @endif
+                @if ($v->enabled == 2)
+                <a href="{{route('admin_tournament_start', ['id' => $v->id])}}" data-toggle="tooltip" data-placement="top" title="شروع مسابقه">
+                  <button type="button" class="btn btn-sm btn-info" name="button">
+                    <i class="fas fa-play" aria-hidden="true"></i>
                   </button>
                 </a>
                 @endif

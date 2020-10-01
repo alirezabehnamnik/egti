@@ -18,6 +18,14 @@
         </div>
         @endif
 
+        @if(session()->has('error'))
+          <div class="col-md-12">
+            <div class="alert alert-danger">
+              <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>  {{ session()->get('error') }}
+            </div>
+          </div>
+        @endif
+
         <form method="POST" action="{{ route('admin_tournament_edit_save', ['id' => $data->id]) }}" enctype="multipart/form-data">
             @csrf
             <h4 class="text-center"> <i class="fas fa-user-edit red-icon" aria-hidden="true"></i> ویرایش مسابقه "{{$data->name}}" </h4>
@@ -90,6 +98,20 @@
                     <input id="end_date" type="date" class="form-control @error('end_date') is-invalid @enderror" name="end_date" value="{{$data->end_date}}" autocomplete="end_date">
 
                     @error('end_date')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="register_date" class="col-md-4 col-form-label text-md-right">{{ __('تاریخ پایان ثبت نام:') }}</label>
+
+                <div class="col-md-6">
+                    <input id="register_date" type="date" class="form-control @error('register_date') is-invalid @enderror" name="register_date" value="{{$data->register_date}}" autocomplete="register_date">
+
+                    @error('register_date')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

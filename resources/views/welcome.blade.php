@@ -131,6 +131,11 @@
                         </li>
 
                         <li>
+                          تاریخ پایان ثبت نام:
+                          <span class="tournament-text"> {{jdate($item->register_date)->format('Y-m-d')}} </span>
+                        </li>
+
+                        <li>
                           تاریخ شروع:
                           <span class="tournament-text"> {{jdate($item->start_date)->format('Y-m-d')}} </span>
                         </li>
@@ -139,6 +144,7 @@
                           تاریخ پایان:
                           <span class="tournament-text"> {{jdate($item->end_date)->format('Y-m-d')}} </span>
                         </li>
+
 
                         <li>
                           تعداد تیم های شرکت کننده:
@@ -230,6 +236,10 @@
                         @elseif ($item->enabled == -1)
                         <a href="{{route('tournament_results', ['id' => $item->id])}}" target="_blank" class="tr-result">
                           نمایش نتایج
+                        </a>
+                        @elseif ($item->enabled == 4)
+                        <a href="#" class="tr-result">
+                          مشاهده جدول
                         </a>
                         @endif
                       </div>

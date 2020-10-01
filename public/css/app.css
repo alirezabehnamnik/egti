@@ -6161,7 +6161,7 @@ a:hover {
 }
 
 .mt-7 {
-  margin-top: 6.5rem !important;
+  margin-top: 7rem !important;
 }
 
 .mmt-1 {
@@ -6683,6 +6683,13 @@ a:hover {
 
   .collapse-sidenav {
     display: block !important;
+  }
+
+  .mobile-logo {
+    position: absolute;
+    left: 5px;
+    margin: auto;
+    top: 0;
   }
 }
 
@@ -16535,5 +16542,13 @@ nav {
 
 .table-dark {
   color: #FFF !important;
+}
+
+.select2-results__option {
+  color: #000;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+  color: #000;
 }
 

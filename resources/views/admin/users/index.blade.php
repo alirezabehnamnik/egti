@@ -37,8 +37,8 @@
   <br>
   <div class="row">
     <div class="col-md-12">
-      <table class="table table-hover table-bordered">
-        <thead class="thead-dark">
+      <table class="table table-hover table-bordered table-dark">
+        <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">نام</th>

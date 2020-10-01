@@ -99,6 +99,20 @@
             </div>
 
             <div class="form-group row">
+                <label for="register_date" class="col-md-4 col-form-label text-md-right">{{ __('تاریخ پایان ثبت نام:') }}</label>
+
+                <div class="col-md-6">
+                    <input id="register_date" type="date" class="form-control @error('register_date') is-invalid @enderror" name="register_date" autocomplete="register_date">
+
+                    @error('register_date')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <label for="entry_price" class="col-md-4 col-form-label text-md-right">{{ __('هزینه ورود:') }}</label>
 
                 <div class="col-md-6">
