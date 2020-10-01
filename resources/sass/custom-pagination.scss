@@ -1,8 +1,20 @@
 .page-item.active .page-link {
-    background-color: #ff5400 !important;
-    border-color: #d84e4e !important;
+    background-color: #0b1117 !important;
+    border-color: #1c2125 !important;
     color: #FFF !important;
 }
 .page-link {
-    color: #ff5400 !important;
+    color: #fff !important;
+}
+.page-link {
+    background-color: #1c2125 !important;
+    border: 1px solid #1c2125 !important;
+}
+.page-item.disabled .page-link {
+    background-color: #1c2125 !important;
+    border-color: #1c2125 !important;
+}
+.page-link:focus, .page-link:hover {
+    background-color: #0b1117 !important;
+    border-color: #0b1117 !important;
 }
