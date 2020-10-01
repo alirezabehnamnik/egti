@@ -77,9 +77,9 @@ class UserController extends Controller
           // $query->whereIn('mygames',  $games_input);
           $query->whereRaw("JSON_CONTAINS(mygames, '[\"$v\"]' )");
         }
-        $data = $query->paginate(2);
+        $data = $query->paginate(50);
       } else {
-        $data = User::paginate(2);
+        $data = User::paginate(50);
       }
       $state = State::where('enabled', 1)->get();
       $mygames = MyGames::where('enabled', 1)->get();
