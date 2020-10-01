@@ -1,30 +1,30 @@
 .dropdown-item.active, .dropdown-item:active {
-    background-color: #ff5400 !important;
+    background-color: #f8ae40 !important;
 }
 
 .navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
-    color: #ff5400 !important;
+    color: #f8ae40 !important;
 }
 
 .red-icon {
-  color: #ff5400 !important;
+  color: #f8ae40 !important;
 }
 
 .red-bar {
-  background: linear-gradient(145deg,#FA9F6F,#ff5400);
+  background: linear-gradient(145deg,#ffdb62,#f8ae40);
   box-shadow: 0 3px 20px rgba(250,123,119,.3);
   color: #FFF;
 }
 
 .btn-red {
     color: #fff;
-    background: linear-gradient(145deg,#ff5400,#ff5400);
+    background: linear-gradient(145deg,#f8ae40,#f8ae40);
     border-color: transparent;
 }
 
 .btn-red:hover {
     color: #fff;
-    background-color: #b92121;
+    background-color: #d08415;
     border-color: transparent;
 }
 
@@ -34,7 +34,7 @@
 
 .btn-red:not([disabled]):not(.disabled):active, .btn-red:not([disabled]):not(.disabled).active, .show > .btn-red.dropdown-toggle {
     color: #fff;
-    background-color: #ff5400;
+    background-color: #f8ae40;
     border-color: transparent;
     box-shadow: 0 0 0 0.2rem rgba(255, 185, 185, 0.5);
 }
