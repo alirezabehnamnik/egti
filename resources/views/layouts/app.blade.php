@@ -41,7 +41,7 @@
         </div>
         @endif
         <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark shadow" {{$auth ? 'style=margin-top:30px' : ''}}>
-            <a href="{{route('home')}}">
+            <a href="{{route('home')}}" class="mobile-logo">
               <img class="navbar-brand" src="/images/logo.png" width="64px" >
             </a>
             <div class="container">
