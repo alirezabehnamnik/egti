@@ -102,6 +102,8 @@ Route::get('/user/addfriend/{id}', 'UserController@addFriend')->name('user_add_f
 Route::get('/user/rfriendRequest/{sender}-{receiver}', 'UserController@removeAddFriend')->name('user_remove_add_friend');
 Route::get('/users', 'UserController@showAll')->name('users_list');
 
+// Team Profile
+Route::get('/team/show/{tag}', 'TeamsController@index')->name('team_profile');
 
   // Profile Route
   Route::group(['prefix' => 'profile', 'middleware' => 'auth'] , function() {
@@ -117,14 +119,13 @@ Route::get('/users', 'UserController@showAll')->name('users_list');
 
       // Team Route
       Route::group(['prefix' => 'team'] , function() {
-          Route::get('/show/{tag}', 'TeamsController@index')->name('team_profile');
-          Route::get('/create', 'TeamsController@showCreate')->name('create_team')->middleware('auth');
-          Route::post('/create', 'TeamsController@create')->name('add_team')->middleware('auth');
-          Route::get('/manage', 'TeamsController@showManage')->name('manage_team')->middleware('auth');
-          Route::get('/manage/disbale/{id}', 'TeamsController@disableTeam')->name('delete_team')->middleware('auth');
-          Route::get('/manage/enable/{id}', 'TeamsController@enableTeam')->name('undelete_team')->middleware('auth');
-          Route::get('/manage/edit/{id}', 'TeamsController@showEdit')->name('edit_team')->middleware('auth');
-          Route::post('/manage/edit', 'TeamsController@saveEdit')->name('save_team')->middleware('auth');
+          Route::get('/create', 'TeamsController@showCreate')->name('create_team');
+          Route::post('/create', 'TeamsController@create')->name('add_team');
+          Route::get('/manage', 'TeamsController@showManage')->name('manage_team');
+          Route::get('/manage/disbale/{id}', 'TeamsController@disableTeam')->name('delete_team');
+          Route::get('/manage/enable/{id}', 'TeamsController@enableTeam')->name('undelete_team');
+          Route::get('/manage/edit/{id}', 'TeamsController@showEdit')->name('edit_team');
+          Route::post('/manage/edit', 'TeamsController@saveEdit')->name('save_team');
       });
 
       // Profile tournaments Route

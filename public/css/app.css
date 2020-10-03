@@ -6228,7 +6228,7 @@ a:hover {
 
 .bg-dorange {
   background: #f8ae40 !important;
-  color: #FFF !important;
+  color: #7d500c !important;
 }
 
 .red {
@@ -6701,6 +6701,20 @@ a:hover {
   .mobile-margin {
     margin-top: 0;
   }
+}
+
+.drm-header {
+  padding: 10px;
+  width: 100%;
+}
+
+.help-ul li {
+  list-style: decimal;
+  margin-bottom: 20px;
+}
+
+kbd {
+  margin-left: 5px;
 }
 
 /*!
@@ -16500,25 +16514,6 @@ nav {
 
 .fr-controlls {
   float: left;
-}
-
-.drm-steam {
-  background: #07172b;
-  /* Old browsers */
-  /* FF3.6-15 */
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #07172b 0%, #0b87b8 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#07172b", endColorstr="#0b87b8",GradientType=0 );
-  /* IE6-9 */
-}
-
-.drm-top-bar {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 15px;
-  box-shadow: 0 5px 20px 0 #000000;
-  text-align: center;
-  font-size: 30px;
 }
 
 .card {

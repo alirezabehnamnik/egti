@@ -133,7 +133,7 @@
 
                   @if ($data->steam)
                   <div class="col-md-1 col-6">
-                    <a href="https://steamcommunity.com/id/{{$data->steam}}" target="_blank">
+                    <a href="https://steamcommunity.com/profiles/{{$data->steam}}" target="_blank">
                       <div class="sog steam">
                         <img src="/images/steam.png" alt="">
                         <div class="sog-text"> Steam </div>
