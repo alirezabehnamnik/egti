@@ -36839,7 +36839,16 @@ $('.owl-certs').owlCarousel({
   items: 1
 });
 $(document).ready(function () {
-  // Add class to li when collapse in admin panel
+  ClassicEditor.create(document.querySelector('#editor'), {
+    toolbar: ['bold', 'BulletedList', 'numberedList'],
+    language: 'fa' // removePlugins: ['link', 'blockQuote', 'mediaEmbed', 'image' ],
+
+  }).then(function (editor) {
+    window.editor = editor;
+  })["catch"](function (err) {
+    console.error(err.stack);
+  }); // Add class to li when collapse in admin panel
+
   $(".collapse-li").on('click', function (event) {
     $target = $(event.target);
     $target.toggleClass("collapse-active");

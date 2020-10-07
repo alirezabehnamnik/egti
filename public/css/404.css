@@ -616,8 +616,7 @@ nav .menu .menu_icon:hover .icon:after {
   z-index: 1;
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
-  -webkit-filter: blur(10px);
-          filter: blur(10px);
+  filter: blur(10px);
   opacity: 0.8;
 }
 

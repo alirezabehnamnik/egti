@@ -253,8 +253,7 @@
 :root .fa-flip-horizontal,
 :root .fa-flip-vertical,
 :root .fa-flip-both {
-  -webkit-filter: none;
-          filter: none;
+  filter: none;
 }
 
 .fa-stack {
@@ -6254,7 +6253,7 @@ a:hover {
 
 .btn-dorange {
   background: #f8ae40;
-  color: #a06100;
+  color: #523200;
   border-color: transparent;
 }
 
@@ -6715,6 +6714,67 @@ a:hover {
 
 kbd {
   margin-left: 5px;
+}
+
+.t-status {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.pending {
+  background: #eca340;
+  color: #8c5600;
+}
+
+.in-progress {
+  background: #9b5cff;
+}
+
+.answered {
+  background: #ffd951;
+  color: #6b5400;
+}
+
+.user-answered {
+  background: #3490dc;
+  color: #fff;
+}
+
+.completed {
+  background: #8cba51;
+  color: #355f00;
+}
+
+.closed {
+  background: #ef5151;
+}
+
+.ck[dir=rtl],
+.ck[dir=rtl] .ck {
+  font-family: "ISans";
+}
+
+.ck.ck-editor__main > .ck-editor__editable {
+  color: #000;
+}
+
+.comment-header {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.comment-message {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+}
+
+.comment-attachment {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 /*!
@@ -8726,11 +8786,6 @@ pre code {
 }
 
 .form-control:-ms-input-placeholder {
-  color: #868e96;
-  opacity: 1;
-}
-
-.form-control::-ms-input-placeholder {
   color: #868e96;
   opacity: 1;
 }
@@ -16503,6 +16558,7 @@ nav {
   height: 20px;
   text-align: center;
   border-radius: 100%;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .fr-item {

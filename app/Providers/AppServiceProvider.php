@@ -3,6 +3,7 @@
 namespace App\Providers;
 use App\Setting;
 use App\FriendRequests;
+use App\Supports;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +34,8 @@ class AppServiceProvider extends ServiceProvider
       });
       view()->composer('layouts.profile', function ($view) {
         $data = FriendRequests::where('receiver_id', Auth::user()->id)->get();
-        $view->with('data', $data);
+        $tickets = Supports::where('user_id', Auth::user()->id)->where('enabled', '!=', 0)->get();
+        $view->with('data', $data)->with('tickets', $tickets);
       });
     }
 }

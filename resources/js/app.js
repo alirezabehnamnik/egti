@@ -128,6 +128,19 @@ $('.owl-certs').owlCarousel({
 
 $(document).ready(function() {
 
+  ClassicEditor
+  		.create( document.querySelector( '#editor' ), {
+  			toolbar: ['bold', 'BulletedList', 'numberedList'],
+        language: 'fa',
+        // removePlugins: ['link', 'blockQuote', 'mediaEmbed', 'image' ],
+  		} )
+  		.then( editor => {
+  			window.editor = editor;
+  		} )
+  		.catch( err => {
+  			console.error( err.stack );
+  		} );
+
 // Add class to li when collapse in admin panel
 $(".collapse-li").on('click', function (event) {
   $target = $(event.target);

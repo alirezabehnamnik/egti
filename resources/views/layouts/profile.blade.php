@@ -9,8 +9,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('js/ckeditor/translations/fa.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -75,6 +76,22 @@
               <a href="{{route('show_privacy')}}">
                 <li> <i class="fas fa-user-shield" aria-hidden="true"></i> تنظیمات حریم شخصی </li>
               </a>
+              <li class="collapse-li" data-toggle="collapse" data-target="#ticket">
+                 <i class="far fa-question-circle" aria-hidden="true"></i> تیکت پشتیبانی
+                 <div class="clps-icon"> <i class="fas fa-angle-down" aria-hidden="true"></i> </div>
+               </li>
+              <div class="nav-list collapse" id="ticket">
+                <a href="{{route('support')}}">
+                  <li style="margin-right: 10px;">
+                    <i class="fas fa-question" aria-hidden="true"></i> تیکت های من <span class="friendsCount"> {{count($tickets)}} </span>
+                  </li>
+                </a>
+                <a href="{{route('support_show_create')}}">
+                  <li style="margin-right: 10px;">
+                    <i class="fas fa-plus" aria-hidden="true"></i> ایجاد تیکت جدید
+                  </li>
+                </a>
+              </div>
               <li class="collapse-li" data-toggle="collapse" data-target="#friends">
                  <i class="fas fa-users" aria-hidden="true"></i> دوستان
                  <div class="clps-icon"> <i class="fas fa-angle-down" aria-hidden="true"></i> </div>
@@ -92,7 +109,7 @@
                 </a>
               </div>
               <li class="collapse-li" data-toggle="collapse" data-target="#team">
-                 <i class="fas fa-users-cog" aria-hidden="true"></i> مدیریت تیم
+                 <i class="fas fa-users-cog" aria-hidden="true"></i> تیم
                  <div class="clps-icon"> <i class="fas fa-angle-down" aria-hidden="true"></i> </div>
                </li>
               <div class="nav-list collapse" id="team">

@@ -27,6 +27,7 @@
 @import "custom-pagination";
 @import "mobile";
 @import "help";
+@import "ticket";
 
 // Bootstrap
 @import "~rtl-bootstrap/scss/bootstrap";
@@ -893,6 +894,7 @@ nav {
     height: 20px;
     text-align: center;
     border-radius: 100%;
+    color: rgba(0,0,0,0.8);
 }
 
 .fr-item {

@@ -18,6 +18,7 @@ mix
     ], 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/404.scss', 'public/css')
+    .copy('resources/js/ckeditor' , 'public/js/ckeditor', false)
     .copy('resources/assets/images' , 'public/images', false)
     .copy('resources/assets/fonts' , 'public/fonts', false)
     ;

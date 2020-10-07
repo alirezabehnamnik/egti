@@ -173,6 +173,12 @@ return [
 
       // Admin panel ban
       'reason' => 'دلیل',
+
+      // Ticket System
+      'department' => 'واحد پشتیبانی',
+      'description' => 'توضیحات',
+      'title' => 'عنوان',
+      'message' => 'پیام',
     ],
 
 ];

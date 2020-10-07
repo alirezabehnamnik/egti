@@ -130,9 +130,17 @@ Route::get('/team/show/{tag}', 'TeamsController@index')->name('team_profile');
 
       // Profile tournaments Route
       Route::get('/mytournaments', 'TournamentsController@myTournaments')->name('my_tournaments')->middleware('auth');
+
+      // Support System
+      Route::group(['prefix' => 'ticket'] , function() {
+        Route::get('/', 'SupportsController@index')->name('support');
+        Route::get('/create', 'SupportsController@showCreate')->name('support_show_create');
+        Route::post('/create', 'SupportsController@saveCreate')->name('support_save_create');
+        Route::get('/t/{id}', 'SupportsController@showTicket')->name('support_show');
+        Route::post('/t/{id}/comment', 'SupportsController@newComment')->name('support_new_comment');
+      });
+
   });
-
-
 
 
 // Authentication Routes...
