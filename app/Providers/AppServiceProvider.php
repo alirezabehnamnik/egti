@@ -30,7 +30,8 @@ class AppServiceProvider extends ServiceProvider
       view()->composer('layouts.app', function ($view) {
         $data = Setting::first();
         $auth = Auth::guard('admins')->user();
-        $view->with('data', $data)->with('auth', $auth);
+        $hasTickets = Supports::where('enabled', 3)->get();
+        $view->with('data', $data)->with('auth', $auth)->with('hasTickets', $hasTickets);
       });
       view()->composer('layouts.profile', function ($view) {
         $data = FriendRequests::where('receiver_id', Auth::user()->id)->get();

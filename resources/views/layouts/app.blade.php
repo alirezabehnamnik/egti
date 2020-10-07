@@ -105,6 +105,22 @@
                 </div>
             </div>
         </nav>
+        @if (!$hasTickets->isEmpty() && Auth::check())
+          <div class="col-3 col-sm-2">
+            <div class="new-ticket">
+              <span>
+                <i class="far fa-question-circle dorange" aria-hidden="true"></i>
+                شما
+                {{count($hasTickets)}}
+                تیکت باز دارید. برای مشاهده
+                <a class="dorange" href="{{route('support')}}">
+                  کلیک
+                </a>
+                کنید.
+              </span>
+            </div>
+          </div>
+        @endif
 
         <main class="mt-7">
             @if (Auth::check() && Auth::user()->reason)

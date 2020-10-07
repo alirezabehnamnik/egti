@@ -938,3 +938,13 @@ nav {
 .select2-container .select2-selection--single .select2-selection__rendered {
     color: #000;
 }
+
+.new-ticket {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    background: rgba(0,0,0,0.7);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 9;
+}
