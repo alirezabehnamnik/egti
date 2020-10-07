@@ -41,7 +41,13 @@ class HomeController extends Controller
         foreach ($teams_list as $v) {
           array_push($team_ids, $v->id);
         }
-        $tournaments = TournamentsRegister::where('user_id', Auth::user()->id)->orWhereIn('team_id', $team_ids)->get()->random(4);
+        $tournaments = TournamentsRegister::where('user_id', Auth::user()->id)->orWhereIn('team_id', $team_ids)->get();
+        if (count($tournaments) < 4) {
+          $rand = count($tournaments);
+        } else {
+          $rand = 4;
+        }
+        $tournaments = $tournaments->random($rand);
         return view('profile.index', ['teams' => $teams, 'tournaments' => $tournaments, 'data' => $array]);
     }
 
