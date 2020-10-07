@@ -42,12 +42,9 @@ class HomeController extends Controller
           array_push($team_ids, $v->id);
         }
         $tournaments = TournamentsRegister::where('user_id', Auth::user()->id)->orWhereIn('team_id', $team_ids)->get();
-        if (count($tournaments) < 4) {
-          $rand = count($tournaments);
-        } else {
-          $rand = 4;
+        if (count($tournaments) > 4) {
+          $tournaments = $tournaments->random(4);
         }
-        $tournaments = $tournaments->random($rand);
         return view('profile.index', ['teams' => $teams, 'tournaments' => $tournaments, 'data' => $array]);
     }
 
