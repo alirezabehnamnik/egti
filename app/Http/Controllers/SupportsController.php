@@ -42,7 +42,7 @@ class SupportsController extends Controller
           $rand = mt_rand(0, 9999);
           $extension = $v->extension();
           $name = Auth::user()->username."-".$time."-".$rand.".".$extension;
-          $url = $v->move(public_path('\images\attachments'), $name);
+          $url = $v->move(public_path('/images/attachments'), $name);
           array_push($array, $name);
         }
       }
@@ -82,7 +82,7 @@ class SupportsController extends Controller
           $rand = mt_rand(0, 9999);
           $extension = $v->extension();
           $name = Auth::user()->username."-".$time."-".$rand.".".$extension;
-          $url = $v->move(public_path('\images\attachments'), $name);
+          $url = $v->move(public_path('/images/attachments'), $name);
           array_push($array, $name);
         }
       }
