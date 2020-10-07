@@ -179,6 +179,7 @@ return [
       'description' => 'توضیحات',
       'title' => 'عنوان',
       'message' => 'پیام',
+      'attachment' => 'فایل پیوست',
     ],
 
 ];

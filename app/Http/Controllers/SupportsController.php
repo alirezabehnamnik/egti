@@ -38,9 +38,17 @@ class SupportsController extends Controller
         'description' => ['required'],
       ]);
       if ($request['attachment']) {
+        $allowedfileExtension=['jpeg','jpg','png','zip','rar'];
         foreach ($request['attachment'] as $v) {
           $rand = mt_rand(0, 9999);
           $extension = $v->extension();
+          $check = in_array($extension,$allowedfileExtension);
+          if (!$check) {
+            return redirect()->back()->with('error', 'فرمت فایل پیوست مجاز نمی باشد!');
+          }
+          if (round($v->getSize() / 1024 > 2200)) {
+            return redirect()->back()->with('error', 'حجم فایل پیوست, بیش از حد مجاز می باشد!');
+          }
           $name = Auth::user()->username."-".$time."-".$rand.".".$extension;
           $url = $v->move(public_path('/images/attachments'), $name);
           array_push($array, $name);
@@ -78,9 +86,17 @@ class SupportsController extends Controller
         'message' => ['required'],
       ]);
       if ($request['attachment']) {
+        $allowedfileExtension=['jpeg','jpg','png','zip','rar'];
         foreach ($request['attachment'] as $v) {
           $rand = mt_rand(0, 9999);
           $extension = $v->extension();
+          $check = in_array($extension,$allowedfileExtension);
+          if (!$check) {
+            return redirect()->back()->with('error', 'فرمت فایل پیوست مجاز نمی باشد!');
+          }
+          if (round($v->getSize() / 1024 > 2200)) {
+            return redirect()->back()->with('error', 'حجم فایل پیوست, بیش از حد مجاز می باشد!');
+          }
           $name = Auth::user()->username."-".$time."-".$rand.".".$extension;
           $url = $v->move(public_path('/images/attachments'), $name);
           array_push($array, $name);

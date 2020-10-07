@@ -116,7 +116,7 @@
                       <br>
                       <small> حداکثر حجم مجاز 2MB می باشد </small>
                       <br>
-                      <small> فرمت های مجاز: png,jpeg,jpg </small>
+                      <small> فرمت های مجاز: png,jpeg,jpg,zip,rar </small>
                       @error('attachment')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
