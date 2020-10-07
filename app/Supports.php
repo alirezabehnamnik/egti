@@ -19,7 +19,7 @@ class Supports extends Model
         'attachment' => 'array',
     ];
 
-    public function sender()
+    public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }

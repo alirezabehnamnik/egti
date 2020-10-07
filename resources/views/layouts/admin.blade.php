@@ -71,6 +71,22 @@
             </a>
             @endif
 
+            <li class="collapse-li" data-toggle="collapse" data-target="#ticket">
+               <i class="far fa-question-circle" aria-hidden="true"></i> تیکت پشتیبانی
+               <div class="clps-icon"> <i class="fas fa-angle-down" aria-hidden="true"></i> </div>
+             </li>
+            <div class="nav-list collapse" id="ticket">
+              <a href="{{route('admin_tickets')}}">
+                <li style="margin-right: 10px;">
+                  <i class="fas fa-question" aria-hidden="true"></i> تیکت های باز 
+                </li>
+              </a>
+              <a href="{{route('admin_tickets_ended')}}">
+                <li style="margin-right: 10px;">
+                  <i class="fas fa-plus" aria-hidden="true"></i> تیکت های پایان یافته
+                </li>
+              </a>
+            </div>
             <li class="collapse-li" data-toggle="collapse" data-target="#users">
               <i class="fas fa-users" aria-hidden="true"></i> کاربران
               <div class="clps-icon"> <i class="fas fa-angle-down" aria-hidden="true"></i> </div>

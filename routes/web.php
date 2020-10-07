@@ -33,6 +33,17 @@ Route::group(['prefix' => 'admin'] , function() {
     Route::get('/panel' , 'AdminController@index')->name('admin_panel')->middleware('admin');
     Route::get('/settings' , 'AdminController@showSetting')->name('admin_settings')->middleware('admin');
     Route::post('/settings' , 'AdminController@updateSetting')->name('admin_settings_update')->middleware('admin');
+
+    // Tickets
+    Route::group(['prefix' => 'tickets', 'middleware' => 'admin'] , function() {
+      Route::get('/' , 'Admin\TicketController@index')->name('admin_tickets');
+      Route::get('/search' , 'Admin\TicketController@search')->name('admin_tickets_search');
+      Route::get('/ended' , 'Admin\TicketController@ended')->name('admin_tickets_ended');
+      Route::get('/t/{id}' , 'Admin\TicketController@showTicket')->name('admin_ticket_show');
+      Route::post('/t/{id}/comment', 'Admin\TicketController@newComment')->name('admin_ticket_new_comment');
+      Route::get('/p/{id}' , 'Admin\TicketController@setInProgress')->name('admin_ticket_progress');
+      Route::get('/c/{id}' , 'Admin\TicketController@closeTicket')->name('admin_ticket_close');
+    });
     // Users
     Route::group(['prefix' => 'users', 'middleware' => 'admin'] , function() {
         Route::get('/' , 'AdminController@showUsers')->name('admin_users');
