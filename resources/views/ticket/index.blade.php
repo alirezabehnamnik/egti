@@ -64,8 +64,8 @@
               <a href="{{route('support_show', ['id' => $v->id])}}">
                 <button class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="نمایش تیکت"> <i class="fas fa-eye" aria-hidden="true"></i> </button>
               </a>
-              @if ($v->enabled != 5)
-                <a href="#">
+              @if ($v->enabled != 6 && $v->enabled != 5)
+                <a href="{{route('support_close', ['id' => $v->id])}}">
                   <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="بستن تیکت"> <i class="fas fa-trash-alt" aria-hidden="true"></i> </button>
                 </a>
               @endif

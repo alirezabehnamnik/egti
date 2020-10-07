@@ -95,6 +95,21 @@ class SupportsController extends Controller
           'updated_at' => Carbon::now()->setTimezone('Asia/Tehran'),
           'enabled' => 1,
       ]);
+      Supports::where('id', $id)->update([
+        'enabled' => 4,
+      ]);
       return redirect()->back()->with('message', 'پاسخ شما با موفقیت ارسال شد.');
+    }
+
+    public function closeTicket($id)
+    {
+      $sql = Supports::where('id', $id)->update([
+        'enabled' => 6,
+      ]);
+      if ($sql) {
+        return redirect()->back()->with('message', 'تیکت شما با موفقیت بسته شد.');
+      } else {
+        return redirect()->back()->with('error', 'خطایی رخ داده است لطفا مجددا امتحان کنید!');
+      }
     }
 }

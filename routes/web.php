@@ -138,6 +138,7 @@ Route::get('/team/show/{tag}', 'TeamsController@index')->name('team_profile');
         Route::post('/create', 'SupportsController@saveCreate')->name('support_save_create');
         Route::get('/t/{id}', 'SupportsController@showTicket')->name('support_show');
         Route::post('/t/{id}/comment', 'SupportsController@newComment')->name('support_new_comment');
+        Route::get('/c/{id}', 'SupportsController@closeTicket')->name('support_close');
       });
 
   });
