@@ -8,7 +8,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-10 offset-1">
+    <div class="col-md-10 offset-md-1 col-sm-12">
       @if(session()->has('error'))
         <div class="col-md-12">
           <div class="alert alert-danger">
@@ -82,7 +82,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-10 offset-1">
+    <div class="col-md-10 offset-md-1 col-sm-12">
       <p>
         <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#newComment" aria-expanded="false" aria-controls="newComment">
           ارسال پاسخ به تیکت
@@ -146,10 +146,12 @@
         <?php $counter = 1; ?>
         @foreach ($comments as $v)
           <div class="row">
-            <div class="col-10 offset-1">
+            <div class="col-md-10 offset-md-1 col-sm-12">
               <div class="comment-header">
                 #{{$counter++}}
-                پاسخ
+                <span class="daim">
+                  پاسخ
+                </span>
                 @if ($v->is_admin == 1)
                 <span class="btn btn-sm btn-dorange"> مدیریت </span>
                 @else
