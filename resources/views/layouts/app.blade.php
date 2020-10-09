@@ -105,7 +105,7 @@
                 </div>
             </div>
         </nav>
-        @if (!$hasTickets->isEmpty() && Auth::check())
+        @if (Auth::check() && !$hasTickets->isEmpty())
           <div class="col-3 col-sm-2">
             <div class="new-ticket">
               <span>

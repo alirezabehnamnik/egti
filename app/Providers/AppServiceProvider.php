@@ -28,9 +28,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
       view()->composer('layouts.app', function ($view) {
+        $hasTickets = false;
         $data = Setting::first();
         $auth = Auth::guard('admins')->user();
-        $hasTickets = Supports::where('enabled', 3)->get();
+        if (Auth::check()) {
+          $hasTickets = Supports::where('user_id', Auth::user()->id)->where('enabled', 3)->get();
+        }
         $view->with('data', $data)->with('auth', $auth)->with('hasTickets', $hasTickets);
       });
       view()->composer('layouts.profile', function ($view) {
