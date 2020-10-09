@@ -23,7 +23,7 @@
   </div>
   @if (!$tickets->isEmpty())
   <div class="row">
-    <div class="col-10 offset-1">
+    <div class="col-md-10 offset-md-1 col-sm-12">
       <table class="table table-hover table-bordered table-dark">
         <thead>
           <tr>

@@ -6690,6 +6690,10 @@ a:hover {
     margin: auto;
     top: 0;
   }
+
+  .daim {
+    display: none !important;
+  }
 }
 
 @media only screen and (min-width: 1025px) {
@@ -16297,7 +16301,7 @@ nav {
 .team-disabled {
   background: rgba(0, 0, 0, 0.85);
   position: absolute;
-  z-index: 999;
+  z-index: 99;
   width: 100%;
   border-top-right-radius: 10px;
   height: 270px;
