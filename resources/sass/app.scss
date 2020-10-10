@@ -949,3 +949,22 @@ nav {
     border-radius: 5px;
     z-index: 9;
 }
+
+.rtitle {
+  color: $dorange;
+  font-size: 25px;
+  list-style: persian;
+}
+
+.rules-box {
+  line-height: 2.5;
+}
+
+.fhead {
+  list-style: none;
+  color: $dorange;
+}
+
+.shead {
+  list-style: disc;
+}

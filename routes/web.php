@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@index')->name('home');
 Route::get('/errorPage/{code}', 'HomeController@errorPage')->name('errorPage');
+Route::get('/t/rules', 'HomeController@tournamentRules')->name('trules');
 
 // Email Verification
 Auth::routes(['verify' => true]);

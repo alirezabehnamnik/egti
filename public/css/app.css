@@ -15880,6 +15880,7 @@ nav {
 .game-image img {
   cursor: pointer;
   border-radius: 5px;
+  width: 100%;
 }
 
 .game-text {
@@ -15887,7 +15888,7 @@ nav {
   bottom: 0px;
   color: #FFF;
   background: rgba(0, 0, 0, 0.8);
-  width: 350px;
+  width: 100%;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   padding-top: 7px;
@@ -16615,5 +16616,24 @@ nav {
   padding: 10px;
   border-radius: 5px;
   z-index: 9;
+}
+
+.rtitle {
+  color: #f8ae40;
+  font-size: 25px;
+  list-style: persian;
+}
+
+.rules-box {
+  line-height: 2.5;
+}
+
+.fhead {
+  list-style: none;
+  color: #f8ae40;
+}
+
+.shead {
+  list-style: disc;
 }
 

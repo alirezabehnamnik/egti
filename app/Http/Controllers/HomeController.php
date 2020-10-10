@@ -107,4 +107,9 @@ class HomeController extends Controller
     {
       return abort($code);
     }
+
+    public function tournamentRules()
+    {
+      return view('trules');
+    }
 }
