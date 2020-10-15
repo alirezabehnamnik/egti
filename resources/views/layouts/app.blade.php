@@ -107,7 +107,7 @@
         </nav>
         @if (Auth::check() && !$hasTickets->isEmpty())
           <div class="col-3 col-sm-2">
-            <div class="new-ticket" {{$treq != false ? 'style=bottom:70px;' : ''}}>
+            <div class="new-ticket" {{!$treq->isEmpty() ? 'style=bottom:70px;' : ''}}>
               <span>
                 <i class="far fa-question-circle dorange" aria-hidden="true"></i>
                 شما

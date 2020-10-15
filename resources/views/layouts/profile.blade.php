@@ -139,12 +139,12 @@
           </div>
 
           @if (Auth::check() && !$hasTickets->isEmpty())
-            <div class="notification" id="hasTickets" {{$treq != false ? 'style=bottom:65px;' : ''}}>
+            <div class="notification" id="hasTickets" {{!$treq->isEmpty() ? 'style=bottom:65px;' : ''}}>
               <span class="notification-count"> {{count($hasTickets)}} </span>
               <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
             </div>
             <div class="col-3 col-sm-2">
-              <div class="new-ticket hidden panel-notify" id="hasTickets-text" {{$treq != false ? 'style=bottom:60px;' : ''}}>
+              <div class="new-ticket hidden panel-notify" id="hasTickets-text" {{!$treq->isEmpty() ? 'style=bottom:60px;' : ''}}>
                 <span>
                   <i class="far fa-question-circle dorange" aria-hidden="true"></i>
                   شما
