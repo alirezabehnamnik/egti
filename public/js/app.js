@@ -36920,6 +36920,12 @@ $(document).ready(function () {
   $(".collapse-sidenav").click(function () {
     $(".sidenav").toggleClass("showSideNav");
   });
+  $("#treq").hover(function () {
+    $("#treq-text").toggleClass("hidden");
+  });
+  $("#hasTickets").hover(function () {
+    $("#hasTickets-text").toggleClass("hidden");
+  });
 });
 
 /***/ }),

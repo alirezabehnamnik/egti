@@ -218,4 +218,14 @@ $(".collapse-li").on('click', function (event) {
       $(".sidenav").toggleClass("showSideNav");
     });
 
+    $("#treq").hover(function(){
+      $("#treq-text").toggleClass("hidden");
+    });
+
+    $("#hasTickets").hover(function(){
+      $("#hasTickets-text").toggleClass("hidden");
+    });
+
+
+
 });

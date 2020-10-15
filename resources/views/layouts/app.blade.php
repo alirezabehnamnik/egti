@@ -107,13 +107,29 @@
         </nav>
         @if (Auth::check() && !$hasTickets->isEmpty())
           <div class="col-3 col-sm-2">
-            <div class="new-ticket">
+            <div class="new-ticket" {{$treq != false ? 'style=bottom:70px;' : ''}}>
               <span>
                 <i class="far fa-question-circle dorange" aria-hidden="true"></i>
                 شما
                 {{count($hasTickets)}}
                 تیکت باز دارید. برای مشاهده
                 <a class="dorange" href="{{route('support')}}">
+                  کلیک
+                </a>
+                کنید.
+              </span>
+            </div>
+          </div>
+        @endif
+        @if (Auth::check() && !$treq->isEmpty())
+          <div class="col-3 col-sm-2">
+            <div class="new-ticket">
+              <span>
+                <i class="far fa-question-circle dorange" aria-hidden="true"></i>
+                شما
+                {{count($treq)}}
+                درخواست عضویت در تیم دارید. برای مشاهده
+                <a class="dorange" href="{{route('show_join')}}">
                   کلیک
                 </a>
                 کنید.

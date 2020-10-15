@@ -16615,7 +16615,32 @@ nav {
   background: rgba(0, 0, 0, 0.7);
   padding: 10px;
   border-radius: 5px;
-  z-index: 9;
+  z-index: 100;
+}
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 7px 10px 0px 10px;
+  border-radius: 5px;
+  z-index: 100;
+  color: #f8ae40;
+  font-size: 20px;
+}
+
+.notification-count {
+  position: absolute;
+  top: -7px;
+  right: 0;
+  font-size: 14px;
+}
+
+.panel-notify {
+  bottom: 17px;
+  right: 55px;
+  transition: all 0.2s ease-in-out;
 }
 
 .rtitle {

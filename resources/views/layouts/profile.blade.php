@@ -123,6 +123,11 @@
                     <i class="fas fa-cog" aria-hidden="true"></i> مدیریت تیم
                   </li>
                 </a>
+                <a href="{{route('show_join')}}">
+                  <li style="margin-right: 10px;">
+                    <i class="fas fa-exchange-alt" aria-hidden="true"></i> درخواست های عضویت <span class="friendsCount"> {{count($treq)}} </span>
+                  </li>
+                </a>
               </div>
               <a href="{{route('my_tournaments')}}">
                 <li> <i class="fas fa-clipboard-list" aria-hidden="true"></i> مسابقات من </li>
@@ -132,6 +137,40 @@
           <div class="collapse-sidenav out-nav">
             <i class="fas fa-sliders-h" aria-hidden="true"></i>
           </div>
+
+          @if (Auth::check() && !$hasTickets->isEmpty())
+            <div class="notification" id="hasTickets" {{$treq != false ? 'style=bottom:65px;' : ''}}>
+              <span class="notification-count"> {{count($hasTickets)}} </span>
+              <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+            </div>
+            <div class="col-3 col-sm-2">
+              <div class="new-ticket hidden panel-notify" id="hasTickets-text" {{$treq != false ? 'style=bottom:60px;' : ''}}>
+                <span>
+                  <i class="far fa-question-circle dorange" aria-hidden="true"></i>
+                  شما
+                  {{count($hasTickets)}}
+                  تیکت باز دارید.
+                </span>
+              </div>
+            </div>
+          @endif
+          @if (Auth::check() && !$treq->isEmpty())
+            <div class="notification" id="treq">
+              <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+              <span class="notification-count"> {{count($treq)}} </span>
+            </div>
+            <div class="col-3 col-sm-2">
+              <div class="new-ticket hidden panel-notify" id="treq-text">
+                <span>
+                  <i class="far fa-question-circle dorange" aria-hidden="true"></i>
+                  شما
+                  {{count($treq)}}
+                  درخواست عضویت در تیم دارید.
+                </span>
+              </div>
+            </div>
+          @endif
+
           <main class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 offset-xl-2 mobile-margin">
             @if (Auth::check())
               @if (Auth::user()->reason)
