@@ -138,6 +138,8 @@ Route::get('/team/show/{tag}', 'TeamsController@index')->name('team_profile');
           Route::get('/manage/enable/{id}', 'TeamsController@enableTeam')->name('undelete_team');
           Route::get('/manage/edit/{id}', 'TeamsController@showEdit')->name('edit_team');
           Route::post('/manage/edit', 'TeamsController@saveEdit')->name('save_team');
+          Route::get('/joinRequests', 'TeamsController@showJoins')->name('show_join');
+          Route::get('/joinRequests/{result}/{team}-{user}', 'TeamsController@resultJoin')->name('result_join');
       });
 
       // Profile tournaments Route

@@ -6,6 +6,7 @@ use App\User;
 use App\Games;
 use App\TournamentsRegister;
 use App\TournamentsResults;
+use App\TeamRequests;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -91,18 +92,26 @@ class TeamsController extends Controller
       }
       $extension = $request['logo']->extension();
       $name = $request['tag'].".".$extension;
-      $url = $request->file('logo')->move(public_path('/images/teams\logo'), $name);
+      $url = $request->file('logo')->move(public_path('\images\teams\logo'), $name);
       $sql = Teams::create([
           'name' => $request['name'],
           'tag' => $request['tag'],
           'logo' => $name,
           'user_id' => $user_id,
-          'players_id' => $request['players_id'],
-          'standin_id' => $request['standin_id'],
           'game_id' => $request['game_id'],
           'enabled' => 1,
       ]);
-      return redirect()->back()->with('message', 'تیم جدید با موفقیت ایجاد شد!');
+      $q = TeamRequests::create([
+          'team_id' => $sql->id,
+          'user_id' => $request['standin_id'],
+      ]);
+      foreach ($request['players_id'] as $v) {
+        $query = TeamRequests::create([
+            'team_id' => $sql->id,
+            'user_id' => $v,
+        ]);
+      }
+      return redirect()->back()->with('message', 'تیم جدید با موفقیت ایجاد شد!')->with('message', 'تیم جدید با موفقیت ایجاد شد!');
 
     }
 
@@ -193,4 +202,33 @@ class TeamsController extends Controller
       return redirect()->back()->with('message', 'اطلاعات شما با موفقیت ویرایش شد.');
     }
 
+
+    public function showJoins()
+    {
+      $data = TeamRequests::where('user_id', Auth::user()->id)->get();
+      return view('teams.requests', ['data' => $data]);
+    }
+
+    public function resultJoin($result,$team,$user)
+    {
+      if ($result == 'accept') {
+        $delete = TeamRequests::where('team_id', $team)->where('user_id', $user)->delete();
+        $mteam = Teams::where('id', $team)->first();
+        if ($mteam->players_id) {
+          $array = $mteam->players_id;
+        } else {
+          $array = [];
+        }
+        array_push($array, $user);
+        $update = Teams::where('id', $team)->update(['players_id' => $array]);
+        if ($update) {
+          return redirect()->back()->with('message', 'شما با موفقیت به تیم اضافه شدید.');
+        }
+      } elseif ($result == 'reject') {
+        $delete = TeamRequests::where('team_id', $team)->where('user_id', $user)->delete();
+        if ($delete) {
+          return redirect()->back()->with('message', 'درخواست عضویت باموفقیت رد شد.');
+        }
+      }
+    }
 }
