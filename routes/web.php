@@ -105,13 +105,13 @@ Route::group(['prefix' => 'tournament'] , function() {
     Route::get('/progress', 'TournamentsController@showProg')->name('tournaments_progress');
     Route::get('/result/{id}', 'TournamentsController@result')->name('tournament_results');
     Route::get('/register/{id}', 'TournamentsController@showRegister')->name('show_tr_register')->middleware('auth')->middleware('verified');
-    Route::post('/register', 'TournamentsController@register')->name('tr_register')->middleware('auth');
+    Route::post('/register', 'TournamentsController@register')->name('tr_register')->middleware('auth')->middleware('verified');
 });
 
 // User Route
 Route::get('/user/show/{username}', 'UserController@index')->name('user_profile');
-Route::get('/user/addfriend/{id}', 'UserController@addFriend')->name('user_add_friend');
-Route::get('/user/rfriendRequest/{sender}-{receiver}', 'UserController@removeAddFriend')->name('user_remove_add_friend');
+Route::get('/user/addfriend/{id}', 'UserController@addFriend')->name('user_add_friend')->middleware('auth')->middleware('verified');
+Route::get('/user/rfriendRequest/{sender}-{receiver}', 'UserController@removeAddFriend')->name('user_remove_add_friend')->middleware('auth')->middleware('verified');
 Route::get('/users', 'UserController@showAll')->name('users_list');
 
 // Team Profile
@@ -120,17 +120,20 @@ Route::get('/team/show/{tag}', 'TeamsController@index')->name('team_profile');
   // Profile Route
   Route::group(['prefix' => 'profile', 'middleware' => 'auth'] , function() {
       Route::get('/', 'HomeController@index')->name('profile');
-      Route::get('/friend_requests', 'HomeController@friendRequests')->name('friend_requests');
-      Route::get('/friend_requests/{result}/{sender}-{receiver}', 'HomeController@friendResult')->name('friend_requests_result');
-      Route::get('/myfriends', 'HomeController@myFriends')->name('my_friends');
-      Route::get('/removefriend/{id}', 'HomeController@removeFriend')->name('remove_friend');
+      Route::group(['prefix' => 'friends'] , function() {
+        Route::get('/', 'HomeController@myFriends')->name('my_friends');
+        Route::get('/requests', 'HomeController@friendRequests')->name('friend_requests');
+        Route::get('/requests/{result}/{sender}-{receiver}', 'HomeController@friendResult')->name('friend_requests_result');
+        Route::get('/remove/{id}', 'HomeController@removeFriend')->name('remove_friend');
+      });
       Route::get('/edit', 'ProfileController@edit')->name('edit_profile');
       Route::post('/edit', 'ProfileController@save')->name('save_edit');
       Route::get('/privacy', 'ProfileController@privacyShow')->name('show_privacy');
       Route::post('/privacy', 'ProfileController@privacySave')->name('save_privacy');
 
       // Team Route
-      Route::group(['prefix' => 'team'] , function() {
+      Route::group(['prefix' => 'team', 'middleware' => 'verified'] , function() {
+          Route::get('/myteams', 'TeamsController@myTeams')->name('my_team');
           Route::get('/create', 'TeamsController@showCreate')->name('create_team');
           Route::post('/create', 'TeamsController@create')->name('add_team');
           Route::get('/manage', 'TeamsController@showManage')->name('manage_team');
