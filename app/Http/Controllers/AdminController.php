@@ -12,6 +12,7 @@ use App\Teams;
 use App\TournamentsRegister;
 use App\TournamentsResults;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\Paginator;
@@ -686,4 +687,11 @@ class AdminController extends Controller
       return redirect('/admin/teams');
     }
 
+    public function verifyUser($id)
+    {
+      $sql = User::where('id', $id)->update([
+        'email_verified_at' => Carbon::now(),
+      ]);
+      return redirect('/admin/users');
+    }
 }

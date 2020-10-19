@@ -57,7 +57,14 @@
               <td> {{$v->name}} </td>
               <td> {{$v->family}} </td>
               <td> {{$v->username}} </td>
-              <td> {{$v->email}} </td>
+              <td>
+                {{$v->email}}
+                @if ($v->email_verified_at)
+                  <i style="color: #8cba51;" class="fas fa-check" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="ایمیل تایید شده است"></i>
+                @else
+                  <i style="color: #ec2e2e;" class="fas fa-times" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="ایمیل تایید نشده است"></i>
+                @endif
+              </td>
               <td> {{$v->phone_number}} </td>
               <td> {{$v->reason}} </td>
               <td class="text-center">
@@ -66,7 +73,7 @@
                     <i class="far fa-eye" aria-hidden="true"></i>
                   </button>
                 </a>
-                <a href="{{route('admin_user_edit', ['id' => $v->id])}}" target="_blank" data-toggle="tooltip" data-placement="top" title="ویرایش">
+                <a href="{{route('admin_user_edit', ['id' => $v->id])}}" data-toggle="tooltip" data-placement="top" title="ویرایش">
                   <button type="button" class="btn btn-sm btn-success" name="button">
                     <i class="far fa-edit" aria-hidden="true"></i>
                   </button>
@@ -80,6 +87,13 @@
                     @endif
                   </button>
                 </a>
+                @if (!$v->email_verified_at)
+                  <a href="{{route('admin_verify_user', ['id' => $v->id])}}" data-toggle="tooltip" data-placement="top" title="تایید ایمیل">
+                    <button type="button" class="btn btn-sm btn-warning" name="button">
+                      <i class="fas fa-check" aria-hidden="true"></i>
+                    </button>
+                  </a>
+                @endif
               </td>
             </tr>
           @endforeach

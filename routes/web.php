@@ -55,6 +55,7 @@ Route::group(['prefix' => 'admin'] , function() {
         Route::post('/edit/{id}' , 'AdminController@saveEditUser')->name('admin_user_edit_save');
         Route::get('/disable/{id}' , 'AdminController@disbaleUserShow')->name('admin_user_disable');
         Route::post('/disable/{id}' , 'AdminController@disableUserSave')->name('admin_user_disable_save');
+        Route::get('/verify/{id}' , 'AdminController@verifyUser')->name('admin_verify_user');
     });
     // Games
     Route::group(['prefix' => 'games', 'middleware' => 'admin'] , function() {
