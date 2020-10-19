@@ -61,12 +61,6 @@
               <a href="{{route('home')}}">
                 <li> <i class="fas fa-home" aria-hidden="true"></i> خانه </li>
               </a>
-              <a href="{{route('games')}}">
-                <li> <i class="fas fa-gamepad" aria-hidden="true"></i> بازی ها </li>
-              </a>
-              <a href="{{route('tournaments')}}">
-                <li> <i class="fas fa-trophy" aria-hidden="true"></i> مسابقات </li>
-              </a>
               <a href="{{route('profile')}}">
                 <li> <i class="fas fa-user" aria-hidden="true"></i> پروفایل </li>
               </a>
@@ -83,7 +77,7 @@
               <div class="nav-list collapse" id="ticket">
                 <a href="{{route('support')}}">
                   <li style="margin-right: 10px;">
-                    <i class="fas fa-question" aria-hidden="true"></i> تیکت های من <span class="friendsCount"> {{count($tickets)}} </span>
+                    <i class="fas fa-question" aria-hidden="true"></i> تیکت های من <span class="friendsCount"> {{count($hasTickets)}} </span>
                   </li>
                 </a>
                 <a href="{{route('support_show_create')}}">
@@ -123,12 +117,15 @@
                     <i class="fas fa-cog" aria-hidden="true"></i> مدیریت تیم
                   </li>
                 </a>
-                <a href="{{route('show_join')}}">
+                <a href="{{route('my_team')}}">
                   <li style="margin-right: 10px;">
-                    <i class="fas fa-exchange-alt" aria-hidden="true"></i> درخواست های عضویت <span class="friendsCount"> {{count($treq)}} </span>
+                    <i class="fas fa-users" aria-hidden="true"></i> تیم های من
                   </li>
                 </a>
               </div>
+              <a href="{{route('show_join')}}">
+                <li> <i class="fas fa-exchange-alt" aria-hidden="true"></i> درخواست های عضویت در تیم <span class="friendsCount"> {{count($treq)}} </span> </li>
+              </a>
               <a href="{{route('my_tournaments')}}">
                 <li> <i class="fas fa-clipboard-list" aria-hidden="true"></i> مسابقات من </li>
               </a>

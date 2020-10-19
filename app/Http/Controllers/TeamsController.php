@@ -231,4 +231,24 @@ class TeamsController extends Controller
         }
       }
     }
+
+    public function myteams()
+    {
+      $id = Auth::user()->id;
+      $id = "$id";
+      $teams = Teams::where('user_id', Auth::user()->id)->orWhere('standin_id', Auth::user()->id)->orWhereJsonContains('players_id', $id)->where('enabled', 1)->limit(6)->get()->sortBy('game_id');
+      $array = array();
+      foreach ($teams as $v) {
+        $data = $v->game_id;
+        $array[$v->id] = array(
+          'games' => array(
+          )
+        );
+        $games = Games::whereIn('id', $data)->get();
+        foreach ($games as $k) {
+          array_push($array[$v->id]['games'], $k->name);
+        }
+      }
+      return view('teams.my', ['teams' => $teams, 'data' => $array]);
+    }
 }

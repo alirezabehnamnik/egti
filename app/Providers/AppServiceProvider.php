@@ -42,9 +42,8 @@ class AppServiceProvider extends ServiceProvider
       view()->composer('layouts.profile', function ($view) {
         $data = FriendRequests::where('receiver_id', Auth::user()->id)->get();
         $treq = TeamRequests::where('user_id', Auth::user()->id)->get();
-        $tickets = Supports::where('user_id', Auth::user()->id)->where('enabled', '!=', 0)->get();
         $hasTickets = Supports::where('user_id', Auth::user()->id)->where('enabled', 3)->get();
-        $view->with('data', $data)->with('tickets', $tickets)->with('hasTickets', $hasTickets)->with('treq', $treq);
+        $view->with('data', $data)->with('hasTickets', $hasTickets)->with('treq', $treq);
       });
     }
 }

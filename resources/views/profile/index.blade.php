@@ -11,7 +11,7 @@
           <div class="col-md-3">
             تیم های من
             <small>
-              <a href="{{route('manage_team')}}" class="dorange">
+              <a href="{{route('my_team')}}" class="dorange">
                 (نمایش همه)
               </a>
             </small>
