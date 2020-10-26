@@ -112,4 +112,9 @@ class HomeController extends Controller
     {
       return view('trules');
     }
+
+    public function rules()
+    {
+      return view('rules');
+    }
 }

@@ -119,7 +119,7 @@
         @endif
 
         @if ($item->tournament->enabled == -1)
-        <a href="{{route('tournament_results', ['id' => $item->tournament->id])}}" target="_blank" class="tr-result">
+        <a href="{{route('tournament_results', ['id' => $item->tournament->id])}}" class="tr-result">
           نمایش نتایج
         </a>
         @elseif ($item->tournament->enabled == 4)

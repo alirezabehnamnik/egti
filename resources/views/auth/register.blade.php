@@ -282,7 +282,7 @@
                                   <label class="form-check-label">
                                     <input name="rules" type="checkbox" class="form-check-input" value="1"> <i class="fas fa-gavel" aria-hidden="true"></i>
                                     متن
-                                    <a href="#" target="_blank"> قوانین </a>
+                                    <a href="{{route('rules')}}" target="_blank"> قوانین </a>
                                     را خوانده ام و آنها را می پذیرم.
                                   </label>
                                   <input type="hidden" class="form-control @error('rules') is-invalid @enderror">

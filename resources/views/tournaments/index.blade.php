@@ -553,7 +553,7 @@
           <span class="tournament-text"> {{$fiprize}} تومان </span>
         </li>
         @endif
-        <a href="{{route('tournament_results', ['id' => $item->id])}}" target="_blank" class="tr-result">
+        <a href="{{route('tournament_results', ['id' => $item->id])}}" class="tr-result">
           نمایش نتایج
         </a>
       </div>
