@@ -9,6 +9,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('js/ckeditor/translations/fa.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -76,9 +78,14 @@
                <div class="clps-icon"> <i class="fas fa-angle-down" aria-hidden="true"></i> </div>
              </li>
             <div class="nav-list collapse" id="ticket">
+              <a href="{{route('admin_tickets_show_create')}}">
+                <li style="margin-right: 10px;">
+                  <i class="fas fa-plus-square" aria-hidden="true"></i> ایجاد تیکت
+                </li>
+              </a>
               <a href="{{route('admin_tickets')}}">
                 <li style="margin-right: 10px;">
-                  <i class="fas fa-question" aria-hidden="true"></i> تیکت های باز 
+                  <i class="fas fa-question" aria-hidden="true"></i> تیکت های باز
                 </li>
               </a>
               <a href="{{route('admin_tickets_ended')}}">

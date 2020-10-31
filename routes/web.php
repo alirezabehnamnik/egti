@@ -21,12 +21,12 @@ Route::get('/rules', 'HomeController@rules')->name('rules');
 // Email Verification
 Auth::routes(['verify' => true]);
 // Admin Route
-Route::group(['prefix' => 'admin'] , function() {
+Route::group(['prefix' => 'abap'] , function() {
     Route::get('/', function () {
       if (Auth::guard('admins')->user()) {
-        return redirect('admin/panel');
+        return redirect('abap/panel');
       } else {
-        return redirect('admin/login');
+        return redirect('abap/login');
       }
     });
     Route::get('/login' , 'AdminController@showLogin')->name('admin_show_login');
@@ -41,6 +41,8 @@ Route::group(['prefix' => 'admin'] , function() {
       Route::get('/' , 'Admin\TicketController@index')->name('admin_tickets');
       Route::get('/search' , 'Admin\TicketController@search')->name('admin_tickets_search');
       Route::get('/ended' , 'Admin\TicketController@ended')->name('admin_tickets_ended');
+      Route::get('/create', 'Admin\TicketController@showCreate')->name('admin_tickets_show_create');
+      Route::post('/create', 'Admin\TicketController@saveCreate')->name('admin_tickets_save_create');
       Route::get('/t/{id}' , 'Admin\TicketController@showTicket')->name('admin_ticket_show');
       Route::post('/t/{id}/comment', 'Admin\TicketController@newComment')->name('admin_ticket_new_comment');
       Route::get('/p/{id}' , 'Admin\TicketController@setInProgress')->name('admin_ticket_progress');
