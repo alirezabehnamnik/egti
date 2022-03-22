@@ -22,6 +22,7 @@ class Tournaments extends Migration
           $table->string('image');
           $table->date('start_date')->nullable();
           $table->date('end_date')->nullable();
+          $table->date('register_date')->nullable();
           $table->Integer('entry_price')->nullable();
           $table->smallInteger('teams_count')->default(0);
           $table->smallInteger('max_teams');
