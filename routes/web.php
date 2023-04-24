@@ -21,12 +21,12 @@ Route::get('/rules', 'HomeController@rules')->name('rules');
 // Email Verification
 Auth::routes(['verify' => true]);
 // Admin Route
-Route::group(['prefix' => 'abap'] , function() {
+Route::group(['prefix' => 'admin'] , function() {
     Route::get('/', function () {
       if (Auth::guard('admins')->user()) {
-        return redirect('abap/panel');
+        return redirect('admin/panel');
       } else {
-        return redirect('abap/login');
+        return redirect('admin/login');
       }
     });
     Route::get('/login' , 'AdminController@showLogin')->name('admin_show_login');
