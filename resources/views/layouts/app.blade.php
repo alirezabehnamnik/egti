@@ -292,7 +292,7 @@
                 <div class="copyright">
                   <i class="far fa-copyright" aria-hidden="true"></i>
                   تمامی حقوق برای
-                  <span> EG Team </span>
+                  <span> Alireza Behnamnik </span>
                   محفوظ می باشد.
                 </div>
               </div>
