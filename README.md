@@ -1,85 +1,233 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+<h1 align="center">🎮 EGTI – Esports Tournament Engine</h1>
 
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+  <strong>A complete esports tournament management system built as my first Laravel project.</strong><br>
+  <em>Published strictly as a portfolio project. Not licensed for commercial deployment.</em>
 </p>
 
-## About Laravel
+<p align="center">
+  <img src="https://img.shields.io/badge/Framework-Laravel%208-red?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Language-PHP%20%7C%20MySQL-blue?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Frontend-Blade%20%7C%20Bootstrap-blueviolet?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Status-Showcase%20Only-yellow?style=for-the-badge">
+  <img src="https://img.shields.io/badge/License-Portfolio%20Only-lightgrey?style=for-the-badge">
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📌 Overview
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+EGTI (Esports Game Tournament Interface) is a fully functional tournament management platform created in **2022**.  
+This was my **first real Laravel project**, where I learned and practiced:
 
-## Learning Laravel
+- Real-world backend architecture  
+- Multi-role workflows (admin, moderator, captain, player)  
+- Match & bracket logic  
+- Migrations, seeders, and Eloquent relationships  
+- Admin dashboards & tournament pages  
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+This repository is provided **ONLY for educational and portfolio purposes**.  
+It is **not licensed for commercial or production use**.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## ✨ Features
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 🛡 Tournament Management
+- Create & configure esports tournaments  
+- Registration rules & windows  
+- Team registration with admin approval  
+- Group stage & knockout brackets  
+- Match scheduling & progression  
 
-### Premium Partners
+### 👥 Team & Player System
+- Create teams (captain + members)  
+- Edit team info and lineup  
+- Auto-generated team pages  
+- Basic player verification  
+- Captain dashboard  
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
+### 🏆 Match Handling
+- Submit match results  
+- Upload screenshot proof  
+- Admin/moderator validation  
+- Auto progression in brackets  
 
-### Community Sponsors
+### 🔧 Admin Panel
+- Manage tournaments  
+- Review teams  
+- Approve match results  
+- Manage announcements & rules pages  
 
-<a href="https://op.gg"><img src="http://opgg-static.akamaized.net/icon/t.rectangle.png" width="150"></a>
+### 📱 User Interface
+- Responsive Blade + Bootstrap  
+- Tournament pages  
+- Team profiles  
+- Match history  
 
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [云软科技](http://www.yunruan.ltd/)
+---
 
-## Contributing
+## 🛠 Tech Stack
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| Category      | Technology          |
+|--------------|---------------------|
+| Backend      | Laravel 8           |
+| Frontend     | Blade, Bootstrap    |
+| Database     | MySQL               |
+| Auth         | Laravel Auth        |
+| Storage      | Local Disk          |
+| Language     | PHP 8               |
+| Environment  | Docker (development)|
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🧱 Architecture (Simplified)
 
-## Security Vulnerabilities
+```text
+EGTI/
+ ├── app/
+ │   ├── Models/
+ │   ├── Http/
+ │   ├── Controllers/
+ │   └── Services/
+ ├── resources/
+ │   └── views/
+ ├── public/
+ ├── routes/
+ │   └── web.php
+ ├── database/
+ │   ├── migrations/
+ │   └── seeders/
+ ├── docker/
+ │   └── nginx.conf
+ ├── docker-compose.yml
+ ├── Dockerfile
+ ├── .env.example
+ ├── README.md
+ └── LICENSE
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 🚀 Getting Started (Docker – Development Only)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+> This setup is for **local development / review only**,  
+> not intended for production deployment.
+
+### Requirements
+- Docker + Docker Compose  
+- Git  
+
+---
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/alirezabehnamnik/egti.git
+cd egti
+```
+
+---
+
+### 2️⃣ Create a new `.env` file
+
+```bash
+cp .env.example .env
+```
+
+---
+
+### 3️⃣ Start Docker stack
+
+```bash
+docker compose up -d --build
+```
+
+---
+
+### 4️⃣ Install dependencies
+
+```bash
+docker compose exec app composer install
+```
+
+---
+
+### 5️⃣ Generate application key
+
+```bash
+docker compose exec app php artisan key:generate
+```
+
+---
+
+### 6️⃣ Run migrations
+
+```bash
+docker compose exec app php artisan migrate --seed
+```
+
+If no seeders:
+
+```bash
+docker compose exec app php artisan migrate
+```
+
+---
+
+### 7️⃣ Access the application
+
+```
+http://localhost:8000
+```
+
+---
+
+## 📦 Optional Frontend
+
+```bash
+docker compose exec app npm install
+docker compose exec app npm run dev
+```
+
+---
+
+## 🧹 Useful Docker Commands
+
+```bash
+docker compose down
+docker compose down -v
+docker compose logs app
+docker compose logs web
+docker compose logs db
+```
+
+---
+
+## ⚠ License & Usage Restrictions
+
+This project is **NOT open-source**.  
+It is provided **strictly for portfolio use**.
+
+You may NOT:
+- Use commercially  
+- Deploy publicly  
+- Redistribute or sell the code  
+- Copy large parts  
+- Host tournaments  
+
+You MAY:
+- Read the code  
+- Learn from it  
+- Use for interviews  
+
+See `LICENSE` for details.
+
+---
+
+## 👤 Author
+
+**Alireza Behnamnik**  
+Full Stack Developer  
+Email: info@Alirezabehnamnik.com
+Portfolio: Alirezabehnamnik.com
