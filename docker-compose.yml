@@ -1,0 +1,43 @@
+services:
+  app:
+    image: reysa96/php-laravel:7.4
+    container_name: egti_app
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    depends_on:
+      - db
+
+  web:
+    image: nginx:alpine
+    container_name: egti_web
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+
+  db:
+    image: mysql:8.0
+    container_name: egti_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: egti
+      MYSQL_USER: egti
+      MYSQL_PASSWORD: egti
+    ports:
+      - "3307:3306"
+    volumes:
+      - egti_dbdata:/var/lib/mysql
+  node:
+    image: node:16
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    command: npm install && npm run dev
+    depends_on:
+      - app
+volumes:
+  egti_dbdata:
