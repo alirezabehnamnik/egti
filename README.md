@@ -17,7 +17,7 @@
 
 ## 📌 Overview
 
-EGTI (Esports Game Tournament Interface) is a fully functional tournament management platform created in **2022**.  
+EGTI (Esports Game Tournament Interface) is a fully functional tournament management platform created in **2020**.  
 This was my **first real Laravel project**, where I learned and practiced:
 
 - Real-world backend architecture  
